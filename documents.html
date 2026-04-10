@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Portal | Sargeant Transport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:        #0f2a4a;
+      --navy-dark:   #0a1e35;
+      --blue-mid:    #1a4a7a;
+      --blue-bright: #1e6fb5;
+      --accent:      #2589d4;
+      --accent2:     #4aaee8;
+      --accent-pale: #e8f4fd;
+      --accent-pale2:#d0eaf8;
+      --bg:          #eef3f8;
+      --bg-card:     #ffffff;
+      --bg-card2:    #f5f9fd;
+      --border:      #ccdded;
+      --text-dark:   #0d2340;
+      --text-body:   #3a5270;
+      --text-dim:    #7a96b0;
+      --warn:        #d97706;
+      --warn-bg:     #fffbeb;
+      --white:       #ffffff;
+      --radius:      12px;
+      --shadow-sm:   0 1px 4px rgba(15,42,74,0.07);
+      --shadow:      0 2px 12px rgba(15,42,74,0.09);
+      --shadow-md:   0 6px 24px rgba(15,42,74,0.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy-dark);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(10,30,53,0.4);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+    }
+
+    .logo-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .company-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .company-name span { color: var(--accent2); }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(110deg, var(--navy-dark) 0%, var(--navy) 40%, var(--blue-mid) 80%, var(--blue-bright) 100%);
+      padding: 44px 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -60px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,174,232,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 14px;
+    }
+
+    .breadcrumb a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span { color: rgba(255,255,255,0.7); }
+
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.58);
+      max-width: 480px;
+    }
+
+    /* ── SEARCH BAR ── */
+    .search-wrap {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 28px 48px 0;
+    }
+
+    .search-inner {
+      position: relative;
+      max-width: 480px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 11px 16px 11px 42px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-dark);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    #searchInput:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37,137,212,0.12);
+    }
+
+    #searchInput::placeholder { color: var(--text-dim); }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      padding: 28px 48px 48px;
+      max-width: 1360px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* ── HOW TO ADD DOCS NOTICE ── */
+   /* .how-to-notice {
+      background: var(--accent-pale);
+      border: 1px solid rgba(37,137,212,0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: var(--blue-mid);
+      line-height: 1.6;
+    }
+
+    .how-to-notice strong { font-weight: 700; color: var(--navy); }
+    .how-to-notice code {
+      background: rgba(37,137,212,0.12);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: monospace;*/
+    }
+
+    /* ── CATEGORY SECTION ── */
+    .category-section {
+      margin-bottom: 36px;
+    }
+
+    .category-section[data-empty="true"] { display: none; }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .category-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .category-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .category-count {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--text-dim);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2px 10px;
+    }
+
+    /* ── DOCUMENT GRID ── */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    /* ── DOCUMENT CARD ── */
+    .doc-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .doc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .doc-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .doc-card:hover::before { opacity: 1; }
+
+    /* File type colours */
+    .doc-card[data-type="pdf"]  .doc-icon { background: #fff0f0; color: #e53e3e; }
+    .doc-card[data-type="pdf"]::before  { background: #e53e3e; }
+    .doc-card[data-type="doc"]  .doc-icon { background: #ebf8ff; color: #2b6cb0; }
+    .doc-card[data-type="doc"]::before  { background: #2b6cb0; }
+    .doc-card[data-type="docx"] .doc-icon { background: #ebf8ff; color: #2b6cb0; }
+    .doc-card[data-type="docx"]::before { background: #2b6cb0; }
+    .doc-card[data-type="xls"]  .doc-icon { background: #f0fff4; color: #276749; }
+    .doc-card[data-type="xls"]::before  { background: #276749; }
+    .doc-card[data-type="xlsx"] .doc-icon { background: #f0fff4; color: #276749; }
+    .doc-card[data-type="xlsx"]::before { background: #276749; }
+    .doc-card[data-type="ppt"]  .doc-icon { background: #fff5f0; color: #c05621; }
+    .doc-card[data-type="ppt"]::before  { background: #c05621; }
+    .doc-card[data-type="pptx"] .doc-icon { background: #fff5f0; color: #c05621; }
+    .doc-card[data-type="pptx"]::before { background: #c05621; }
+    .doc-card[data-type="link"] .doc-icon { background: #f0f4ff; color: #553c9a; }
+    .doc-card[data-type="link"]::before { background: #553c9a; }
+
+    .doc-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      background: var(--bg-card2);
+      color: var(--text-dim);
+    }
+
+    .doc-body { flex: 1; min-width: 0; }
+
+    .doc-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .doc-meta {
+      font-size: 11.5px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .doc-type-badge {
+      display: inline-block;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+
+    .doc-card[data-type="pdf"]  .doc-type-badge { background: #fff0f0; border-color: #fed7d7; color: #e53e3e; }
+    .doc-card[data-type="doc"]  .doc-type-badge,
+    .doc-card[data-type="docx"] .doc-type-badge { background: #ebf8ff; border-color: #bee3f8; color: #2b6cb0; }
+    .doc-card[data-type="xls"]  .doc-type-badge,
+    .doc-card[data-type="xlsx"] .doc-type-badge { background: #f0fff4; border-color: #c6f6d5; color: #276749; }
+    .doc-card[data-type="ppt"]  .doc-type-badge,
+    .doc-card[data-type="pptx"] .doc-type-badge { background: #fff5f0; border-color: #fbd38d; color: #c05621; }
+    .doc-card[data-type="link"] .doc-type-badge { background: #f0f4ff; border-color: #c3dafe; color: #553c9a; }
+
+    .doc-arrow {
+      font-size: 14px;
+      color: var(--text-dim);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      transform: translateX(-4px);
+      align-self: center;
+      flex-shrink: 0;
+    }
+
+    .doc-card:hover .doc-arrow { opacity: 1; transform: translateX(0); }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      display: none;
+    }
+
+    .empty-state.visible { display: block; }
+
+    .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
+
+    .empty-state h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .empty-state p { font-size: 14px; color: var(--text-dim); }
+
+    /* ── NO RESULTS ── */
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+      display: none;
+    }
+
+    .no-results.visible { display: block; }
+    .no-results p { font-size: 14px; color: var(--text-dim); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      border-top: 3px solid var(--blue-bright);
+      padding: 24px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .footer-inner a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-inner a:hover { color: var(--accent2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header { padding: 0 20px; }
+      .hero { padding: 32px 20px 28px; }
+      .search-wrap { padding: 20px 20px 0; }
+      main { padding: 20px 20px 40px; }
+      footer { padding: 20px; }
+      .doc-grid { grid-template-columns: 1fr; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .category-section { animation: fadeUp 0.35s ease both; }
+    .category-section:nth-child(2) { animation-delay: 0.05s; }
+    .category-section:nth-child(3) { animation-delay: 0.10s; }
+    .category-section:nth-child(4) { animation-delay: 0.15s; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo-area" href="index.html">
+    <div class="logo-placeholder">ST</div>
+    <div class="company-name">Sargeant <span>Transport Services</span></div>
+  </a>
+  <div class="header-right">
+    <a class="back-btn" href="index.html">← Back to Staff Portal</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html"> Staff Portal</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.75)">Document Portal</span>
+    </div>
+    <h1>📁 Document Portal</h1>
+    <p>Company policies, procedures, forms and SOPs all in one place.</p>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="search-inner">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search documents…" oninput="filterDocs()" />
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!--
+  ═══════════════════════════════════════════════════════
+  HOW TO ADD DOCUMENTS
+  ═══════════════════════════════════════════════════════
+
+  1. Find the category section you want (or copy a whole
+     <section class="category-section"> block to make a new one).
+
+  2. Copy one of the .doc-card <a> tags and update:
+       href        →  path to your file (e.g. "docs/leave-form.pdf")
+                      or a full URL (e.g. "https://forms.office.com/...")
+       data-type   →  pdf | docx | doc | xlsx | xls | pptx | ppt | link
+       data-name   →  the document name (used for search)
+       .doc-name   →  display name
+       .doc-meta   →  file type badge + any extra info (date, size, etc.)
+
+  3. To open in a new tab add:  target="_blank" rel="noopener"
+     To download directly add:  download
+
+  4. Files should be placed in a "docs/" folder next to index.html
+     on GitHub, e.g. docs/leave-policy.pdf
+
+  That's it — no code changes needed, just copy/paste.
+  ═══════════════════════════════════════════════════════
+  <!-- ══════════════════════════════════════
+       CATEGORY: Policies
+       ══════════════════════════════════════ -->
+  <section class="category-section" id="cat-policies">
+    <div class="category-header">
+      <div class="category-icon" style="background:#e8f4fd; color:#2589d4;">📋</div>
+      <div class="category-title">Policies</div>
+      <span class="category-count" id="count-policies"></span>
+    </div>
+   <!-- ── MORE DOCUMENTS — copy & edit this block ── -->  
+    <div class="doc-grid" id="grid-policies">
+      <a class="doc-card" href="docs/Office Unattended.docx" data-type="docx" data-name="Office Unattended" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">Office Unattended</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">DOC</span>
+            Updated Apr 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+ <a class="doc-card" href="docs/STCACPOL001.pdf" data-type="pdf" data-name="Consultation and Communication Policy" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">Consultation and Communication Policy</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated 22nd Jan 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+ <a class="doc-card" href="docs/STCORPO001.pdf" data-type="pdf" data-name="CoR (Chain of Responsibility) Policy" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">CoR (Chain of Responsibility</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated 3rd Mar 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+       <a class="doc-card" href="docs/STLMPO001.pdf" data-type="pdf" data-name="Load Management Policy Statement" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">Load Management Policy Statement</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated 20th Jan 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CATEGORY: HR & Leave
+       ══════════════════════════════════════ -->
+  <section class="category-section" id="cat-hr">
+    <div class="category-header">
+      <div class="category-icon" style="background:#f0fff4; color:#276749;">👥</div>
+      <div class="category-title">HR &amp; Leave - Blank</div>
+      <span class="category-count" id="count-hr"></span>
+    </div>
+    <div class="doc-grid" id="grid-hr">
+
+      <!-- Add HR documents here -->
+      <a class="doc-card" href="docs/leave-application.pdf" data-type="pdf" data-name="Leave Application Form" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">Leave Application Form</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated Jan 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+
+      <a class="doc-card" href="docs/leave-policy.pdf" data-type="pdf" data-name="Leave Policy" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">Leave Policy</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated May 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+
+      <a class="doc-card" href="docs/employee-handbook.pdf" data-type="pdf" data-name="Employee Handbook" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">Employee Handbook</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated Feb 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CATEGORY: Safety & WHS
+       ══════════════════════════════════════ -->
+  <section class="category-section" id="cat-safety">
+    <div class="category-header">
+      <div class="category-icon" style="background:#fffbeb; color:#d97706;">⚠️</div>
+      <div class="category-title">Safety &amp; WHS - Blank</div>
+      <span class="category-count" id="count-safety"></span>
+    </div>
+    <div class="doc-grid" id="grid-safety">
+
+      <a class="doc-card" href="docs/incident-report.pdf" data-type="pdf" data-name="Incident Report Form" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">Incident Report Form</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated Jan 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+
+      <a class="doc-card" href="docs/whs-policy.pdf" data-type="pdf" data-name="WHS Policy" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">WHS Policy</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated Mar 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+
+      <a class="doc-card" href="docs/hazard-register.xlsx" data-type="xlsx" data-name="Hazard Register" target="_blank" rel="noopener">
+        <div class="doc-icon">📊</div>
+        <div class="doc-body">
+          <div class="doc-name">Hazard Register</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">XLSX</span>
+            Updated Apr 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CATEGORY: Operations
+       ══════════════════════════════════════ -->
+  <section class="category-section" id="cat-ops">
+    <div class="category-header">
+      <div class="category-icon" style="background:#f0f4ff; color:#553c9a;">🚛</div>
+      <div class="category-title">Operations - Blank</div>
+      <span class="category-count" id="count-ops"></span>
+    </div>
+    <div class="doc-grid" id="grid-ops">
+
+      <a class="doc-card" href="docs/maintenance-report.pdf" data-type="pdf" data-name="Maintenance Report Form" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-name">Maintenance Report Form</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">PDF</span>
+            Updated Jan 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+
+      <a class="doc-card" href="docs/run-sheet-template.xlsx" data-type="xlsx" data-name="Run Sheet Template" target="_blank" rel="noopener">
+        <div class="doc-icon">📊</div>
+        <div class="doc-body">
+          <div class="doc-name">Run Sheet Template</div>
+          <div class="doc-meta">
+            <span class="doc-type-badge">XLSX</span>
+            Updated Feb 2026
+          </div>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CATEGORY: Forms & Templates
+       Add more categories by copying a full
+       <section class="category-section"> block
+       ══════════════════════════════════════ -->
+
+  <!-- No results message (shown when search has no matches) -->
+  <div class="no-results" id="noResults">
+    <p>🔍 No documents found matching "<span id="searchTerm"></span>"</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Sargeant Transport Services. All rights reserved.</span>
+    <a href="index.html">← Back to Staff Portal</a>
+  </div>
+</footer>
+
+<script>
+  // ── COUNT BADGES ──
+  function updateCounts() {
+    const categories = ['policies', 'hr', 'safety', 'ops'];
+    categories.forEach(cat => {
+      const grid = document.getElementById('grid-' + cat);
+      const badge = document.getElementById('count-' + cat);
+      if (!grid || !badge) return;
+      const count = grid.querySelectorAll('.doc-card').length;
+      badge.textContent = count + ' document' + (count !== 1 ? 's' : '');
+    });
+  }
+
+  // ── SEARCH ──
+  function filterDocs() {
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    const allCards = document.querySelectorAll('.doc-card');
+    let totalVisible = 0;
+
+    allCards.forEach(card => {
+      const name = (card.dataset.name || card.querySelector('.doc-name').textContent).toLowerCase();
+      const type = card.dataset.type || '';
+      const matches = name.includes(query) || type.includes(query);
+      card.style.display = matches ? '' : 'none';
+      if (matches) totalVisible++;
+    });
+
+    // Hide/show category sections based on visible cards
+    document.querySelectorAll('.category-section').forEach(section => {
+      const grid = section.querySelector('.doc-grid');
+      const visibleCards = grid ? [...grid.querySelectorAll('.doc-card')].filter(c => c.style.display !== 'none') : [];
+      section.style.display = (query === '' || visibleCards.length > 0) ? '' : 'none';
+    });
+
+    // Show no-results if nothing found
+    const noResults = document.getElementById('noResults');
+    const searchTerm = document.getElementById('searchTerm');
+    if (query && totalVisible === 0) {
+      noResults.classList.add('visible');
+      if (searchTerm) searchTerm.textContent = query;
+    } else {
+      noResults.classList.remove('visible');
+    }
+  }
+
+  updateCounts();
+</script>
+
+</body>
+</html>
