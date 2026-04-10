@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Sites | Sargeant Transport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:        #0f2a4a;
+      --navy-dark:   #0a1e35;
+      --blue-mid:    #1a4a7a;
+      --blue-bright: #1e6fb5;
+      --accent:      #2589d4;
+      --accent2:     #4aaee8;
+      --accent-pale: #e8f4fd;
+      --bg:          #eef3f8;
+      --bg-card:     #ffffff;
+      --bg-card2:    #f5f9fd;
+      --border:      #ccdded;
+      --text-dark:   #0d2340;
+      --text-body:   #3a5270;
+      --text-dim:    #7a96b0;
+      --white:       #ffffff;
+      --radius:      12px;
+      --shadow-sm:   0 1px 4px rgba(15,42,74,0.07);
+      --shadow:      0 2px 12px rgba(15,42,74,0.09);
+      --shadow-md:   0 6px 24px rgba(15,42,74,0.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy-dark);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(10,30,53,0.4);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+    }
+
+    .logo-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .company-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .company-name span { color: var(--accent2); }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(110deg, var(--navy-dark) 0%, var(--navy) 40%, var(--blue-mid) 80%, var(--blue-bright) 100%);
+      padding: 44px 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -60px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,174,232,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 14px;
+    }
+
+    .breadcrumb a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span { color: rgba(255,255,255,0.7); }
+
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.58);
+    }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      padding: 40px 48px 56px;
+      max-width: 1360px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    /* ── SITE CARD ── */
+    .site-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .site-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .site-card:nth-child(1) { animation-delay: 0.05s; }
+    .site-card:nth-child(2) { animation-delay: 0.10s; }
+    .site-card:nth-child(3) { animation-delay: 0.15s; }
+    .site-card:nth-child(4) { animation-delay: 0.20s; }
+
+    /* ── MAP EMBED ── */
+    .map-wrap {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: var(--bg-card2);
+      overflow: hidden;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .map-overlay-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .map-overlay-btn:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    /* ── SITE INFO ── */
+    .site-info {
+      padding: 22px 24px 24px;
+    }
+
+    .site-number {
+      display: inline-block;
+      background: var(--accent-pale);
+      color: var(--accent);
+      border: 1px solid rgba(37,137,212,0.2);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 9px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .site-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .site-address {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .site-address .pin { font-size: 15px; margin-top: 1px; flex-shrink: 0; }
+
+    .site-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-directions {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: white;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .btn-directions:hover {
+      background: var(--blue-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37,137,212,0.35);
+    }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-card2);
+      color: var(--text-body);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .btn-copy:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-pale);
+    }
+
+    .btn-copy.copied {
+      border-color: #1a8a5a;
+      color: #1a8a5a;
+      background: #e8f7f0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      border-top: 3px solid var(--blue-bright);
+      padding: 24px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .footer-inner a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-inner a:hover { color: var(--accent2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .sites-grid { grid-template-columns: 1fr; }
+      header { padding: 0 20px; }
+      .hero { padding: 32px 20px 28px; }
+      main { padding: 28px 20px 40px; }
+      footer { padding: 20px; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo-area" href="index.html">
+    <div class="logo-placeholder">ST</div>
+    <div class="company-name">Sargeant <span>Transport</span></div>
+  </a>
+  <a class="back-btn" href="index.html">← Back to Staff Portal</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Staff Portal</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.75)">Our Sites</span>
+    </div>
+    <h1>📍 Our Sites</h1>
+    <p>Sargeant Transport operates across 4 locations in Victoria.</p>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <div class="sites-grid">
+
+    <!-- ── SITE 1: TRUGANINA ── -->
+    <div class="site-card">
+      <div class="map-wrap">
+<iframe loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=144.7450%2C-37.8220%2C144.7570%2C-37.8140&amp;layer=mapnik&amp;marker=-37.8180%2C144.7510"></iframe>
+        <a class="map-overlay-btn" href="https://maps.google.com/?q=23+Foundation+Road,+Truganina+VIC+3029" target="_blank" rel="noopener">🗺 Open in Maps</a>
+      </div>
+      <div class="site-info">
+        <div class="site-name">Truganina</div>
+        <div class="site-address">
+          <span class="pin">📍</span>
+          23 Foundation Road, Truganina VIC 3029
+        </div>
+        <div class="site-actions">
+          <a class="btn-directions" href="https://maps.google.com/?q=23+Foundation+Road,+Truganina+VIC+3029" target="_blank" rel="noopener">
+            ↗ Get Directions
+          </a>
+          <button class="btn-copy" onclick="copyAddress(this, '23 Foundation Road, Truganina VIC 3029')">
+            📋 Copy Address
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SITE 2: DELACOMBE ── -->
+    <div class="site-card">
+      <div class="map-wrap">
+<iframe loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=143.8340%2C-37.5760%2C143.8460%2C-37.5680&amp;layer=mapnik&amp;marker=-37.5720%2C143.8400"></iframe>
+        <a class="map-overlay-btn" href="https://maps.google.com/?q=112+Whitelaw+Avenue,+Delacombe+VIC+3356" target="_blank" rel="noopener">🗺 Open in Maps</a>
+      </div>
+      <div class="site-info">
+        <div class="site-name">Delacombe</div>
+        <div class="site-address">
+          <span class="pin">📍</span>
+          112 Whitelaw Avenue, Delacombe VIC 3356
+        </div>
+        <div class="site-actions">
+          <a class="btn-directions" href="https://maps.google.com/?q=112+Whitelaw+Avenue,+Delacombe+VIC+3356" target="_blank" rel="noopener">
+            ↗ Get Directions
+          </a>
+          <button class="btn-copy" onclick="copyAddress(this, '112 Whitelaw Avenue, Delacombe VIC 3356')">
+            📋 Copy Address
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SITE 3: DANDENONG SOUTH ── -->
+    <div class="site-card">
+      <div class="map-wrap">
+<iframe loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=145.2020%2C-38.0060%2C145.2140%2C-37.9980&amp;layer=mapnik&amp;marker=-38.0020%2C145.2080"></iframe>
+        <a class="map-overlay-btn" href="https://maps.google.com/?q=77+Hallam+Valley+Road,+Dandenong+South+VIC+3175" target="_blank" rel="noopener">🗺 Open in Maps</a>
+      </div>
+      <div class="site-info">
+        <div class="site-name">Dandenong South</div>
+        <div class="site-address">
+          <span class="pin">📍</span>
+          77 Hallam Valley Road, Dandenong South VIC 3175
+        </div>
+        <div class="site-actions">
+          <a class="btn-directions" href="https://maps.google.com/?q=77+Hallam+Valley+Road,+Dandenong+South+VIC+3175" target="_blank" rel="noopener">
+            ↗ Get Directions
+          </a>
+          <button class="btn-copy" onclick="copyAddress(this, '77 Hallam Valley Road, Dandenong South VIC 3175')">
+            📋 Copy Address
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SITE 4: RAVENHALL ── -->
+    <div class="site-card">
+      <div class="map-wrap">
+<iframe loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=144.7740%2C-37.7360%2C144.7860%2C-37.7280&amp;layer=mapnik&amp;marker=-37.7320%2C144.7800"></iframe>
+        <a class="map-overlay-btn" href="https://maps.google.com/?q=1198+Christies+Road,+Ravenhall+VIC+3023" target="_blank" rel="noopener">🗺 Open in Maps</a>
+      </div>
+      <div class="site-info">
+        <div class="site-name">Ravenhall</div>
+        <div class="site-address">
+          <span class="pin">📍</span>
+          1198 Christies Road, Ravenhall VIC 3023
+        </div>
+        <div class="site-actions">
+          <a class="btn-directions" href="https://maps.google.com/?q=1198+Christies+Road,+Ravenhall+VIC+3023" target="_blank" rel="noopener">
+            ↗ Get Directions
+          </a>
+          <button class="btn-copy" onclick="copyAddress(this, '1198 Christies Road, Ravenhall VIC 3023')">
+            📋 Copy Address
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Sargeant Transport Services. All rights reserved.</span>
+    <a href="index.html">← Back to Staff Portal</a>
+  </div>
+</footer>
+
+<script>
+  function copyAddress(btn, address) {
+    navigator.clipboard.writeText(address).then(() => {
+      btn.classList.add('copied');
+      btn.innerHTML = '✓ Copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = '📋 Copy Address';
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
