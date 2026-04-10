@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sargeant Transport Services | Staff Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:#0f2a4a;--navy-dark:#0a1e35;--blue-mid:#1a4a7a;--blue-bright:#1e6fb5;
+      --accent:#2589d4;--accent2:#4aaee8;--accent-pale:#e8f4fd;--accent-pale2:#d0eaf8;
+      --bg:#eef3f8;--bg-card:#ffffff;--bg-card2:#f5f9fd;--border:#ccdded;
+      --text-dark:#0d2340;--text-body:#3a5270;--text-dim:#7a96b0;
+      --warn:#d97706;--warn-bg:#fffbeb;--white:#ffffff;--radius:12px;
+      --shadow-sm:0 1px 4px rgba(15,42,74,0.07);
+      --shadow:0 2px 12px rgba(15,42,74,0.09);
+      --shadow-md:0 6px 24px rgba(15,42,74,0.13);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text-body);min-height:100vh;display:flex;flex-direction:column}
+
+    /* HEADER */
+    header{background:var(--navy-dark);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:66px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(10,30,53,0.4)}
+    .logo-area{display:flex;align-items:center;gap:13px}
+    .logo-placeholder{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:16px;color:white;flex-shrink:0}
+    .company-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;color:#fff}
+    .company-name span{color:var(--accent2)}
+    .header-right{display:flex;align-items:center;gap:16px}
+    .header-date{font-size:13px;color:rgba(255,255,255,0.42)}
+    .header-badge{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:4px 13px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.7px;text-transform:uppercase}
+
+    /* HERO */
+    .hero{background:linear-gradient(110deg,var(--navy-dark) 0%,var(--navy) 40%,var(--blue-mid) 80%,var(--blue-bright) 100%);padding:44px 48px 40px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-100px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(74,174,232,0.13) 0%,transparent 65%);pointer-events:none}
+    .hero-inner{position:relative;z-index:1}
+    .hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.16);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.8);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+    .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:#fff;letter-spacing:-0.6px;margin-bottom:24px;line-height:1.15}
+
+    /* HERO NAV */
+    .hero-nav{display:flex;gap:10px;flex-wrap:wrap}
+    .hero-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:10px;text-decoration:none;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;transition:all 0.2s}
+    .hero-nav-btn:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.4);transform:translateY(-2px)}
+    .btn-icon{font-size:15px}
+
+    /* MAIN */
+    main{flex:1;padding:32px 48px;max-width:1360px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+
+    /* CARD */
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow);animation:fadeUp 0.4s ease both}
+    .card-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .card-icon{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--navy),var(--blue-mid));display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+    .card-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:var(--text-dark)}
+    .card-subtitle{font-size:11px;color:var(--text-dim);margin-top:2px}
+
+    /* TOP ROW */
+    .top-row{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
+
+    /* QUICK ACCESS */
+    .quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .quick-btn{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg-card2);border:1.5px solid var(--border);border-radius:10px;text-decoration:none;transition:all 0.2s ease;position:relative;overflow:hidden}
+    .quick-btn::before{content:'';position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.2s}
+    .quick-btn:hover{border-color:var(--accent);background:var(--accent-pale);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+    .quick-btn:hover::before{opacity:1}
+    .quick-btn-icon{font-size:20px;flex-shrink:0}
+    .quick-btn-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:12.5px;font-weight:700;color:var(--text-dark)}
+    .quick-btn-desc{font-size:10.5px;color:var(--text-dim)}
+    .quick-btn-arrow{margin-left:auto;font-size:13px;color:var(--accent);opacity:0;transition:opacity 0.2s,transform 0.2s;transform:translateX(-4px);flex-shrink:0}
+    .quick-btn:hover .quick-btn-arrow{opacity:1;transform:translateX(0)}
+
+    /* WELCOME */
+    .welcome-panel{display:flex;align-items:center;justify-content:center;min-height:180px;background:linear-gradient(135deg,var(--accent-pale),var(--bg-card));border-color:var(--accent-pale2);text-align:center}
+
+    /* BOTTOM ROW */
+    .bottom-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+
+    /* PDF */
+    .pdf-frame-wrap{border-radius:8px;overflow:hidden;border:1px solid var(--border);background:#f0f0f0}
+    .pdf-frame-wrap object{width:100%;height:320px;border:none;display:block;background:#fff}
+    .pdf-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:320px;padding:24px;background:var(--bg-card2);text-align:center}
+    .pdf-fallback-icon{font-size:28px}
+    .pdf-fallback-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--text-dark)}
+    .pdf-fallback-sub{font-size:11px;color:var(--text-dim);line-height:1.6;max-width:240px}
+    .pdf-link-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:8px;border:1px solid var(--border);background:var(--white);color:var(--accent);font-family:'Plus Jakarta Sans',sans-serif;font-size:11.5px;font-weight:700;text-decoration:none;transition:all 0.2s}
+    .pdf-link-btn:hover{border-color:var(--accent);background:var(--accent-pale)}
+
+    /* ANNOUNCEMENTS */
+    .announcement-list{display:flex;flex-direction:column;gap:9px}
+    .announcement-item{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;background:var(--bg-card2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;transition:all 0.18s}
+    .announcement-item:hover{background:var(--accent-pale);border-color:rgba(37,137,212,0.3);border-left-color:var(--accent)}
+    .announcement-item.urgent{border-left-color:var(--warn);background:var(--warn-bg);border-color:rgba(217,119,6,0.18)}
+    .announcement-item.urgent:hover{background:#fef3c7}
+    .ann-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:5px;flex-shrink:0}
+    .announcement-item.urgent .ann-dot{background:var(--warn)}
+    .ann-title{font-size:12.5px;font-weight:600;color:var(--text-dark);margin-bottom:3px}
+    .ann-meta{font-size:10.5px;color:var(--text-dim);line-height:1.4}
+    .ann-badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700;margin-left:5px;background:var(--accent-pale2);color:var(--accent);border:1px solid rgba(37,137,212,0.2)}
+    .ann-badge.urgent{background:#fef3c7;color:var(--warn);border-color:rgba(217,119,6,0.25)}
+
+    /* FOOTER */
+    footer{background:var(--navy-dark);border-top:3px solid var(--blue-bright);padding:44px 48px 28px;margin-top:8px}
+    .footer-inner{max-width:1360px;margin:0 auto}
+    .after-hours-banner{background:linear-gradient(90deg,rgba(217,119,6,0.13),rgba(217,119,6,0.06));border:1px solid rgba(217,119,6,0.28);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:12px;margin-bottom:32px}
+    .warn-icon{font-size:20px}
+    .after-hours-banner strong{font-size:11px;color:#f59e0b;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+    .ah-number{font-size:18px;color:#fff;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;margin-left:8px}
+    .ah-sub{font-size:12px;color:rgba(255,255,255,0.38);margin-left:10px}
+    .footer-grid{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:36px;margin-bottom:32px}
+    .footer-fn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;color:#fff;margin-bottom:10px}
+    .footer-fn span{color:var(--accent2)}
+    .footer-brand p{font-size:13px;color:rgba(255,255,255,0.36);line-height:1.7;max-width:230px}
+    .footer-col h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.07)}
+    .footer-contact-item{display:flex;flex-direction:column;margin-bottom:13px}
+    .contact-label{font-size:10px;color:rgba(255,255,255,0.32);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px}
+    .contact-value{font-size:13.5px;color:rgba(255,255,255,0.70);font-weight:500}
+    .contact-value a{color:rgba(255,255,255,0.70);text-decoration:none;transition:color 0.2s}
+    .contact-value a:hover{color:var(--accent2)}
+    .footer-bottom{padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.26)}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom-row{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){main{padding:20px}header{padding:0 20px}.hero{padding:32px 20px 28px}footer{padding:32px 20px 24px}.hero-nav-btn{padding:8px 14px;font-size:12px}.quick-grid{grid-template-columns:1fr}}
+    @media(max-width:480px){.footer-grid{grid-template-columns:1fr}.header-badge{display:none}}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .top-row>*:nth-child(1){animation-delay:0.04s}.top-row>*:nth-child(2){animation-delay:0.08s}
+    .bottom-row>*:nth-child(1){animation-delay:0.12s}.bottom-row>*:nth-child(2){animation-delay:0.16s}.bottom-row>*:nth-child(3){animation-delay:0.20s}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <!-- Replace with: <img src="logo.png" alt="Logo" style="height:40px;width:auto;border-radius:8px"> -->
+    <div class="logo-placeholder">ST</div>
+    <div class="company-name">Sargeant <span>Transport Services</span></div>
+  </div>
+  <div class="header-right">
+    <span class="header-badge">Staff Portal</span>
+    <div class="header-date" id="headerDate"></div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">&#127968; Home Page</div>
+    <h1>Welcome back &#128075;</h1>
+    <nav class="hero-nav">
+      <a class="hero-nav-btn" href="compliance.html"><span class="btn-icon">&#128203;</span> Compliance</a>
+      <a class="hero-nav-btn" href="documents.html"><span class="btn-icon">&#128193;</span> Document Portal</a>
+      <a class="hero-nav-btn" href="drivers.html"><span class="btn-icon">&#128667;</span> Drivers</a>
+      <a class="hero-nav-btn" href="orgchart.html"><span class="btn-icon">&#127962;</span> Organisation Chart</a>
+      <a class="hero-nav-btn" href="sites.html"><span class="btn-icon">&#128205;</span> Sites</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+  <div class="top-row">
+    <div class="card welcome-panel">
+      <div>
+        <div style="font-size:44px;margin-bottom:12px">&#128667;</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--text-dark);margin-bottom:6px">Sargeant Transport Services</div>
+        <div style="font-size:13px;color:var(--text-dim)">Your central hub for all company resources &amp; information</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#9889;</div>
+        <div>
+          <div class="card-title">Quick Access</div>
+          <div class="card-subtitle">Frequently used forms</div>
+        </div>
+      </div>
+      <div class="quick-grid">
+        <a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/leave-application-form" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#128197;</div>
+          <div><div class="quick-btn-label">Leave Form</div><div class="quick-btn-desc">Submit leave requests</div></div>
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
+        <a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/incident-report" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#9888;&#65039;</div>
+          <div><div class="quick-btn-label">Incident Report</div><div class="quick-btn-desc">Log a workplace incident</div></div>
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
+        <a class="quick-btn" href="#" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#128295;</div>
+          <div><div class="quick-btn-label">Maintenance Report</div><div class="quick-btn-desc">Log a maintenance request</div></div>
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+
+    <!-- NEWSLETTER -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#128240;</div>
+        <div><div class="card-title">Newsletter</div><div class="card-subtitle">Latest company news</div></div>
+      </div>
+      <div class="pdf-frame-wrap">
+        <object data="shared-documents/newsletter.pdf" type="application/pdf" aria-label="Newsletter PDF">
+          <div class="pdf-fallback">
+            <div class="pdf-fallback-icon">&#128240;</div>
+            <div class="pdf-fallback-title">Newsletter PDF not added yet</div>
+            <div class="pdf-fallback-sub">Add <strong>newsletter.pdf</strong> into the repo folder <strong>shared-documents</strong> and it will appear here for everyone.</div>
+          </div>
+        </object>
+      </div>
+      <a class="pdf-link-btn" href="shared-documents/newsletter.pdf" target="_blank" rel="noopener">Open newsletter in new tab</a>
+    </div>
+
+    <!-- SAFETY ALERT -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:linear-gradient(135deg,#7a1a1a,#e63946)">&#128680;</div>
+        <div><div class="card-title">Safety Alert</div><div class="card-subtitle">Latest safety notices</div></div>
+      </div>
+      <div class="pdf-frame-wrap">
+        <object data="shared-documents/safety-alert.pdf" type="application/pdf" aria-label="Safety Alert PDF">
+          <div class="pdf-fallback">
+            <div class="pdf-fallback-icon">&#128680;</div>
+            <div class="pdf-fallback-title">Safety alert PDF not added yet</div>
+            <div class="pdf-fallback-sub">Add <strong>safety-alert.pdf</strong> into the repo folder <strong>shared-documents</strong> and it will appear here for everyone.</div>
+          </div>
+        </object>
+      </div>
+      <a class="pdf-link-btn" href="shared-documents/safety-alert.pdf" target="_blank" rel="noopener">Open safety alert in new tab</a>
+    </div>
+
+    <!-- ANNOUNCEMENTS -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#128226;</div>
+        <div><div class="card-title">Announcements</div><div class="card-subtitle">Latest updates</div></div>
+      </div>
+      <div class="announcement-list">
+        <!--
+          TO ADD AN ANNOUNCEMENT: copy one block below.
+          Add class="urgent" for high-priority items.
+        -->
+        <div class="announcement-item urgent">
+          <div class="ann-dot"></div>
+          <div>
+            <div class="ann-title">Intranet Trial <span class="ann-badge urgent">Urgent</span></div>
+            <div class="ann-meta">Intranet trial currently running &#8212; please help us test the new page!</div>
+          </div>
+        </div>
+        <div class="announcement-item urgent">
+          <div class="ann-dot"></div>
+          <div>
+            <div class="ann-title">BFM Course Due <span class="ann-badge urgent">Urgent</span></div>
+            <div class="ann-meta">All schedulers assigned a BFM course &#8212; complete by 10/04/2026</div>
+          </div>
+        </div>
+        <div class="announcement-item">
+          <div class="ann-dot"></div>
+          <div>
+            <div class="ann-title">Q1 Newsletter <span class="ann-badge">New</span></div>
+            <div class="ann-meta">Q1 Newsletter due out this week &#8212; keep an eye on your emails and the intranet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="after-hours-banner">
+      <span class="warn-icon">&#128276;</span>
+      <div>
+        <strong>After Hours Operations</strong>
+        <span class="ah-number">1800 XXX XXX</span>
+        <span class="ah-sub">Available 24 / 7</span>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-fn">Sargeant <span>Transport Services</span></div>
+        <p>Internal staff portal. For external enquiries please contact us via the details below.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value"><a href="tel:+61XXXXXXXXX">(XX) XXXX XXXX</a></span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Operations</h4>
+        <div class="footer-contact-item">
+          <span class="contact-label">Breakdown</span>
+          <span class="contact-value"><a href="tel:+61XXXXXXXXX">0400 XXX XXX</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-label">Safety</span>
+          <span class="contact-value"><a href="tel:+61XXXXXXXXX">0400 XXX XXX</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-label">Maintenance</span>
+          <span class="contact-value"><a href="tel:+61XXXXXXXXX">0400 XXX XXX</a></span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>HR &amp; IT</h4>
+        <div class="footer-contact-item">
+          <span class="contact-label">HR</span>
+          <span class="contact-value"><a href="mailto:hr@sargeanttransportservices.com.au">hr@sargeanttransportservices.com.au</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-label">IT Support</span>
+          <span class="contact-value"><a href="mailto:it@sargeanttransportservices.com.au">it@sargeanttransportservices.com.au</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-label">IT Helpdesk</span>
+          <span class="contact-value"><a href="tel:+61XXXXXXXXX">(XX) XXXX XXXX</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&#169; 2026 Sargeant Transport Services. All rights reserved.</span>
+      <span>Internal use only &#8212; not for external distribution</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('headerDate').textContent = new Date().toLocaleDateString('en-AU',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+</script>
+</body>
+</html>
