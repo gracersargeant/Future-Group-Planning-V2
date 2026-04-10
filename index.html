@@ -31,10 +31,12 @@
     .header-badge{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:4px 13px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.7px;text-transform:uppercase}
 
     /* HERO */
-    .hero{background:linear-gradient(110deg,var(--navy-dark) 0%,var(--navy) 42%,var(--blue-mid) 82%,var(--blue-bright) 100%);padding:40px 48px 34px;position:relative;overflow:hidden;min-height:140px;display:flex;align-items:center;justify-content:center}
-    .hero::before{content:'';position:absolute;top:-140px;right:-110px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(74,174,232,0.10) 0%,transparent 68%);pointer-events:none}
-    .hero-inner{position:relative;z-index:1;display:flex;justify-content:center;width:100%}
-    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);border-radius:22px;padding:10px 18px;font-size:15px;font-weight:800;color:rgba(255,255,255,0.92);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:0;box-shadow:0 10px 24px rgba(10,30,53,0.22)}
+    .hero{background:linear-gradient(110deg,var(--navy-dark) 0%,var(--navy) 40%,var(--blue-mid) 80%,var(--blue-bright) 100%);padding:44px 48px 40px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-100px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(74,174,232,0.13) 0%,transparent 65%);pointer-events:none}
+    .hero-inner{position:relative;z-index:1}
+    .hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.16);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.8);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+    .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:#fff;letter-spacing:-0.6px;margin-bottom:8px;line-height:1.15}
+    .hero-sub{font-size:13px;color:rgba(255,255,255,0.58)}
 
     /* HOME TAB BAR */
     .home-tab-bar{background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 48px;display:flex;overflow-x:auto;flex-shrink:0;box-shadow:var(--shadow-sm)}
@@ -70,6 +72,9 @@
     .quick-btn-desc{font-size:10.5px;color:var(--text-dim)}
     .quick-btn-arrow{margin-left:auto;font-size:13px;color:var(--accent);opacity:0;transition:opacity 0.2s,transform 0.2s;transform:translateX(-4px);flex-shrink:0}
     .quick-btn:hover .quick-btn-arrow{opacity:1;transform:translateX(0)}
+
+    /* WELCOME */
+    .welcome-panel{display:flex;align-items:center;justify-content:center;min-height:145px;padding:16px 20px;background:linear-gradient(135deg,var(--accent-pale),var(--bg-card));border-color:var(--accent-pale2);text-align:center}
 
     /* BOTTOM ROW */
     .bottom-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
@@ -119,7 +124,7 @@
 
     /* RESPONSIVE */
     @media(max-width:1024px){.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom-row{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:768px){main{padding:20px}header{padding:0 20px}.hero{padding:28px 20px 24px;min-height:120px}footer{padding:32px 20px 24px}.home-tab-bar{padding:0 16px}.hero-inner{justify-content:center}.hero-tag{font-size:13px;padding:8px 14px}.hero-nav-btn{padding:13px 14px;font-size:12px}.quick-grid{grid-template-columns:1fr}}
+    @media(max-width:768px){main{padding:20px}header{padding:0 20px}.hero{padding:32px 20px 28px}footer{padding:32px 20px 24px}.home-tab-bar{padding:0 16px}.hero-nav-btn{padding:13px 14px;font-size:12px}.quick-grid{grid-template-columns:1fr}}
     @media(max-width:480px){.footer-grid{grid-template-columns:1fr}.header-badge{display:none}}
 
     @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
@@ -144,6 +149,8 @@
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-tag">&#127968; Home Page</div>
+    <h1>Welcome back &#128075;</h1>
+    <p class="hero-sub">Jump between the main staff portal sections below</p>
   </div>
 </div>
 
@@ -161,6 +168,14 @@
 <main>
 
   <div class="top-row">
+    <div class="card welcome-panel">
+      <div>
+        <div style="font-size:38px;margin-bottom:10px">&#128667;</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--text-dark);margin-bottom:6px">Sargeant Transport Services</div>
+        <div style="font-size:13px;color:var(--text-dim)">Your central hub for all company resources &amp; information</div>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-header">
         <div class="card-icon">&#9889;</div>
