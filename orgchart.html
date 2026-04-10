@@ -1,0 +1,630 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Organisation Chart | Sargeant Transport Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0a1e35;--blue:#1e6fb5;--accent:#2589d4;--accent2:#4aaee8;
+  --bg:#eef3f8;--card:#fff;--border:#ccdded;--text:#0d2340;--dim:#7a96b0;
+  --green:#276749;--amber:#d97706;--radius:8px;
+  --shadow:0 2px 12px rgba(15,42,74,.1);--shadow-lg:0 8px 32px rgba(15,42,74,.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
+header{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,.35)}
+.logo-area{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-sq{width:38px;height:38px;border-radius:7px;background:linear-gradient(135deg,#4aaee8,#2589d4);display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;color:#fff}
+.logo-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17px;color:#fff}
+.logo-name span{color:#4aaee8}
+.back-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:6px 16px;font-size:13px;color:rgba(255,255,255,.7);text-decoration:none;transition:.2s}
+.back-btn:hover{background:rgba(255,255,255,.15);color:#fff}
+.hero{background:linear-gradient(110deg,#0a1e35,#0f2a4a 40%,#1a4a7a 80%,#1e6fb5);padding:36px 40px 32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(74,174,232,.13) 0%,transparent 65%);pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.bc{display:flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:10px}
+.bc a{color:rgba(255,255,255,.4);text-decoration:none}.bc a:hover{color:rgba(255,255,255,.8)}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:-.4px;margin-bottom:6px}
+.hero p{font-size:13px;color:rgba(255,255,255,.55)}
+.tab-bar{background:var(--card);border-bottom:1px solid var(--border);padding:0 40px;display:flex;overflow-x:auto;flex-shrink:0}
+.tab-bar::-webkit-scrollbar{height:3px}.tab-bar::-webkit-scrollbar-thumb{background:var(--border)}
+.tab-btn{padding:13px 16px;font-size:12.5px;font-weight:600;color:var(--dim);border:none;border-bottom:3px solid transparent;background:none;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;transition:.15s}
+.tab-btn:hover{color:var(--text)}.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+main{flex:1;padding:32px 40px 60px}
+.panel{display:none}.panel.active{display:block;animation:fadeUp .25s ease}
+.dept-hdr{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.dept-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.dept-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--text)}
+.dept-sub{font-size:12px;color:var(--dim);margin-top:2px}
+.chart-wrap{overflow-x:auto;padding-bottom:20px;width:100%}
+/* nodes */
+.nd{position:absolute;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:10px 12px;text-align:center;cursor:pointer;transition:all .18s;box-shadow:var(--shadow)}
+.nd:hover{border-color:var(--accent);box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.nd.top{border-color:var(--accent);border-width:2px;background:#e8f4fd}
+.nd .av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;color:#fff;margin:0 auto 6px}
+.nd .nm{font-family:'Plus Jakarta Sans',sans-serif;font-size:11.5px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:3px}
+.nd .rl{font-size:10px;color:var(--dim);line-height:1.35}
+.nd .nt{font-size:9.5px;color:var(--accent);font-style:italic;margin-top:3px}
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(10,30,53,.55);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.open{display:flex;animation:fadeIn .18s ease}
+.modal{background:var(--card);border-radius:14px;width:100%;max-width:400px;box-shadow:var(--shadow-lg);overflow:hidden;animation:slideUp .2s ease}
+.mh{background:linear-gradient(110deg,var(--navy),var(--blue));padding:22px 24px;display:flex;align-items:center;gap:16px;position:relative}
+.mav{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:17px;color:#fff;flex-shrink:0;border:3px solid rgba(255,255,255,.25)}
+.mnm{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:#fff;margin-bottom:3px}
+.mrl{font-size:12px;color:rgba(255,255,255,.65)}
+.mbody{padding:18px 22px 22px}
+.crow{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border)}
+.crow:last-child{border:none}
+.cicon{width:32px;height:32px;border-radius:7px;background:#e8f4fd;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.clabel{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.6px;margin-bottom:2px}
+.cval{font-size:13px;color:var(--text);font-weight:500}
+.cval a{color:var(--accent);text-decoration:none}
+.mcl{position:absolute;top:12px;right:14px;background:rgba(255,255,255,.15);border:none;border-radius:50%;width:26px;height:26px;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mcl:hover{background:rgba(255,255,255,.25)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px solid var(--border)}
+.li{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--dim)}
+.ll{width:24px;height:2px}.ls{background:var(--border)}.ld{background:repeating-linear-gradient(to right,#4aaee8 0,#4aaee8 4px,transparent 4px,transparent 8px)}
+.lb{width:14px;height:14px;border-radius:3px;border:2px solid var(--accent);background:#e8f4fd}
+footer{background:var(--navy);border-top:3px solid var(--blue);padding:22px 40px}
+.fi{max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.28)}
+.fi a{color:rgba(255,255,255,.45);text-decoration:none}.fi a:hover{color:#4aaee8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){header,main,footer,.hero,.tab-bar{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo-area" href="index.html"><div class="logo-sq">ST</div><div class="logo-name">Sargeant <span>Transport Services</span></div></a>
+  <a class="back-btn" href="index.html">&#8592; Back to Staff Portal</a>
+</header>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="bc"><a href="index.html"> Staff Portal</a><span>&#8250;</span><span style="color:rgba(255,255,255,.75)">Organisation Chart</span></div>
+    <h1>&#127970; Organisation Chart</h1>
+    <p>Use the tabs to switch departments</p>
+  </div>
+</div>
+<div class="tab-bar" id="tabBar"></div>
+<main id="main"></main>
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="mh"><div class="mav" id="mav"></div><div><div class="mnm" id="mnm"></div><div class="mrl" id="mrl"></div></div><button class="mcl" onclick="closeModal()">&#10005;</button></div>
+    <div class="mbody" id="mbody"></div>
+  </div>
+</div>
+<footer><div class="fi"><span>&#169; 2026 Sargeant Transport Services. All rights reserved.</span><a href="index.html">&#8592; Back to Staff Portal</a></div></footer>
+
+<script>
+// -- CONTACTS (fill in details here) -------------------------
+const CONTACTS={
+  'jamie-sargeant':    {phone:'',email:'',site:'Head Office'},
+  'tim-johannessen':   {phone:'',email:'',site:'Delacombe / Truganina'},
+  'alistair-bubb':     {phone:'',email:'',site:'Head Office'},
+  'wayne-glascott':    {phone:'',email:'',site:''},
+  'sharman-latter':    {phone:'',email:'',site:'Head Office'},
+  'sam-staff':         {phone:'',email:'',site:'Head Office'},
+  'michael-corrigan':  {phone:'',email:'',site:'Head Office'},
+  'wayne-lach':        {phone:'',email:'',site:''},
+  'jason-trimble':     {phone:'',email:'',site:'Head Office'},
+  'adam-walker':       {phone:'',email:'',site:'Bathurst'},
+  'joe-sbriglio':       {phone:'',email:'',site:'Echuca'},
+  'chellody-webb':     {phone:'',email:'',site:'Truganina'},
+  'emily-costigan':    {phone:'',email:'',site:'Truganina'},
+  'maddie-wauchope':   {phone:'',email:'',site:'Truganina'},
+  'nicole-seiler':     {phone:'',email:'',site:'Truganina'},
+  'kacy-chan':          {phone:'',email:'',site:'Truganina'},
+  'one-half-group':    {phone:'',email:'',site:''},
+  'ryan-boustead':     {phone:'',email:'',site:'Truganina'},
+  'peter-mccarthy':    {phone:'',email:'',site:'Truganina'},
+  'jordan-hall':       {phone:'',email:'',site:'Truganina'},
+  'dean-balla':        {phone:'',email:'',site:'Truganina'},
+  'phani-jaladi':      {phone:'',email:'',site:'Truganina'},
+  'halina-tavita-alama':{phone:'',email:'',site:'Truganina'},
+  'jaymega-paradero':  {phone:'',email:'',site:'Truganina'},
+  'loretta-lavae':     {phone:'',email:'',site:'Truganina'},
+  'jenny-tabone':      {phone:'',email:'',site:'Truganina'},
+  'chyna-pahulu':      {phone:'',email:'',site:'Truganina'},
+  'bindu-thaduri':     {phone:'',email:'',site:'Truganina'},
+  'elena-gjorgievska': {phone:'',email:'',site:'Truganina'},
+  'renea-borninkhof':  {phone:'',email:'',site:'Truganina'},
+  'mayank-sodha':      {phone:'',email:'',site:'Truganina'},
+  'ben-quarrel':       {phone:'',email:'',site:'Truganina'},
+  'prakash-patel':     {phone:'',email:'',site:'Truganina'},
+  'jordan-struth':     {phone:'',email:'',site:''},
+  'rheanna-mison':     {phone:'',email:'',site:'Adelaide'},
+  'luke-christensen':  {phone:'',email:'',site:'Adelaide'},
+  'gagandeep-singh':   {phone:'',email:'',site:'Truganina'},
+  'matthew-jones':     {phone:'',email:'',site:'Ballarat'},
+  'brady-meade':       {phone:'',email:'',site:'Ballarat'},
+  'samuel-hyland':     {phone:'',email:'',site:'Ballarat'},
+  'chantelle-reid':    {phone:'',email:'',site:'Ballarat'},
+  'naomi-scott':       {phone:'',email:'',site:'Ballarat'},
+  'rick-isaac':        {phone:'',email:'',site:'Ballarat'},
+  'lachlan-cairns':    {phone:'',email:'',site:'Ballarat'},
+  'jeffrey-rabino':    {phone:'',email:'',site:'Ballarat'},
+  'joshua-wyeth':      {phone:'',email:'',site:'Truganina'},
+  'amy-lee-lovett':    {phone:'',email:'',site:'Truganina'},
+  'steven-hunt':       {phone:'',email:'',site:'Truganina'},
+  'chris-avramopoulos':{phone:'',email:'',site:'Truganina'},
+  'brett-schlensog':   {phone:'',email:'',site:'Truganina'},
+  'bodie-buxton-scott':{phone:'',email:'',site:'Truganina'},
+  'joshua-sutton':     {phone:'',email:'',site:'Truganina'},
+  'brian-burke':       {phone:'',email:'',site:'Delacombe'},
+  'robert-hay':        {phone:'',email:'',site:'Delacombe'},
+  'hugh-dixon':        {phone:'',email:'',site:'Delacombe'},
+  'akatama-wina':      {phone:'',email:'',site:'Delacombe'},
+  'joseph-lewis':      {phone:'',email:'',site:'Delacombe'},
+  'shayne-romeril':    {phone:'',email:'',site:'Delacombe / Truganina'},
+  'james-cassar':      {phone:'',email:'',site:'Delacombe'},
+  'mark-geier':        {phone:'',email:'',site:'Delacombe'},
+  'sandra-dickson':    {phone:'',email:'',site:'Delacombe'},
+  'andy-mifsud':       {phone:'',email:'',site:'Truganina'},
+  'vacant-position':   {phone:'',email:'',site:'Truganina'},
+  'robyn-fletcher':    {phone:'',email:'',site:'Truganina'},
+  'greg-forth':        {phone:'',email:'',site:'Truganina'},
+  'davidson-m':        {phone:'',email:'',site:'Truganina'},
+  'jeffrey-p':         {phone:'',email:'',site:'Truganina'},
+  'wilson-s':          {phone:'',email:'',site:'Truganina'},
+  'baron-k':           {phone:'',email:'',site:'Truganina'},
+  'samuel-h':          {phone:'',email:'',site:'Truganina'},
+  'mbili-b':           {phone:'',email:'',site:'Truganina'},
+  'daniel-sexton':     {phone:'',email:'',site:'Truganina'},
+  'daniel-symons':     {phone:'',email:'',site:'Truganina'},
+  'nicole-davis':      {phone:'',email:'',site:''},
+  'brian-rowe':        {phone:'',email:'',site:''},
+  'mark-ivkovic':      {phone:'',email:'',site:'Truganina'},
+  'carl-christensen':  {phone:'',email:'',site:'Truganina'},
+  'alicia-petricevich':{phone:'',email:'',site:'Truganina'},
+  'grace-richardson':  {phone:'',email:'',site:'Truganina'},
+  'anne-marie-abel':   {phone:'',email:'',site:'Head Office'},
+  'andrea-taylor':     {phone:'',email:'',site:'Head Office'},
+  'tim-atkinson':      {phone:'',email:'',site:'Head Office'},
+  'clair-biggin':      {phone:'',email:'',site:'Head Office'},
+  'marta-rowe':        {phone:'',email:'',site:'Head Office'},
+  'jaydan-power-jenkins':{phone:'',email:'',site:'Head Office'},
+  'optima':            {phone:'',email:'',site:'External'},
+};
+
+// -- MODAL ----------------------------------------------------
+function ini(n){return n.split(' ').filter(Boolean).map(w=>w[0]).join('').substring(0,2).toUpperCase()}
+function openCard(id,name,role,color){
+  const c=CONTACTS[id]||{};
+  document.getElementById('mav').textContent=ini(name);
+  document.getElementById('mav').style.background=color;
+  document.getElementById('mnm').textContent=name;
+  document.getElementById('mrl').textContent=role;
+  document.getElementById('mbody').innerHTML=[
+    {icon:'&#128205;',label:'Site / Location',val:c.site||'Not provided'},
+    {icon:'&#9742;',label:'Phone',val:c.phone?`<a href="tel:${c.phone}">${c.phone}</a>`:'Not provided'},
+    {icon:'&#9993;',label:'Email',val:c.email?`<a href="mailto:${c.email}">${c.email}</a>`:'Not provided'},
+  ].map(r=>`<div class="crow"><div class="cicon">${r.icon}</div><div><div class="clabel">${r.label}</div><div class="cval">${r.val}</div></div></div>`).join('');
+  document.getElementById('overlay').classList.add('open');
+}
+function closeModal(e){
+  if(!e||e.target===document.getElementById('overlay')||e.currentTarget.classList.contains('mcl'))
+    document.getElementById('overlay').classList.remove('open');
+}
+
+// -- LAYOUT ENGINE --------------------------------------------
+// Node spec: {id, name, role, color, top, sec, note, children:[]}
+// Returns positioned flat node list + edges
+
+const NW=152, NH=76, HGAP=18, VGAP=56;
+
+function layoutTree(root,minCx=600,startY=20){
+  // Recursive width calculation
+  function subtreeW(node){
+    if(!node.children||node.children.length===0) return NW;
+    const cw=node.children.map(c=>subtreeW(c));
+    const total=cw.reduce((a,b)=>a+b,0)+(node.children.length-1)*HGAP;
+    node._sw=total;
+    return Math.max(NW,total);
+  }
+
+  function assignXY(node,cx,y){
+    const w=node._sw||NW;
+    node._x=cx-NW/2;
+    node._y=y+(node.offsetY||0);
+    if(node.children&&node.children.length>0){
+      const totalW=node.children.map(c=>c._sw||NW).reduce((a,b)=>a+b,0)+(node.children.length-1)*HGAP;
+      let xCursor=cx-totalW/2;
+      node.children.forEach(c=>{
+        const cw=c._sw||NW;
+        assignXY(c,xCursor+cw/2,y+NH+VGAP);
+        xCursor+=cw+HGAP;
+      });
+    }
+  }
+
+  function flatten(node,out=[]){
+    out.push(node);
+    (node.children||[]).forEach(c=>flatten(c,out));
+    return out;
+   }
+
+  function getEdges(node,out=[]){
+    (node.children||[]).forEach(c=>{
+      if(!node.hidden && !c.hideEdgeFromParent){
+        out.push({from:node.id,to:c.id,dashed:!!c.sec});
+      }
+      getEdges(c,out);
+    });
+    return out;
+  }
+
+  subtreeW(root);
+  const totalW=root._sw||NW;
+  const cx=Math.max(totalW/2,minCx);
+  assignXY(root,cx,startY);
+
+  const nodes=flatten(root);
+  const edges=getEdges(root);
+
+  // Canvas size
+  const maxX=Math.max(...nodes.map(n=>n._x+NW))+20;
+  const maxY=Math.max(...nodes.map(n=>n._y+NH))+20;
+
+  return {nodes,edges,w:Math.max(maxX,800),h:maxY};
+}
+
+function renderGraph(nodes,edges,w,h){
+  const allEdges=[...edges];
+  const nm={};nodes.forEach(n=>nm[n.id]=n);
+
+  // SVG lines — right-angle elbow connectors
+  let lines='';
+  allEdges.forEach(e=>{
+    if(e.path){
+      const dash=e.dashed?'stroke-dasharray="6,4" stroke="#4aaee8"':'stroke="#ccdded"';
+      lines+=`<path d="${e.path}" fill="none" ${dash} stroke-width="2"/>`;
+      return;
+    }
+    const a=nm[e.from],b=nm[e.to];
+    if(!a||!b)return;
+    const ax=e.startX ?? (e.startSide==='right' ? a._x+NW : a._x+NW/2), ay=a._y+NH;
+    const bx=b._x+NW/2, by=b._y;
+    const sy=e.startY ?? (e.startSide==='right' ? a._y+NH/2 : ay);
+    const my=e.midY ?? (sy+(by-sy)/2);
+    const dash=e.dashed?'stroke-dasharray="6,4" stroke="#4aaee8"':'stroke="#ccdded"';
+    const mx=e.midX ?? (e.midXOffset!==undefined ? ax+e.midXOffset : undefined);
+    if(mx!==undefined){
+      lines+=`<path d="M${ax},${sy} L${mx},${sy} L${mx},${my} L${bx},${my} L${bx},${by}" fill="none" ${dash} stroke-width="2"/>`;
+      return;
+    }
+    lines+=`<path d="M${ax},${sy} L${ax},${my} L${bx},${my} L${bx},${by}" fill="none" ${dash} stroke-width="2"/>`;
+  });
+
+  // Node divs
+  const divs=nodes.filter(n=>!n.hidden).map(n=>{
+    const cls=['nd',n.top?'top':'',n.sec?'sec':''].filter(Boolean).join(' ');
+    const safeN=n.name.replace(/'/g,"\\'");
+    const safeR=(n.role||'').replace(/'/g,"\\'");
+    return `<div class="${cls}" style="left:${Math.round(n._x)}px;top:${Math.round(n._y)}px;width:${NW}px"
+      onclick="openCard('${n.id}','${safeN}','${safeR}','${n.color}')">
+      <div class="av" style="background:${n.color}">${ini(n.name)}</div>
+      <div class="nm">${n.name}</div>
+      <div class="rl">${n.role||''}</div>
+      ${n.note?`<div class="nt">${n.note}</div>`:''}
+    </div>`;
+  }).join('');
+
+  return `<div style="position:relative;width:${Math.round(w)}px;height:${Math.round(h)}px;margin:0 auto">
+    <svg style="position:absolute;top:0;left:0;width:${Math.round(w)}px;height:${Math.round(h)}px;overflow:visible" xmlns="http://www.w3.org/2000/svg">${lines}</svg>
+    ${divs}
+  </div>`;
+}
+
+function renderLayout(root,extraEdges=[],minCx=600,startY=20){
+  const {nodes,edges,w,h}=layoutTree(root,minCx,startY);
+  return renderGraph(nodes,[...edges,...extraEdges],w,h);
+}
+
+// -- COLOUR PALETTE -------------------------------------------
+const C={
+  navy:'#0f2a4a',blue:'#1e6fb5',mid:'#2589d4',light:'#4aaee8',yellow:'#eab308',
+  green:'#276749',amber:'#d97706',purple:'#553c9a',teal:'#06b6d4',slate:'#475569',
+};
+
+// -- HELPER: build node ---------------------------------------
+function n(id,name,role,color,opts={},children=[]){
+  return {
+    id,name,role,color,
+    top:!!opts.top,
+    sec:!!opts.sec,
+    hidden:!!opts.hidden,
+    hideEdgeFromParent:!!opts.hideEdgeFromParent,
+    offsetY:opts.offsetY||0,
+    note:opts.note||'',
+    children
+  };
+}
+
+const DEPTS=[
+
+{id:'senior-leadership',label:'Senior Leadership',icon:'⭐',iconBg:'#fff3cd',
+render(){
+  const tree=n('jamie-sargeant','Jamie Sargeant','CEO / Director',C.navy,{top:true},[
+    n('tim-johannessen','Tim Johannessen','Maintenance / Workshop Manager',C.green),
+    n('alistair-bubb','Alistair Bubb','Fleet Asset Manager',C.green),
+    n('wayne-glascott','Wayne Glascott','Asset Finance Consultant',C.amber),
+    n('sharman-latter','Sharman Latter','Company Accountant / CFO',C.amber),
+    n('senior-leadership-jason-anchor','','','transparent',{hidden:true,hideEdgeFromParent:true},[
+      n('jason-trimble','Jason Trimble','Executive Assistant',C.purple,{hideEdgeFromParent:true}),
+    ]),
+    n('sam-staff','Sam Staff','Chief Operating Officer',C.green),
+    n('michael-corrigan','Michael Corrigan','HR Consultant',C.amber),
+    n('wayne-lach','Wayne Lach','Compliance Consultant',C.amber),
+  ]);
+  const extra=[
+    {from:'jamie-sargeant',to:'jason-trimble',dashed:true,startY:124,midY:124},
+    {from:'sam-staff',to:'jason-trimble',dashed:true},
+    {from:'michael-corrigan',to:'jason-trimble',dashed:true},
+    {from:'sharman-latter',to:'wayne-glascott',dashed:true},
+  ];
+  return renderLayout(tree,extra);
+}},
+
+{id:'group-operations',label:'Group Operations',icon:'🌐',iconBg:'#e0f2fe',
+render(){
+  const tree=n('sam-staff','Sam Staff','Chief Operating Officer',C.navy,{top:true},[
+    n('adam-walker','Adam Walker','Bathurst Manager',C.green),
+    n('joe-sbriglio','Joe Sbriglio','Echuca Manager',C.green),
+    n('chellody-webb','Chellody Webb','Group Operations Manager',C.green),
+    n('emily-costigan','Emily Costigan','Head of Compliance & Driver Training',C.green),
+    n('maddie-wauchope','Maddie Wauchope','Customer Service Manager',C.green,{},[
+      n('nicole-seiler','Nicole Seiler','Operations Admin',C.yellow,{},[
+        n('kacy-chan','Kacy Chan','Bookings Support',C.yellow,{},[
+          n('one-half-group','One Half Group','',C.slate),
+        ]),
+      ]),
+    ]),
+    n('group-ops-alignment','','','transparent',{hidden:true,hideEdgeFromParent:true},[
+      n('ryan-boustead','Ryan Boustead','Systems Supervisor',C.blue,{hideEdgeFromParent:true}),
+      n('peter-mccarthy','Peter McCarthy','Pallet Control',C.blue,{hideEdgeFromParent:true}),
+    ]),
+  ]);
+  const extra=[
+    {from:'sam-staff',to:'ryan-boustead',startY:124,midY:124},
+    {from:'sam-staff',to:'peter-mccarthy',startY:124,midY:124},
+  ];
+  return renderLayout(tree,extra);
+}},
+
+{id:'operations',label:'Operations',icon:'🚛',iconBg:'#dbeafe',
+render(){
+  const tree=n('chellody-webb','Chellody Webb','Group Operations Manager',C.navy,{top:true,offsetY:-12},[
+    n('jordan-hall','Jordan Hall','Operations Manager – Metro & Northern Vic',C.green,{hideEdgeFromParent:true,offsetY:-14},[
+      n('dean-balla','Dean Balla','Operations Supervisor – All Rounder',C.blue),
+      n('phani-jaladi','Phani Jaladi','Operations Supervisor',C.blue),
+      n('halina-tavita-alama','Halina Tavita Alama','Operations Supervisor',C.blue,{},[
+        n('mayank-sodha','Mayank Sodha','Operations Supervisor',C.mid,{},[
+          n('ben-quarrel','Ben Quarrel','Operations Supervisor',C.mid,{},[
+            n('prakash-patel','Prakash Patel','PM Operations Supervisor',C.mid),
+          ]),
+        ]),
+      ]),
+      n('jaymega-paradero','Jaymega Paradero','Ops Admin Supervisor (Truganina)',C.blue,{},[
+        n('loretta-lavae','Loretta Lavae','Operations Admin',C.yellow,{},[
+          n('jenny-tabone','Jenny Tabone','Operations Admin',C.yellow,{},[
+            n('chyna-pahulu','Chyna Pahulu','Operations Admin',C.yellow,{},[
+              n('bindu-thaduri','Bindu Thaduri','Operations Admin',C.yellow,{},[
+                n('elena-gjorgievska','Elena Gjorgievska','Operations Admin – All Rounder',C.yellow,{},[
+                  n('renea-borninkhof','Renea Borninkhof','Operations Admin',C.yellow),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+    n('matthew-jones','Matthew Jones','Regional West Operations Manager',C.green,{hideEdgeFromParent:true},[
+      n('brady-meade','Brady Meade','Operations Supervisor',C.blue,{},[
+        n('samuel-hyland','Samuel Hyland','Operations Supervisor',C.blue,{},[
+          n('chantelle-reid','Chantelle Reid','Operations Admin Supervisor',C.yellow,{},[
+            n('naomi-scott','Naomi Scott','Operations Admin',C.yellow,{},[
+              n('rick-isaac','Rick Isaac','Ballarat Yard Hand',C.yellow,{},[
+                n('lachlan-cairns','Lachlan Cairns','Ballarat Yard Hand',C.yellow,{},[
+                  n('jeffrey-rabino','Jeffrey Rabino','Operations Admin',C.yellow),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+    n('operations-alignment','','','transparent',{hidden:true,hideEdgeFromParent:true},[
+      n('jordan-struth','Jordan Struth','Linehaul Operations Supervisor',C.blue,{hideEdgeFromParent:true},[
+        n('rheanna-mison','Rheanna Mison','Adelaide Operations Supervisor',C.mid,{},[
+          n('luke-christensen','Luke Christensen','Hybrid Yard Hand',C.yellow),
+        ]),
+      ]),
+      n('gagandeep-singh','Gagandeep Singh','Weekend Operations Supervisor',C.blue,{hideEdgeFromParent:true}),
+    ]),
+  ]);
+  const extra=[
+    {from:'chellody-webb',to:'jordan-hall',midY:124},
+    {from:'chellody-webb',to:'matthew-jones',midY:124},
+    {from:'chellody-webb',to:'jordan-struth',startSide:'right',startY:124,midXOffset:40,midY:124},
+    {from:'chellody-webb',to:'gagandeep-singh',startSide:'right',startY:124,midXOffset:40,midY:124},
+  ];
+  return renderLayout(tree,extra);
+}},
+
+{id:'truganina-warehouse',label:'Truganina Warehouse',icon:'🏭',iconBg:'#fef9c3',
+render(){
+  const tree=n('jordan-hall','Jordan Hall','Operations Manager – Metro & Northern Victoria',C.navy,{top:true},[
+    n('joshua-wyeth','Joshua Wyeth','PM Leading Hand',C.blue),
+    n('steven-hunt','Steven Hunt','Forklift Operator',C.blue,{},[
+      n('chris-avramopoulos','Chris Avramopoulos','Forklift Operator',C.light,{},[
+        n('brett-schlensog','Brett Schlensog','Forklift Operator',C.light,{},[
+          n('bodie-buxton-scott','Bodie Buxton Scott','Forklift Operator',C.light,{},[
+            n('joshua-sutton','Joshua Sutton','Forklift Operator',C.light),
+          ]),
+        ]),
+      ]),
+    ]),
+    n('amy-lee-lovett','Amy-Lee Lovett','Cross Dock Admin',C.blue),
+  ]);
+  return renderLayout(tree,[],460);
+}},
+
+{id:'workshop',label:'Workshop – Delacombe & Truganina',icon:'🔧',iconBg:'#dcfce7',
+render(){
+  const tree=n('tim-johannessen','Tim Johannessen','Maintenance / Workshop Manager',C.navy,{top:true,offsetY:-10},[
+    n('workshop-left-group','','','transparent',{hidden:true,hideEdgeFromParent:true},[
+      n('james-cassar','James Cassar','Service Advisor – Ballarat',C.mid,{hideEdgeFromParent:true},[
+        n('mark-geier','Mark Geier','Service Advisor – Ballarat',C.mid,{},[
+          n('sandra-dickson','Sandra Dickson','Service Advisor – Ballarat',C.mid),
+        ]),
+      ]),
+      n('andy-mifsud','Andy Mifsud','Truganina Wash Bay',C.mid,{hideEdgeFromParent:true},[
+        n('vacant-position','Vacant Position','Truganina Wash Bay',C.slate),
+      ]),
+    ]),
+    n('shayne-romeril','Shayne Romeril','Assistant Service Manager',C.green,{hideEdgeFromParent:true}),
+    n('workshop-right-group','','','transparent',{hidden:true,hideEdgeFromParent:true},[
+      n('robyn-fletcher','Robyn Fletcher','Service Advisor – Truganina',C.mid,{hideEdgeFromParent:true}),
+      n('greg-forth','Greg Forth','Leading Hand – Truganina',C.mid,{hideEdgeFromParent:true}),
+      n('davidson-m','Davidson M','Truganina Mechanic',C.mid,{hideEdgeFromParent:true},[
+        n('jeffrey-p','Jeffrey P','Truganina Mechanic',C.mid,{},[
+          n('wilson-s','Wilson S','Truganina Mechanic',C.mid,{},[
+            n('baron-k','Baron K','Truganina Mechanic',C.mid,{},[
+              n('samuel-h','Samuel H','Truganina Mechanic',C.mid,{},[
+                n('mbili-b','Mbili B','Truganina Mechanic',C.mid,{},[
+                  n('daniel-sexton','Daniel Sexton','Truganina Mechanic',C.mid,{},[
+                    n('daniel-symons','Daniel Symons','Refrigeration Mechanic',C.teal),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+    n('brian-burke','Brian Burke','Ballarat Workshop Supervisor',C.green,{hideEdgeFromParent:true},[
+      n('robert-hay','Robert Hay','Ballarat Mechanic',C.mid,{},[
+        n('hugh-dixon','Hugh Dixon','Ballarat Mechanic',C.mid,{},[
+          n('akatama-wina','Akatama Wina','Ballarat Mechanic',C.mid,{},[
+            n('joseph-lewis','Joseph Lewis','Ballarat Workshop',C.mid),
+          ]),
+        ]),
+      ]),
+    ]),
+  ]);
+  const extra=[
+    {from:'tim-johannessen',to:'shayne-romeril',midY:124},
+    {from:'tim-johannessen',to:'brian-burke',midY:124},
+    {from:'tim-johannessen',to:'james-cassar',startY:124,midY:124},
+    {from:'tim-johannessen',to:'andy-mifsud',startY:124,midY:124},
+    {from:'tim-johannessen',to:'robyn-fletcher',startY:124,midY:124},
+    {from:'tim-johannessen',to:'greg-forth',startY:124,midY:124},
+    {from:'tim-johannessen',to:'davidson-m',startY:124,midY:124},
+  ];
+  return renderLayout(tree,extra);
+}},
+
+{id:'fleet-management',label:'Fleet Management',icon:'🚗',iconBg:'#ede9fe',
+render(){
+  const tree=n('alistair-bubb','Alistair Bubb','Fleet Asset Manager',C.navy,{top:true},[
+    n('nicole-davis','Nicole Davis','Asset Administration',C.blue),
+    n('brian-rowe','Brian Rowe','PBS Consultant',C.amber),
+  ]);
+  return renderLayout(tree,[],360);
+}},
+
+{id:'compliance',label:'Compliance & Driver Training',icon:'📋',iconBg:'#fce7f3',
+render(){
+  const tree=n('emily-costigan','Emily Costigan','Head of Compliance & Driver Training',C.navy,{top:true,offsetY:-24},[
+    n('mark-ivkovic','Mark Ivkovic','Driver Trainer',C.blue),
+    n('carl-christensen','Carl Christensen','Driver Trainer',C.blue),
+    n('alicia-petricevich','Alicia Petricevich','Driver Training Administration',C.blue),
+    n('grace-richardson','Grace Richardson','Compliance Coordinator',C.blue),
+  ]);
+  return renderLayout(tree,[],360,40);
+}},
+
+{id:'finance',label:'Finance',icon:'💰',iconBg:'#d1fae5',
+render(){
+  const tree=n('sharman-latter','Sharman Latter','Company Accountant / CFO',C.navy,{top:true},[
+    n('anne-marie-abel','Anne Marie Abel','Financial & IT Manager',C.green,{},[
+      n('andrea-taylor','Andrea Taylor','AR Admin Support',C.blue),
+      n('tim-atkinson','Tim Atkinson','Accounts Receivable',C.blue),
+      n('clair-biggin','Clair Biggin','Accounts Payable',C.blue),
+      n('marta-rowe','Marta Rowe','Payroll Supervisor',C.blue,{},[
+        n('jaydan-power-jenkins','Jaydan Power-Jenkins','Payroll Officer',C.mid),
+      ]),
+    ]),
+  ]);
+  return renderLayout(tree,[],360);
+}},
+
+{id:'human-resources',label:'Human Resources',icon:'👥',iconBg:'#e0e7ff',
+render(){
+  const tree=n('michael-corrigan','Michael Corrigan','HR Consultant',C.navy,{top:true},[
+    n('optima','Optima','Workcover Consultant',C.slate),
+  ]);
+  return renderLayout(tree,[],360);
+}},
+
+{id:'haccp',label:'HACCP Team',icon:'🛡️',iconBg:'#fee2e2',
+render(){
+  const nodes=[
+    {...n('jamie-sargeant','Jamie Sargeant','Director – Oversees Entire HACCP Team',C.navy,{top:true}),_x:404,_y:20},
+    {...n('sam-staff','Sam Staff','COO – All Daily Management of HACCP',C.blue),_x:404,_y:152},
+    {...n('wayne-lach','Wayne Lach','Team Leader – Compliance, Training & Document Control',C.green),_x:64,_y:364},
+    {...n('chellody-webb','Chellody Webb','Team Leader – Victorian Operations Manager',C.green),_x:234,_y:364},
+    {...n('jordan-hall','Jordan Hall','Team Leader – Warehouse Ops, Product Controller & Forklift Handling',C.green),_x:404,_y:364},
+    {...n('emily-costigan','Emily Costigan','Team Leader – Head of Compliance & Driver Training',C.green),_x:574,_y:364},
+    {...n('joshua-wyeth','Joshua Wyeth','Team Leader – Leading Hand, Forklift, Cleaning & Temp Checks',C.green),_x:744,_y:364},
+  ];
+  const edges=[
+    {path:'M480,96 L480,152'},
+    {path:'M480,228 L480,304 M140,304 L820,304 M140,304 L140,364 M310,304 L310,364 M480,304 L480,364 M650,304 L650,364 M820,304 L820,364'},
+  ];
+  return renderGraph(nodes,edges,980,480);
+}},
+
+];
+// -- BUILD TABS + PANELS --------------------------------------
+const tabBar=document.getElementById('tabBar');
+const mainEl=document.getElementById('main');
+const legend=`<div class="legend">
+  <div class="li"><div class="lb"></div> Top node</div>
+  <div class="li"><div class="ll ls"></div> Primary reporting line</div>
+  <div class="li"><div class="ll ld"></div> Secondary / multi-reporting line</div>
+</div>`;
+
+DEPTS.forEach((dept,i)=>{
+  const btn=document.createElement('button');
+  btn.className='tab-btn'+(i===0?' active':'');
+  btn.innerHTML=dept.icon+' '+dept.label;
+  btn.onclick=()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('p-'+dept.id).classList.add('active');
+  };
+  tabBar.appendChild(btn);
+  const panel=document.createElement('div');
+  panel.className='panel'+(i===0?' active':'');
+  panel.id='p-'+dept.id;
+  panel.innerHTML=`
+    <div class="dept-hdr">
+      <div class="dept-icon" style="background:${dept.iconBg}">${dept.icon}</div>
+      <div><div class="dept-title">${dept.label}</div><div class="dept-sub">Click any card to view contact details</div></div>
+    </div>
+    <div class="chart-wrap">${dept.render()}</div>
+    ${legend}`;
+  mainEl.appendChild(panel);
+});
+</script>
+</body>
+</html>
+
+
+
