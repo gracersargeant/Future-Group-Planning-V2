@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -40,13 +40,13 @@
       flex-direction: column;
     }
 
-    /* ── HEADER ── */
+    /* â”€â”€ HEADER â”€â”€ */
     header {
       background: var(--navy-dark);
       padding: 0 48px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       height: 66px;
       position: sticky;
       top: 0;
@@ -85,27 +85,7 @@
 
     .company-name span { color: var(--accent2); }
 
-    .back-btn {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .back-btn:hover {
-      background: rgba(255,255,255,0.14);
-      color: #fff;
-    }
-
-    /* ── HERO ── */
+    /* â”€â”€ HERO â”€â”€ */
     .hero {
       background: linear-gradient(110deg, var(--navy-dark) 0%, var(--navy) 40%, var(--blue-mid) 80%, var(--blue-bright) 100%);
       padding: 44px 48px 40px;
@@ -157,7 +137,47 @@
       color: rgba(255,255,255,0.58);
     }
 
-    /* ── MAIN ── */
+    .home-tab-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      overflow-x: auto;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .home-tab-bar::-webkit-scrollbar { height: 3px; }
+    .home-tab-bar::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .hero-nav {
+      display: flex;
+      min-width: max-content;
+    }
+
+    .hero-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-dim);
+      border: none;
+      border-bottom: 3px solid transparent;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      transition: .15s;
+    }
+
+    .hero-nav-btn:hover { color: var(--text-dark); }
+    .hero-nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .btn-icon { font-size: 14px; }
+
+    /* â”€â”€ MAIN â”€â”€ */
     main {
       flex: 1;
       padding: 40px 48px 56px;
@@ -172,7 +192,7 @@
       gap: 28px;
     }
 
-    /* ── SITE CARD ── */
+    /* â”€â”€ SITE CARD â”€â”€ */
     .site-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -193,7 +213,7 @@
     .site-card:nth-child(3) { animation-delay: 0.15s; }
     .site-card:nth-child(4) { animation-delay: 0.20s; }
 
-    /* ── MAP EMBED ── */
+    /* â”€â”€ MAP EMBED â”€â”€ */
     .map-wrap {
       position: relative;
       width: 100%;
@@ -234,7 +254,7 @@
       border-color: var(--accent);
     }
 
-    /* ── SITE INFO ── */
+    /* â”€â”€ SITE INFO â”€â”€ */
     .site-info {
       padding: 22px 24px 24px;
     }
@@ -327,7 +347,7 @@
       background: #e8f7f0;
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       background: var(--navy-dark);
       border-top: 3px solid var(--blue-bright);
@@ -338,25 +358,19 @@
       max-width: 1360px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       font-size: 12px;
       color: rgba(255,255,255,0.28);
     }
 
-    .footer-inner a {
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-inner a:hover { color: var(--accent2); }
-
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .sites-grid { grid-template-columns: 1fr; }
       header { padding: 0 20px; }
       .hero { padding: 32px 20px 28px; }
+      .home-tab-bar { padding: 0 16px; }
+      .hero-nav-btn { padding: 13px 14px; font-size: 12px; }
       main { padding: 28px 20px 40px; }
       footer { padding: 20px; }
     }
@@ -375,113 +389,123 @@
     <div class="logo-placeholder">ST</div>
     <div class="company-name">Sargeant <span>Transport</span></div>
   </a>
-  <a class="back-btn" href="index.html">← Back to Staff Portal</a>
-</header>
+  </header>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
     <div class="breadcrumb">
       <a href="index.html">Staff Portal</a>
-      <span>›</span>
+      <span>&#8250;</span>
       <span style="color:rgba(255,255,255,0.75)">Our Sites</span>
     </div>
-    <h1>📍 Our Sites</h1>
-    <p>Sargeant Transport's four depot locations</p>
+    <h1>&#128205; Our Sites</h1>
+    <p>Sargeant Transport operates across 4 locations in Victoria.</p>
   </div>
+</div>
+
+<div class="home-tab-bar">
+  <nav class="hero-nav" aria-label="Portal sections">
+    <a class="hero-nav-btn" href="index.html"><span class="btn-icon">&#127968;</span> Home</a>
+    <a class="hero-nav-btn" href="compliance.html"><span class="btn-icon">&#128203;</span> Compliance</a>
+    <a class="hero-nav-btn" href="documents.html"><span class="btn-icon">&#128193;</span> Document Portal</a>
+    <a class="hero-nav-btn" href="drivers.html"><span class="btn-icon">&#128667;</span> Drivers</a>
+    <a class="hero-nav-btn" href="orgchart.html"><span class="btn-icon">&#127970;</span> Organisation Chart</a>
+    <a class="hero-nav-btn active" href="sites.html"><span class="btn-icon">&#128205;</span> Sites</a>
+  </nav>
 </div>
 
 <!-- MAIN -->
 <main>
   <div class="sites-grid">
 
-    <!-- ── SITE 1: TRUGANINA ── -->
+    <!-- SITE 1: TRUGANINA -->
     <div class="site-card">
       <div class="map-wrap">
 <iframe loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=144.7450%2C-37.8220%2C144.7570%2C-37.8140&amp;layer=mapnik&amp;marker=-37.8180%2C144.7510"></iframe>
-        <a class="map-overlay-btn" href="https://maps.google.com/?q=23+Foundation+Road,+Truganina+VIC+3029" target="_blank" rel="noopener">🗺 Open in Maps</a>
+        <a class="map-overlay-btn" href="https://maps.google.com/?q=23+Foundation+Road,+Truganina+VIC+3029" target="_blank" rel="noopener">&#128506; Open in Maps</a>
       </div>
       <div class="site-info">
         <div class="site-name">Truganina</div>
         <div class="site-address">
-          <span class="pin">📍</span>
+          <span class="pin">&#128205;</span>
           23 Foundation Road, Truganina VIC 3029
         </div>
         <div class="site-actions">
           <a class="btn-directions" href="https://maps.google.com/?q=23+Foundation+Road,+Truganina+VIC+3029" target="_blank" rel="noopener">
-            ↗ Get Directions
+            &#8599; Get Directions
           </a>
           <button class="btn-copy" onclick="copyAddress(this, '23 Foundation Road, Truganina VIC 3029')">
-            📋 Copy Address
+            &#128203; Copy Address
           </button>
         </div>
       </div>
     </div>
 
-    <!-- ── SITE 2: DELACOMBE ── -->
+    <!-- SITE 2: DELACOMBE -->
     <div class="site-card">
       <div class="map-wrap">
 <iframe loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=143.8340%2C-37.5760%2C143.8460%2C-37.5680&amp;layer=mapnik&amp;marker=-37.5720%2C143.8400"></iframe>
-        <a class="map-overlay-btn" href="https://maps.google.com/?q=112+Whitelaw+Avenue,+Delacombe+VIC+3356" target="_blank" rel="noopener">🗺 Open in Maps</a>
+        <a class="map-overlay-btn" href="https://maps.google.com/?q=112+Whitelaw+Avenue,+Delacombe+VIC+3356" target="_blank" rel="noopener">&#128506; Open in Maps</a>
       </div>
       <div class="site-info">
         <div class="site-name">Delacombe</div>
         <div class="site-address">
-          <span class="pin">📍</span>
+          <span class="pin">&#128205;</span>
           112 Whitelaw Avenue, Delacombe VIC 3356
         </div>
         <div class="site-actions">
           <a class="btn-directions" href="https://maps.google.com/?q=112+Whitelaw+Avenue,+Delacombe+VIC+3356" target="_blank" rel="noopener">
-            ↗ Get Directions
+            &#8599; Get Directions
           </a>
           <button class="btn-copy" onclick="copyAddress(this, '112 Whitelaw Avenue, Delacombe VIC 3356')">
-            📋 Copy Address
+            &#128203; Copy Address
           </button>
         </div>
       </div>
     </div>
 
-    <!-- ── SITE 3: DANDENONG SOUTH ── -->
+    <!-- SITE 3: DANDENONG SOUTH -->
     <div class="site-card">
       <div class="map-wrap">
 <iframe loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=145.2020%2C-38.0060%2C145.2140%2C-37.9980&amp;layer=mapnik&amp;marker=-38.0020%2C145.2080"></iframe>
-        <a class="map-overlay-btn" href="https://maps.google.com/?q=77+Hallam+Valley+Road,+Dandenong+South+VIC+3175" target="_blank" rel="noopener">🗺 Open in Maps</a>
+        <a class="map-overlay-btn" href="https://maps.google.com/?q=77+Hallam+Valley+Road,+Dandenong+South+VIC+3175" target="_blank" rel="noopener">&#128506; Open in Maps</a>
       </div>
       <div class="site-info">
         <div class="site-name">Dandenong South</div>
         <div class="site-address">
-          <span class="pin">📍</span>
+          <span class="pin">&#128205;</span>
           77 Hallam Valley Road, Dandenong South VIC 3175
         </div>
         <div class="site-actions">
           <a class="btn-directions" href="https://maps.google.com/?q=77+Hallam+Valley+Road,+Dandenong+South+VIC+3175" target="_blank" rel="noopener">
-            ↗ Get Directions
+            &#8599; Get Directions
           </a>
           <button class="btn-copy" onclick="copyAddress(this, '77 Hallam Valley Road, Dandenong South VIC 3175')">
-            📋 Copy Address
+            &#128203; Copy Address
           </button>
         </div>
       </div>
     </div>
 
-    <!-- ── SITE 4: RAVENHALL ── -->
+    <!-- SITE 4: RAVENHALL -->
     <div class="site-card">
       <div class="map-wrap">
 <iframe loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=144.7740%2C-37.7360%2C144.7860%2C-37.7280&amp;layer=mapnik&amp;marker=-37.7320%2C144.7800"></iframe>
-        <a class="map-overlay-btn" href="https://maps.google.com/?q=1198+Christies+Road,+Ravenhall+VIC+3023" target="_blank" rel="noopener">🗺 Open in Maps</a>
+        <a class="map-overlay-btn" href="https://maps.google.com/?q=1198+Christies+Road,+Ravenhall+VIC+3023" target="_blank" rel="noopener">&#128506; Open in Maps</a>
       </div>
       <div class="site-info">
         <div class="site-name">Ravenhall</div>
         <div class="site-address">
-          <span class="pin">📍</span>
+          <span class="pin">&#128205;</span>
           1198 Christies Road, Ravenhall VIC 3023
         </div>
         <div class="site-actions">
           <a class="btn-directions" href="https://maps.google.com/?q=1198+Christies+Road,+Ravenhall+VIC+3023" target="_blank" rel="noopener">
-            ↗ Get Directions
+            &#8599; Get Directions
           </a>
           <button class="btn-copy" onclick="copyAddress(this, '1198 Christies Road, Ravenhall VIC 3023')">
-            📋 Copy Address
+            &#128203; Copy Address
           </button>
         </div>
       </div>
@@ -493,8 +517,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <span>© 2026 Sargeant Transport Services. All rights reserved.</span>
-    <a href="index.html">← Back to Staff Portal</a>
+    <span>&copy; 2026 Sargeant Transport Services. All rights reserved.</span>
   </div>
 </footer>
 
@@ -502,10 +525,10 @@
   function copyAddress(btn, address) {
     navigator.clipboard.writeText(address).then(() => {
       btn.classList.add('copied');
-      btn.innerHTML = '✓ Copied!';
+      btn.innerHTML = '&#10003; Copied!';
       setTimeout(() => {
         btn.classList.remove('copied');
-        btn.innerHTML = '📋 Copy Address';
+        btn.innerHTML = '&#128203; Copy Address';
       }, 2000);
     });
   }
@@ -513,3 +536,5 @@
 
 </body>
 </html>
+
+

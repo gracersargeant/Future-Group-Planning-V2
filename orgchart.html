@@ -19,8 +19,6 @@ header{background:var(--navy);padding:0 40px;display:flex;align-items:center;jus
 .logo-sq{width:38px;height:38px;border-radius:7px;background:linear-gradient(135deg,#4aaee8,#2589d4);display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;color:#fff}
 .logo-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17px;color:#fff}
 .logo-name span{color:#4aaee8}
-.back-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:6px 16px;font-size:13px;color:rgba(255,255,255,.7);text-decoration:none;transition:.2s}
-.back-btn:hover{background:rgba(255,255,255,.15);color:#fff}
 .hero{background:linear-gradient(110deg,#0a1e35,#0f2a4a 40%,#1a4a7a 80%,#1e6fb5);padding:36px 40px 32px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-80px;right:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(74,174,232,.13) 0%,transparent 65%);pointer-events:none}
 .hero-inner{position:relative;z-index:1}
@@ -28,10 +26,17 @@ header{background:var(--navy);padding:0 40px;display:flex;align-items:center;jus
 .bc a{color:rgba(255,255,255,.4);text-decoration:none}.bc a:hover{color:rgba(255,255,255,.8)}
 .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:-.4px;margin-bottom:6px}
 .hero p{font-size:13px;color:rgba(255,255,255,.55)}
-.tab-bar{background:var(--card);border-bottom:1px solid var(--border);padding:0 40px;display:flex;overflow-x:auto;flex-shrink:0}
+.home-tab-bar{background:var(--card);border-bottom:1px solid var(--border);padding:0 40px;display:flex;overflow-x:auto;flex-shrink:0;box-shadow:0 1px 4px rgba(15,42,74,.07)}
+.home-tab-bar::-webkit-scrollbar{height:3px}.home-tab-bar::-webkit-scrollbar-thumb{background:var(--border)}
+.hero-nav{display:flex;min-width:max-content}
+.hero-nav-btn{display:flex;align-items:center;gap:8px;padding:14px 16px;font-size:12.5px;font-weight:600;color:var(--dim);border:none;border-bottom:3px solid transparent;background:none;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;text-decoration:none;transition:.15s}
+.hero-nav-btn:hover{color:var(--text)}.hero-nav-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.btn-icon{font-size:14px}
+.tab-bar{padding:18px 40px 0;display:flex;gap:10px;overflow-x:auto;flex-shrink:0}
 .tab-bar::-webkit-scrollbar{height:3px}.tab-bar::-webkit-scrollbar-thumb{background:var(--border)}
-.tab-btn{padding:13px 16px;font-size:12.5px;font-weight:600;color:var(--dim);border:none;border-bottom:3px solid transparent;background:none;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;transition:.15s}
-.tab-btn:hover{color:var(--text)}.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-btn{padding:10px 16px;font-size:12.5px;font-weight:700;color:#2b6da6;border:1px solid rgba(37,137,212,.18);border-radius:999px;background:#fff;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;transition:.18s;box-shadow:0 1px 4px rgba(15,42,74,.05)}
+.tab-btn:hover{color:var(--navy);border-color:rgba(37,137,212,.34);background:#f7fbfe;transform:translateY(-1px)}
+.tab-btn.active{color:#fff;border-color:#2589d4;background:#2589d4;box-shadow:0 6px 16px rgba(37,137,212,.22)}
 main{flex:1;padding:32px 40px 60px}
 .panel{display:none}.panel.active{display:block;animation:fadeUp .25s ease}
 .dept-hdr{display:flex;align-items:center;gap:12px;margin-bottom:24px}
@@ -69,18 +74,16 @@ main{flex:1;padding:32px 40px 60px}
 .ll{width:24px;height:2px}.ls{background:var(--border)}.ld{background:repeating-linear-gradient(to right,#4aaee8 0,#4aaee8 4px,transparent 4px,transparent 8px)}
 .lb{width:14px;height:14px;border-radius:3px;border:2px solid var(--accent);background:#e8f4fd}
 footer{background:var(--navy);border-top:3px solid var(--blue);padding:22px 40px}
-.fi{max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.28)}
-.fi a{color:rgba(255,255,255,.45);text-decoration:none}.fi a:hover{color:#4aaee8}
+.fi{max-width:1360px;margin:0 auto;display:flex;justify-content:flex-start;align-items:center;font-size:12px;color:rgba(255,255,255,.28)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:768px){header,main,footer,.hero,.tab-bar{padding-left:16px;padding-right:16px}}
+@media(max-width:768px){header,main,footer,.hero{padding-left:16px;padding-right:16px}.home-tab-bar{padding-left:16px;padding-right:16px}.tab-bar{padding:16px 16px 0}.hero-nav-btn{padding:13px 14px;font-size:12px}}
 </style>
 </head>
 <body>
 <header>
   <a class="logo-area" href="index.html"><div class="logo-sq">ST</div><div class="logo-name">Sargeant <span>Transport Services</span></div></a>
-  <a class="back-btn" href="index.html">&#8592; Back to Staff Portal</a>
 </header>
 <div class="hero">
   <div class="hero-inner">
@@ -88,6 +91,16 @@ footer{background:var(--navy);border-top:3px solid var(--blue);padding:22px 40px
     <h1>&#127970; Organisation Chart</h1>
     <p>Use the tabs to switch departments</p>
   </div>
+</div>
+<div class="home-tab-bar">
+  <nav class="hero-nav" aria-label="Portal sections">
+    <a class="hero-nav-btn" href="index.html"><span class="btn-icon">&#127968;</span> Home</a>
+    <a class="hero-nav-btn" href="compliance.html"><span class="btn-icon">&#128203;</span> Compliance</a>
+    <a class="hero-nav-btn" href="documents.html"><span class="btn-icon">&#128193;</span> Document Portal</a>
+    <a class="hero-nav-btn" href="drivers.html"><span class="btn-icon">&#128667;</span> Drivers</a>
+    <a class="hero-nav-btn active" href="orgchart.html"><span class="btn-icon">&#127970;</span> Organisation Chart</a>
+    <a class="hero-nav-btn" href="sites.html"><span class="btn-icon">&#128205;</span> Sites</a>
+  </nav>
 </div>
 <div class="tab-bar" id="tabBar"></div>
 <main id="main"></main>
@@ -97,7 +110,7 @@ footer{background:var(--navy);border-top:3px solid var(--blue);padding:22px 40px
     <div class="mbody" id="mbody"></div>
   </div>
 </div>
-<footer><div class="fi"><span>&#169; 2026 Sargeant Transport Services. All rights reserved.</span><a href="index.html">&#8592; Back to Staff Portal</a></div></footer>
+<footer><div class="fi"><span>&copy; 2026 Sargeant Transport Services. All rights reserved.</span></div></footer>
 
 <script>
 // -- CONTACTS (fill in details here) -------------------------
