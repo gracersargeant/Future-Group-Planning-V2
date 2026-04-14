@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -43,7 +43,7 @@
       flex-direction: column;
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     header {
       background: var(--navy-dark);
       padding: 0 48px;
@@ -88,33 +88,7 @@
 
     .company-name span { color: var(--accent2); }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .back-btn {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .back-btn:hover {
-      background: rgba(255,255,255,0.14);
-      color: #fff;
-    }
-
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       background: linear-gradient(110deg, var(--navy-dark) 0%, var(--navy) 40%, var(--blue-mid) 80%, var(--blue-bright) 100%);
       padding: 44px 48px 40px;
@@ -167,7 +141,48 @@
       max-width: 480px;
     }
 
-    /* ── SEARCH BAR ── */
+    /* HOME TAB BAR */
+    .home-tab-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      overflow-x: auto;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .home-tab-bar::-webkit-scrollbar { height: 3px; }
+    .home-tab-bar::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .hero-nav {
+      display: flex;
+      min-width: max-content;
+    }
+
+    .hero-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-dim);
+      border: none;
+      border-bottom: 3px solid transparent;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      transition: .15s;
+    }
+
+    .hero-nav-btn:hover { color: var(--text-dark); }
+    .hero-nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .btn-icon { font-size: 14px; }
+
+    /* SEARCH BAR */
     .search-wrap {
       max-width: 1360px;
       margin: 0 auto;
@@ -210,7 +225,7 @@
 
     #searchInput::placeholder { color: var(--text-dim); }
 
-    /* ── MAIN ── */
+    /* MAIN */
     main {
       flex: 1;
       padding: 28px 48px 48px;
@@ -219,7 +234,7 @@
       margin: 0 auto;
     }
 
-    /* ── QUICK ACCESS ── */
+    /* QUICK ACCESS */
     .quick-access-wrap {
       margin-bottom: 32px;
     }
@@ -341,7 +356,7 @@
       transform: translateX(0);
     }
 
-    /* ── HOW TO ADD DOCS NOTICE ── */
+    /* HOW TO ADD DOCS NOTICE */
    /* .how-to-notice {
       background: var(--accent-pale);
       border: 1px solid rgba(37,137,212,0.25);
@@ -365,7 +380,7 @@
       font-family: monospace;*/
     }
 
-    /* ── CATEGORY SECTION ── */
+    /* CATEGORY SECTION */
     .category-section {
       margin-bottom: 36px;
     }
@@ -409,14 +424,14 @@
       padding: 2px 10px;
     }
 
-    /* ── DOCUMENT GRID ── */
+    /* DOCUMENT GRID */
     .doc-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 14px;
     }
 
-    /* ── DOCUMENT CARD ── */
+    /* DOCUMENT CARD */
     .doc-card {
       background: var(--bg-card);
       border: 1.5px solid var(--border);
@@ -535,7 +550,7 @@
 
     .doc-card:hover .doc-arrow { opacity: 1; transform: translateX(0); }
 
-    /* ── EMPTY STATE ── */
+    /* EMPTY STATE */
     .empty-state {
       text-align: center;
       padding: 60px 20px;
@@ -556,7 +571,7 @@
 
     .empty-state p { font-size: 14px; color: var(--text-dim); }
 
-    /* ── NO RESULTS ── */
+    /* NO RESULTS */
     .no-results {
       text-align: center;
       padding: 40px 20px;
@@ -566,7 +581,7 @@
     .no-results.visible { display: block; }
     .no-results p { font-size: 14px; color: var(--text-dim); }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       background: var(--navy-dark);
       border-top: 3px solid var(--blue-bright);
@@ -577,27 +592,21 @@
       max-width: 1360px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       font-size: 12px;
       color: rgba(255,255,255,0.28);
     }
 
-    .footer-inner a {
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-inner a:hover { color: var(--accent2); }
-
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       header { padding: 0 20px; }
       .hero { padding: 32px 20px 28px; }
+      .home-tab-bar { padding: 0 16px; }
       .search-wrap { padding: 20px 20px 0; }
       main { padding: 20px 20px 40px; }
       footer { padding: 20px; }
+      .hero-nav-btn { padding: 13px 14px; font-size: 12px; }
       .quick-grid { grid-template-columns: 1fr; }
       .doc-grid { grid-template-columns: 1fr; }
     }
@@ -621,29 +630,37 @@
     <div class="logo-placeholder">ST</div>
     <div class="company-name">Sargeant <span>Transport Services</span></div>
   </a>
-  <div class="header-right">
-    <a class="back-btn" href="index.html">← Back to Staff Portal</a>
-  </div>
 </header>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
     <div class="breadcrumb">
-      <a href="index.html"> Staff Portal</a>
-      <span>›</span>
+      <a href="index.html">Staff Portal</a>
+      <span>&#8250;</span>
       <span style="color:rgba(255,255,255,0.75)">Document Portal</span>
     </div>
-    <h1>📁 Document Portal</h1>
+    <h1>&#128193; Document Portal</h1>
     <p>Company policies, procedures, forms and SOPs all in one place.</p>
   </div>
+</div>
+
+<div class="home-tab-bar">
+  <nav class="hero-nav" aria-label="Portal sections">
+    <a class="hero-nav-btn" href="index.html"><span class="btn-icon">&#127968;</span> Home</a>
+    <a class="hero-nav-btn" href="compliance.html"><span class="btn-icon">&#128203;</span> Compliance</a>
+    <a class="hero-nav-btn active" href="documents.html"><span class="btn-icon">&#128193;</span> Document Portal</a>
+    <a class="hero-nav-btn" href="drivers.html"><span class="btn-icon">&#128667;</span> Drivers</a>
+    <a class="hero-nav-btn" href="orgchart.html"><span class="btn-icon">&#127970;</span> Organisation Chart</a>
+    <a class="hero-nav-btn" href="sites.html"><span class="btn-icon">&#128205;</span> Sites</a>
+  </nav>
 </div>
 
 <!-- SEARCH -->
 <div class="search-wrap">
   <div class="search-inner">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" placeholder="Search documents…" oninput="filterDocs()" />
+    <span class="search-icon">&#128269;</span>
+    <input type="text" id="searchInput" placeholder="Search documents..." oninput="filterDocs()" />
   </div>
 </div>
 
@@ -680,42 +697,37 @@
   </div>
 
   <!--
-  ═══════════════════════════════════════════════════════
   HOW TO ADD DOCUMENTS
-  ═══════════════════════════════════════════════════════
 
   1. Find the category section you want (or copy a whole
      <section class="category-section"> block to make a new one).
 
   2. Copy one of the .doc-card <a> tags and update:
-       href        →  path to your file (e.g. "docs/leave-form.pdf")
+       href        ->  path to your file (e.g. "doc-portal-docs/leave-form.pdf")
                       or a full URL (e.g. "https://forms.office.com/...")
-       data-type   →  pdf | docx | doc | xlsx | xls | pptx | ppt | link
-       data-name   →  the document name (used for search)
-       .doc-name   →  display name
-       .doc-meta   →  file type badge + any extra info (date, size, etc.)
+       data-type   ->  pdf | docx | doc | xlsx | xls | pptx | ppt | link
+       data-name   ->  the document name (used for search)
+       .doc-name   ->  display name
+       .doc-meta   ->  file type badge + any extra info (date, size, etc.)
 
   3. To open in a new tab add:  target="_blank" rel="noopener"
      To download directly add:  download
 
-  4. Files should be placed in a "docs/" folder next to index.html
-     on GitHub, e.g. docs/leave-policy.pdf
+  4. Files should be placed in a "doc-portal-docs/" folder next to index.html
+     on GitHub, e.g. doc-portal-docs/leave-policy.pdf
 
-  That's it — no code changes needed, just copy/paste.
-  ═══════════════════════════════════════════════════════
-  <!-- ══════════════════════════════════════
-       CATEGORY: Policies
-       ══════════════════════════════════════ -->
+  That's it - no code changes needed, just copy/paste.
+  <!-- CATEGORY: Policies -->
   <section class="category-section" id="cat-policies">
     <div class="category-header">
-      <div class="category-icon" style="background:#e8f4fd; color:#2589d4;">📋</div>
+      <div class="category-icon" style="background:#e8f4fd; color:#2589d4;">&#128203;</div>
       <div class="category-title">Policies</div>
       <span class="category-count" id="count-policies"></span>
     </div>
-   <!-- ── MORE DOCUMENTS — copy & edit this block ── -->  
+   <!-- MORE DOCUMENTS - copy and edit this block -->
     <div class="doc-grid" id="grid-policies">
       <a class="doc-card" href="doc-portal-docs/Office Unattended.docx" data-type="docx" data-name="Office Unattended" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">Office Unattended</div>
           <div class="doc-meta">
@@ -723,10 +735,10 @@
             Updated Apr 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
  <a class="doc-card" href="doc-portal-docs/STCACPOL001.pdf" data-type="pdf" data-name="Consultation and Communication Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">Consultation and Communication Policy</div>
           <div class="doc-meta">
@@ -734,10 +746,10 @@
             Updated 22nd Jan 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
  <a class="doc-card" href="doc-portal-docs/STCORPO001.pdf" data-type="pdf" data-name="CoR (Chain of Responsibility) Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">CoR (Chain of Responsibility</div>
           <div class="doc-meta">
@@ -745,10 +757,10 @@
             Updated 3rd Mar 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
       <a class="doc-card" href="doc-portal-docs/STLMPO001.pdf" data-type="pdf" data-name="Load Management Policy Statement" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">Load Management Policy Statement</div>
           <div class="doc-meta">
@@ -756,17 +768,15 @@
             Updated 20th Jan 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       CATEGORY: HR & Leave
-       ══════════════════════════════════════ -->
+  <!-- CATEGORY: HR & Leave -->
   <section class="category-section" id="cat-hr">
     <div class="category-header">
-      <div class="category-icon" style="background:#f0fff4; color:#276749;">👥</div>
+      <div class="category-icon" style="background:#f0fff4; color:#276749;">&#128101;</div>
       <div class="category-title">HR &amp; Leave - Blank</div>
       <span class="category-count" id="count-hr"></span>
     </div>
@@ -774,7 +784,7 @@
 
       <!-- Add HR documents here -->
       <a class="doc-card" href="doc-portal-docs/leave-application.pdf" data-type="pdf" data-name="Leave Application Form" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">Leave Application Form</div>
           <div class="doc-meta">
@@ -782,11 +792,11 @@
             Updated Jan 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
 
       <a class="doc-card" href="doc-portal-docs/leave-policy.pdf" data-type="pdf" data-name="Leave Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">Leave Policy</div>
           <div class="doc-meta">
@@ -794,11 +804,11 @@
             Updated May 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
 
       <a class="doc-card" href="doc-portal-docs/employee-handbook.pdf" data-type="pdf" data-name="Employee Handbook" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">Employee Handbook</div>
           <div class="doc-meta">
@@ -806,25 +816,23 @@
             Updated Feb 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
 
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       CATEGORY: Safety & WHS
-       ══════════════════════════════════════ -->
+  <!-- CATEGORY: Safety & WHS -->
   <section class="category-section" id="cat-safety">
     <div class="category-header">
-      <div class="category-icon" style="background:#fffbeb; color:#d97706;">⚠️</div>
+      <div class="category-icon" style="background:#fffbeb; color:#d97706;">&#9888;&#65039;</div>
       <div class="category-title">Safety &amp; WHS - Blank</div>
       <span class="category-count" id="count-safety"></span>
     </div>
     <div class="doc-grid" id="grid-safety">
 
       <a class="doc-card" href="doc-portal-docs/incident-report.pdf" data-type="pdf" data-name="Incident Report Form" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">Incident Report Form</div>
           <div class="doc-meta">
@@ -832,11 +840,11 @@
             Updated Jan 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
 
       <a class="doc-card" href="doc-portal-docs/whs-policy.pdf" data-type="pdf" data-name="WHS Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">WHS Policy</div>
           <div class="doc-meta">
@@ -844,11 +852,11 @@
             Updated Mar 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
 
       <a class="doc-card" href="doc-portal-docs/hazard-register.xlsx" data-type="xlsx" data-name="Hazard Register" target="_blank" rel="noopener">
-        <div class="doc-icon">📊</div>
+        <div class="doc-icon">&#128202;</div>
         <div class="doc-body">
           <div class="doc-name">Hazard Register</div>
           <div class="doc-meta">
@@ -856,25 +864,23 @@
             Updated Apr 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
 
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       CATEGORY: Operations
-       ══════════════════════════════════════ -->
+  <!-- CATEGORY: Operations -->
   <section class="category-section" id="cat-ops">
     <div class="category-header">
-      <div class="category-icon" style="background:#f0f4ff; color:#553c9a;">🚛</div>
+      <div class="category-icon" style="background:#f0f4ff; color:#553c9a;">&#128667;</div>
       <div class="category-title">Operations - Blank</div>
       <span class="category-count" id="count-ops"></span>
     </div>
     <div class="doc-grid" id="grid-ops">
 
       <a class="doc-card" href="doc-portal-docs/maintenance-report.pdf" data-type="pdf" data-name="Maintenance Report Form" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
+        <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
           <div class="doc-name">Maintenance Report Form</div>
           <div class="doc-meta">
@@ -882,11 +888,11 @@
             Updated Jan 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
 
       <a class="doc-card" href="doc-portal-docs/run-sheet-template.xlsx" data-type="xlsx" data-name="Run Sheet Template" target="_blank" rel="noopener">
-        <div class="doc-icon">📊</div>
+        <div class="doc-icon">&#128202;</div>
         <div class="doc-body">
           <div class="doc-name">Run Sheet Template</div>
           <div class="doc-meta">
@@ -894,21 +900,19 @@
             Updated Feb 2026
           </div>
         </div>
-        <span class="doc-arrow">→</span>
+        <span class="doc-arrow">&#8594;</span>
       </a>
 
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       CATEGORY: Forms & Templates
+  <!-- CATEGORY: Forms & Templates
        Add more categories by copying a full
-       <section class="category-section"> block
-       ══════════════════════════════════════ -->
+       <section class="category-section"> block -->
 
   <!-- No results message (shown when search has no matches) -->
   <div class="no-results" id="noResults">
-    <p>🔍 No documents found matching "<span id="searchTerm"></span>"</p>
+    <p>&#128269; No documents found matching "<span id="searchTerm"></span>"</p>
   </div>
 
 </main>
@@ -916,13 +920,12 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <span>© 2026 Sargeant Transport Services. All rights reserved.</span>
-    <a href="index.html">← Back to Staff Portal</a>
+    <span>&copy; 2026 Sargeant Transport Services. All rights reserved.</span>
   </div>
 </footer>
 
 <script>
-  // ── COUNT BADGES ──
+  // COUNT BADGES
   function updateCounts() {
     const categories = ['policies', 'hr', 'safety', 'ops'];
     categories.forEach(cat => {
@@ -934,7 +937,7 @@
     });
   }
 
-  // ── SEARCH ──
+  // SEARCH
   function filterDocs() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
     const allCards = document.querySelectorAll('.doc-card');
@@ -971,3 +974,4 @@
 
 </body>
 </html>
+
