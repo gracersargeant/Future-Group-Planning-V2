@@ -184,8 +184,8 @@
             and it will appear here automatically.
           </div>
         </div>
-        <div class="extra-mile-message placeholder" id="extraMileMessage">
-          Add a message file at <strong>drivers-assets/going-the-extra-mile.txt</strong> and it will load here automatically.
+        <div class="extra-mile-message" id="extraMileMessage">
+          Add your Going The Extra Mile message directly here in the HTML. You can replace this text any time with the recognition message you want to show drivers.
         </div>
       </div>
     </div>
@@ -214,21 +214,6 @@
     }
   }
 
-  async function loadExtraMileMessage() {
-    const message = document.getElementById('extraMileMessage');
-    try {
-      const response = await fetch('drivers-assets/going-the-extra-mile.txt', { cache: 'no-store' });
-      if (!response.ok) throw new Error('Missing message');
-      const text = (await response.text()).trim();
-      if (!text) throw new Error('Empty message');
-      message.textContent = text;
-      message.classList.remove('placeholder');
-    } catch (error) {
-      message.innerHTML = 'Add a message file at <strong>drivers-assets/going-the-extra-mile.txt</strong> and it will load here automatically.';
-      message.classList.add('placeholder');
-    }
-  }
-
   function loadExtraMileImage() {
     const media = document.getElementById('extraMileMedia');
     const img = new Image();
@@ -241,7 +226,6 @@
   }
 
   loadAnnouncements();
-  loadExtraMileMessage();
   loadExtraMileImage();
 </script>
 </body>
