@@ -219,6 +219,128 @@
       margin: 0 auto;
     }
 
+    /* ── QUICK ACCESS ── */
+    .quick-access-wrap {
+      margin-bottom: 32px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--navy), var(--blue-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .card-subtitle {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .quick-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--bg-card2);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quick-btn::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .quick-btn:hover {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quick-btn:hover::before {
+      opacity: 1;
+    }
+
+    .quick-btn-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .quick-btn-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .quick-btn-desc {
+      font-size: 10.5px;
+      color: var(--text-dim);
+    }
+
+    .quick-btn-arrow {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      transform: translateX(-4px);
+      flex-shrink: 0;
+    }
+
+    .quick-btn:hover .quick-btn-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     /* ── HOW TO ADD DOCS NOTICE ── */
    /* .how-to-notice {
       background: var(--accent-pale);
@@ -476,6 +598,7 @@
       .search-wrap { padding: 20px 20px 0; }
       main { padding: 20px 20px 40px; }
       footer { padding: 20px; }
+      .quick-grid { grid-template-columns: 1fr; }
       .doc-grid { grid-template-columns: 1fr; }
     }
 
@@ -526,6 +649,35 @@
 
 <!-- MAIN -->
 <main>
+
+  <div class="quick-access-wrap">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#9889;</div>
+        <div>
+          <div class="card-title">Quick Access</div>
+          <div class="card-subtitle">Frequently used forms</div>
+        </div>
+      </div>
+      <div class="quick-grid">
+        <a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/leave-application-form" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#128197;</div>
+          <div><div class="quick-btn-label">Leave Form</div><div class="quick-btn-desc">Submit leave requests</div></div>
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
+        <a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/incident-report" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#9888;&#65039;</div>
+          <div><div class="quick-btn-label">Incident Report</div><div class="quick-btn-desc">Log a workplace incident</div></div>
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
+        <a class="quick-btn" href="#" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#128295;</div>
+          <div><div class="quick-btn-label">Maintenance Report</div><div class="quick-btn-desc">Log a maintenance request</div></div>
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!--
   ═══════════════════════════════════════════════════════
