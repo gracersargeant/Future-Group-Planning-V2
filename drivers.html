@@ -62,6 +62,7 @@
     .quick-btn:hover .quick-btn-arrow{opacity:1;transform:translateX(0)}
 
     .content-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:24px;align-items:start}
+    .content-column{display:flex;flex-direction:column;gap:24px}
 
     .announcement-list{display:flex;flex-direction:column;gap:9px}
     .announcement-item{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;background:var(--bg-card2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;transition:all .18s}
@@ -75,6 +76,14 @@
     .ann-badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700;margin-left:5px;background:var(--accent-pale2);color:var(--accent);border:1px solid rgba(37,137,212,.2)}
     .ann-badge.urgent{background:#fef3c7;color:var(--warn);border-color:rgba(217,119,6,.25)}
     .ann-empty{padding:16px;border:1px dashed var(--border);border-radius:10px;background:var(--bg-card2);font-size:12px;color:var(--text-dim)}
+    .pdf-frame-wrap{border-radius:8px;overflow:hidden;border:1px solid var(--border);background:#f0f0f0}
+    .pdf-frame-wrap object{width:100%;height:320px;border:none;display:block;background:#fff}
+    .pdf-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:320px;padding:24px;background:var(--bg-card2);text-align:center}
+    .pdf-fallback-icon{font-size:28px}
+    .pdf-fallback-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--text-dark)}
+    .pdf-fallback-sub{font-size:11px;color:var(--text-dim);line-height:1.6;max-width:240px}
+    .pdf-link-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;margin-top:12px;border-radius:8px;border:1px solid var(--border);background:var(--white);color:var(--accent);font-family:'Plus Jakarta Sans',sans-serif;font-size:11.5px;font-weight:700;text-decoration:none;transition:all 0.2s}
+    .pdf-link-btn:hover{border-color:var(--accent);background:var(--accent-pale)}
 
     .extra-mile-panel{display:flex;flex-direction:column;gap:18px;padding:20px;border:2px solid rgba(31,122,85,.34);border-radius:18px;background:linear-gradient(180deg,#f7fef9 0%,#eef9f3 55%,#e6f6ed 100%);box-shadow:0 14px 36px rgba(31,122,85,.14);position:relative;overflow:hidden}
     .extra-mile-panel::before{content:'';position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,#1f7a55,#39a46d,#63c58b)}
@@ -83,7 +92,7 @@
     .extra-mile-media img{width:100%;height:100%;object-fit:cover;display:block}
     .extra-mile-placeholder{font-size:12px;color:var(--text-dim);line-height:1.7;max-width:260px}
     .extra-mile-message{padding:18px 18px 20px;border-radius:14px;background:#fff;border:1px solid rgba(31,122,85,.16);font-size:14px;line-height:1.75;color:var(--text-body);min-height:150px;box-shadow:0 8px 20px rgba(31,122,85,.07)}
-    .extra-mile-title{display:flex;align-items:center;justify-content:center;text-align:center;min-height:38px;width:100%;padding:8px 14px;margin:0 0 14px;border-radius:12px;background:#ecf8f0;border:1px solid rgba(31,122,85,.18);font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#1f7a55}
+    .extra-mile-title{display:flex;align-items:center;min-height:38px;width:100%;padding:8px 14px;margin:0 0 14px;border-radius:12px;background:#ecf8f0;border:1px solid rgba(31,122,85,.18);font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#1f7a55}
     .extra-mile-message.placeholder{color:var(--text-dim)}
     .extra-mile-tag{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;background:linear-gradient(135deg,#1f7a55,#39a46d);border:1px solid rgba(31,122,85,.24);padding:14px 16px;font-size:13px;font-weight:800;color:#fff;letter-spacing:.8px;text-transform:uppercase;box-shadow:0 12px 24px rgba(31,122,85,.2)}
 
@@ -158,40 +167,62 @@
   </div>
 
   <div class="content-grid">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon">&#128226;</div>
-        <div>
-          <div class="card-title">Announcements</div>
-          <div class="card-subtitle">Latest updates</div>
+    <div class="content-column">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">&#128226;</div>
+          <div>
+            <div class="card-title">Announcements</div>
+            <div class="card-subtitle">Latest updates</div>
+          </div>
+        </div>
+        <div class="announcement-list">
+          <!--
+            TO ADD AN ANNOUNCEMENT: copy one block below.
+            Add class="urgent" for high-priority items.
+          -->
+          <div class="announcement-item urgent">
+            <div class="ann-dot"></div>
+            <div>
+              <div class="ann-title">Intranet Trial <span class="ann-badge urgent">Urgent</span></div>
+              <div class="ann-meta">Intranet trial currently running &#8212; please help us test the new page!</div>
+            </div>
+          </div>
+          <div class="announcement-item urgent">
+            <div class="ann-dot"></div>
+            <div>
+              <div class="ann-title">BFM Course Due <span class="ann-badge urgent">Urgent</span></div>
+              <div class="ann-meta">All schedulers assigned a BFM course &#8212; complete by 10/04/2026</div>
+            </div>
+          </div>
+          <div class="announcement-item">
+            <div class="ann-dot"></div>
+            <div>
+              <div class="ann-title">Q1 Newsletter <span class="ann-badge">New</span></div>
+              <div class="ann-meta">Q1 Newsletter due out this week &#8212; keep an eye on your emails and the intranet</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="announcement-list">
-        <!--
-          TO ADD AN ANNOUNCEMENT: copy one block below.
-          Add class="urgent" for high-priority items.
-        -->
-        <div class="announcement-item urgent">
-          <div class="ann-dot"></div>
+
+      <div class="card">
+      <div class="card-header">
+          <div class="card-icon" style="background:linear-gradient(135deg,#432874,#6d28d9)">🔨</div>
           <div>
-            <div class="ann-title">Intranet Trial <span class="ann-badge urgent">Urgent</span></div>
-            <div class="ann-meta">Intranet trial currently running &#8212; please help us test the new page!</div>
+            <div class="card-title">Toolbox Upload</div>
+            <div class="card-subtitle">Upload a toolbox PDF for drivers</div>
           </div>
         </div>
-        <div class="announcement-item urgent">
-          <div class="ann-dot"></div>
-          <div>
-            <div class="ann-title">BFM Course Due <span class="ann-badge urgent">Urgent</span></div>
-            <div class="ann-meta">All schedulers assigned a BFM course &#8212; complete by 10/04/2026</div>
-          </div>
+        <div class="pdf-frame-wrap">
+          <object data="shared-documents/toolbox.pdf" type="application/pdf" aria-label="Toolbox PDF">
+            <div class="pdf-fallback">
+              <div class="pdf-fallback-icon">&#128736;</div>
+              <div class="pdf-fallback-title">Toolbox PDF not added yet</div>
+              <div class="pdf-fallback-sub">Add <strong>toolbox.pdf</strong> into the repo folder <strong>shared-documents</strong> and it will appear here for everyone.</div>
+            </div>
+          </object>
         </div>
-        <div class="announcement-item">
-          <div class="ann-dot"></div>
-          <div>
-            <div class="ann-title">Q1 Newsletter <span class="ann-badge">New</span></div>
-            <div class="ann-meta">Q1 Newsletter due out this week &#8212; keep an eye on your emails and the intranet</div>
-          </div>
-        </div>
+        <a class="pdf-link-btn" href="shared-documents/toolbox.pdf" target="_blank" rel="noopener">View Toolbox PDF</a>
       </div>
     </div>
 
