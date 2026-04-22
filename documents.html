@@ -381,6 +381,24 @@
       margin-bottom: 14px;
       padding-bottom: 12px;
       border-bottom: 2px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .category-header::after {
+      content: '\25BE';
+      font-size: 12px;
+      color: var(--text-dim);
+      transition: transform 0.2s ease;
+      margin-left: 10px;
+    }
+
+    .category-section.collapsed .category-header {
+      margin-bottom: 0;
+    }
+
+    .category-section.collapsed .category-header::after {
+      transform: rotate(-90deg);
     }
 
     .category-icon {
@@ -417,6 +435,10 @@
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 14px;
       align-items: start;
+    }
+
+    .category-section.collapsed .doc-grid {
+      display: none;
     }
 
     /* DOCUMENT CARD */
@@ -976,7 +998,7 @@
 <a class="doc-card" href="#" data-type="pdf" data-name="Remote Access Policy" target="_blank" rel="noopener">
         <div class="doc-icon">&#128196;</div>
         <div class="doc-body">
-          <div class="doc-name">Remote AccessPolicy</div>
+          <div class="doc-name">Remote Access Policy</div>
           <div class="doc-meta">
             <span class="doc-type-badge">PDF</span>
             Version 1.0 Issued 01/03/2020
@@ -1330,6 +1352,31 @@
     });
   }
 
+  function setupCategoryDropdowns() {
+    document.querySelectorAll('.category-section').forEach(section => {
+      const header = section.querySelector('.category-header');
+      if (!header || header.dataset.dropdownBound === 'true') return;
+
+      section.classList.add('collapsed');
+      header.dataset.dropdownBound = 'true';
+      header.setAttribute('role', 'button');
+      header.setAttribute('tabindex', '0');
+      header.setAttribute('aria-expanded', !section.classList.contains('collapsed'));
+
+      header.addEventListener('click', () => {
+        section.classList.toggle('collapsed');
+        header.setAttribute('aria-expanded', !section.classList.contains('collapsed'));
+      });
+
+      header.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          header.click();
+        }
+      });
+    });
+  }
+
   // COUNT BADGES
   function updateCounts() {
     const categories = ['policies', 'hr', 'safety', 'ops'];
@@ -1358,9 +1405,16 @@
 
     // Hide/show category sections based on visible cards
     document.querySelectorAll('.category-section').forEach(section => {
+      const header = section.querySelector('.category-header');
       const grid = section.querySelector('.doc-grid');
       const visibleCards = grid ? [...grid.querySelectorAll('.doc-card')].filter(c => c.style.display !== 'none') : [];
       section.style.display = (query === '' || visibleCards.length > 0) ? '' : 'none';
+      if (query && visibleCards.length > 0) {
+        section.classList.remove('collapsed');
+      }
+      if (header) {
+        header.setAttribute('aria-expanded', !section.classList.contains('collapsed'));
+      }
     });
 
     // Show no-results if nothing found
@@ -1376,6 +1430,7 @@
 
   positionDocBadges();
   formatDocMeta();
+  setupCategoryDropdowns();
   updateCounts();
 </script>
 
