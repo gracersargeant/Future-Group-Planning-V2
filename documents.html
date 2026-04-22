@@ -1410,6 +1410,9 @@
       const grid = section.querySelector('.doc-grid');
       const visibleCards = grid ? [...grid.querySelectorAll('.doc-card')].filter(c => c.style.display !== 'none') : [];
       section.style.display = (query === '' || visibleCards.length > 0) ? '' : 'none';
+      if (query === '') {
+        section.classList.add('collapsed');
+      }
       if (query && visibleCards.length > 0) {
         section.classList.remove('collapsed');
       }
