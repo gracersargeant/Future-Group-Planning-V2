@@ -1,12 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document Portal | Sargeant Transport</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Document Portal | Sargeant Transport</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --navy:        #0f2a4a;
       --navy-dark:   #0a1e35;
@@ -168,7 +169,7 @@
     .search-wrap {
       max-width: 1360px;
       margin: 0 auto 16px;
-      padding: 6px 48px 0;
+      padding: 24px 48px 0;
     }
 
     .search-inner {
@@ -287,9 +288,7 @@
     .quick-btn::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
+      left: 0; top: 0; right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       opacity: 0;
@@ -303,14 +302,9 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .quick-btn:hover::before {
-      opacity: 1;
-    }
+    .quick-btn:hover::before { opacity: 1; }
 
-    .quick-btn-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-    }
+    .quick-btn-icon { font-size: 20px; flex-shrink: 0; }
 
     .quick-btn-label {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -319,10 +313,7 @@
       color: var(--text-dark);
     }
 
-    .quick-btn-desc {
-      font-size: 10.5px;
-      color: var(--text-dim);
-    }
+    .quick-btn-desc { font-size: 10.5px; color: var(--text-dim); }
 
     .quick-btn-arrow {
       margin-left: auto;
@@ -334,45 +325,11 @@
       flex-shrink: 0;
     }
 
-    .quick-btn:hover .quick-btn-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* HOW TO ADD DOCS NOTICE */
-   /* .how-to-notice {
-      background: var(--accent-pale);
-      border: 1px solid rgba(37,137,212,0.25);
-      border-radius: 10px;
-      padding: 14px 18px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 28px;
-      font-size: 13px;
-      color: var(--blue-mid);
-      line-height: 1.6;
-    }
-
-    .how-to-notice strong { font-weight: 700; color: var(--navy); }
-    .how-to-notice code {
-      background: rgba(37,137,212,0.12);
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-family: monospace;*/
-    }
+    .quick-btn:hover .quick-btn-arrow { opacity: 1; transform: translateX(0); }
 
     /* CATEGORY SECTION */
-    .category-section {
-      margin-bottom: 36px;
-    }
-
-    .category-section + .category-section {
-      margin-top: 18px;
-    }
-
-    .category-section[data-empty="true"] { display: none; }
+    .category-section { margin-bottom: 36px; }
+    .category-section + .category-section { margin-top: 18px; }
 
     .category-header {
       display: flex;
@@ -393,13 +350,8 @@
       margin-left: 10px;
     }
 
-    .category-section.collapsed .category-header {
-      margin-bottom: 0;
-    }
-
-    .category-section.collapsed .category-header::after {
-      transform: rotate(-90deg);
-    }
+    .category-section.collapsed .category-header { margin-bottom: 0; }
+    .category-section.collapsed .category-header::after { transform: rotate(-90deg); }
 
     .category-icon {
       width: 34px;
@@ -437,9 +389,7 @@
       align-items: start;
     }
 
-    .category-section.collapsed .doc-grid {
-      display: none;
-    }
+    .category-section.collapsed .doc-grid { display: none; }
 
     /* DOCUMENT CARD */
     .doc-card {
@@ -493,6 +443,8 @@
     .doc-card[data-type="link"] .doc-icon { background: #f0f4ff; color: #553c9a; }
     .doc-card[data-type="link"]::before { background: #553c9a; }
 
+    .doc-icon-stack { position: relative; flex-shrink: 0; }
+
     .doc-icon {
       width: 42px;
       height: 42px;
@@ -502,59 +454,50 @@
       justify-content: center;
       font-size: 20px;
       flex-shrink: 0;
-      background: var(--bg-card2);
-      color: var(--text-dim);
-    }
-
-    .doc-icon-stack {
-      width: 52px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
     }
 
     .doc-body { flex: 1; min-width: 0; }
 
     .doc-name {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
       color: var(--text-dark);
-      margin-bottom: 4px;
-      line-height: 1.35;
-      white-space: normal;
+      line-height: 1.4;
+      margin-bottom: 6px;
     }
 
     .doc-meta {
-      font-size: 11.5px;
-      color: var(--text-dim);
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .doc-meta-top {
+      display: flex;
       align-items: center;
-      line-height: 1.45;
+      gap: 5px;
+    }
+
+    .doc-meta-bottom {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .doc-meta-pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: #f4f8fb;
-      border: 1px solid #d8e4ef;
-      color: #5a7188;
-      font-size: 10px;
-      font-weight: 600;
-      line-height: 1.2;
+      font-size: 10.5px;
+      color: var(--text-dim);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 6px;
       white-space: nowrap;
     }
 
     .doc-type-badge {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       min-width: 42px;
       padding: 2px 7px;
       border-radius: 4px;
@@ -590,26 +533,22 @@
 
     .doc-card:hover .doc-arrow { opacity: 1; transform: translateX(0); }
 
-    /* EMPTY STATE */
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      display: none;
-    }
-
-    .empty-state.visible { display: block; }
-
-    .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
-
-    .empty-state h3 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 18px;
+    /* Status badge on card */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 9px;
       font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+      line-height: 1;
     }
-
-    .empty-state p { font-size: 14px; color: var(--text-dim); }
+    .status-overdue  { background: #fff3cd; border: 1px solid #ffc107; color: #856404; }
+    .status-review   { background: #fff0f0; border: 1px solid #f5c6cb; color: #842029; }
+    .status-under    { background: #e8f4fd; border: 1px solid #bee3f8; color: #1a4a7a; }
 
     /* NO RESULTS */
     .no-results {
@@ -660,875 +599,913 @@
     .category-section:nth-child(2) { animation-delay: 0.05s; }
     .category-section:nth-child(3) { animation-delay: 0.10s; }
     .category-section:nth-child(4) { animation-delay: 0.15s; }
+    .category-section:nth-child(5) { animation-delay: 0.20s; }
+    .category-section:nth-child(6) { animation-delay: 0.25s; }
+    .category-section:nth-child(7) { animation-delay: 0.30s; }
+    .category-section:nth-child(8) { animation-delay: 0.35s; }
+    .category-section:nth-child(9) { animation-delay: 0.40s; }
+    .category-section:nth-child(10) { animation-delay: 0.45s; }
+    .category-section:nth-child(11) { animation-delay: 0.50s; }
   </style>
 </head>
 <body>
-
 <!-- HEADER -->
 <header>
-  <a class="logo-area" href="index.html">
-    <div class="logo-placeholder">ST</div>
-    <div class="company-name">Sargeant <span>Transport Services</span></div>
-  </a>
+<a class="logo-area" href="index.html">
+<div class="logo-placeholder">ST</div>
+<div class="company-name">Sargeant <span>Transport Services</span></div>
+</a>
 </header>
-
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-inner">
-    <h1>&#128193; Document Portal</h1>
-    <p>Company policies, procedures, forms and SOPs all in one place.</p>
-  </div>
+<div class="hero-inner">
+<h1>📁 Document Portal</h1>
+<p>Company policies, procedures, forms and SOPs all in one place.</p>
 </div>
-
+</div>
 <div class="home-tab-bar">
-  <nav class="hero-nav" aria-label="Portal sections">
-    <a class="hero-nav-btn" href="index.html"><span class="btn-icon">&#127968;</span> Home</a>
-    <a class="hero-nav-btn" href="compliance.html"><span class="btn-icon">&#128203;</span> Compliance</a>
-    <a class="hero-nav-btn" href="operations.html"><span class="btn-icon">&#127760;</span> Operations</a>
-    <a class="hero-nav-btn active" href="documents.html"><span class="btn-icon">&#128193;</span> Document Portal</a>
-    <a class="hero-nav-btn" href="drivers.html"><span class="btn-icon">&#128667;</span> Drivers</a>
-    <a class="hero-nav-btn" href="orgchart.html"><span class="btn-icon">&#127970;</span> Organisation Chart</a>
-    <a class="hero-nav-btn" href="sites.html"><span class="btn-icon">&#128205;</span> Sites</a>
-    <a class="hero-nav-btn" href="regional-schedule.html"><span class="btn-icon">&#128197;</span> Regional Schedule</a>
-    <a class="hero-nav-btn" href="contact-matrix.html"><span class="btn-icon">&#128202;</span> Contact Matrix</a>
-  </nav>
+<nav aria-label="Portal sections" class="hero-nav">
+<a class="hero-nav-btn" href="index.html"><span class="btn-icon">🏠</span> Home</a>
+<a class="hero-nav-btn" href="compliance.html"><span class="btn-icon">📋</span> Compliance</a>
+<a class="hero-nav-btn" href="operations.html"><span class="btn-icon">🌐</span> Operations</a>
+<a class="hero-nav-btn active" href="documents.html"><span class="btn-icon">📁</span> Document Portal</a>
+<a class="hero-nav-btn" href="drivers.html"><span class="btn-icon">🚛</span> Drivers</a>
+<a class="hero-nav-btn" href="orgchart.html"><span class="btn-icon">🏢</span> Organisation Chart</a>
+<a class="hero-nav-btn" href="sites.html"><span class="btn-icon">📍</span> Sites</a>
+<a class="hero-nav-btn" href="regional-schedule.html"><span class="btn-icon">📅</span> Regional Schedule</a>
+<a class="hero-nav-btn" href="contact-matrix.html"><span class="btn-icon">📊</span> Contact Matrix</a>
+</nav>
 </div>
-
+<!-- SEARCH -->
+<div class="search-wrap">
+<div class="search-inner">
+<span class="search-icon">🔍</span>
+<input id="searchInput" oninput="filterDocs()" placeholder="Search documents..." type="text"/>
+</div>
+</div>
 <!-- MAIN -->
 <main>
-
-  <div class="quick-access-wrap">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon">&#9889;</div>
-        <div>
-          <div class="card-title">Quick Access</div>
-          <div class="card-subtitle">Frequently used forms</div>
-        </div>
-      </div>
-      <div class="quick-grid">
-        <a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/leave-application-form" target="_blank" rel="noopener">
-          <div class="quick-btn-icon">&#128197;</div>
-          <div><div class="quick-btn-label">Leave Form</div><div class="quick-btn-desc">Submit leave requests</div></div>
-          <span class="quick-btn-arrow">&#8594;</span>
-        </a>
-        <a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/incident-report" target="_blank" rel="noopener">
-          <div class="quick-btn-icon">&#9888;&#65039;</div>
-          <div><div class="quick-btn-label">Incident Report</div><div class="quick-btn-desc">Log a workplace incident</div></div>
-          <span class="quick-btn-arrow">&#8594;</span>
-        </a>
-        <a class="quick-btn" href="#" target="_blank" rel="noopener">
-          <div class="quick-btn-icon">&#128295;</div>
-          <div><div class="quick-btn-label">Maintenance Report</div><div class="quick-btn-desc">Log a maintenance request</div></div>
-          <span class="quick-btn-arrow">&#8594;</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- SEARCH -->
-  <div class="search-wrap">
-    <div class="search-inner">
-      <span class="search-icon">&#128269;</span>
-      <input type="text" id="searchInput" placeholder="Search documents..." oninput="filterDocs()" />
-    </div>
-  </div>
-
-  <!--
-  HOW TO ADD DOCUMENTS
-
-  1. Find the category section you want (or copy a whole
-     <section class="category-section"> block to make a new one).
-
-  2. Copy one of the .doc-card <a> tags and update:
-       href        ->  path to your file (e.g. "doc-portal-docs/leave-form.pdf")
-                      or a full URL (e.g. "https://forms.office.com/...")
-       data-type   ->  pdf | docx | doc | xlsx | xls | pptx | ppt | link
-       data-name   ->  the document name (used for search)
-       .doc-name   ->  display name
-       .doc-meta   ->  file type badge + any extra info (date, size, etc.)
-
-  3. To open in a new tab add:  target="_blank" rel="noopener"
-     To download directly add:  download
-
-  4. Files should be placed in a "doc-portal-docs/" folder next to index.html
-     on GitHub, e.g. doc-portal-docs/leave-policy.pdf
-
-  That's it - no code changes needed, just copy/paste.
-  <!-- CATEGORY: Policies -->
-  <section class="category-section" id="cat-policies">
-    <div class="category-header">
-      <div class="category-icon" style="background:#e8f4fd; color:#2589d4;">&#128203;</div>
-      <div class="category-title">Policies</div>
-      <span class="category-count" id="count-policies"></span>
-    </div>
-   <!-- MORE DOCUMENTS - copy and edit this block -->
-    <div class="doc-grid" id="grid-policies">
-      <a class="doc-card" href="#" data-type="pdf" data-name="Bag Check Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Bag Check Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 01/07/2020
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Break Down Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Break Down Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version Issued 22/12/2023
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Chain of Responsibility Training and Communication Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Chain of Responsibility Training and Communication Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 14/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="CoR (Chain of Responsibility) Policy Statement" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">CoR (Chain of Responsibility) Policy Statement</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 03/03/2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="CoR Requirements for Supply Chain Partners Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">CoR Requirements for Supply Chain Partners Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 01/06/2021
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Consultation and Communication Policy and Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Consultation and Communication Policy and Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 22/04/2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Counselling and Disciplinary Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Counselling and Disciplinary Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 01/07/2022
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Defected Vehicle Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Defected Vehicle Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 31/10/2024
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Disciplinary Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Disciplinary Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 04/08/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Document Control and Records Management Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Document Control and Records Management Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 3.0 Issued 31/10/2024
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Driver Fatigue Management Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Driver Fatigue Management Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 14/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Drug and Alcohol Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Drug and Alcohol Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 4.1 Issued 22/04/2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="EEO, Discrimination, Harassment, Bullying and Occupational Violence" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">EEO, Discrimination, Harassment, Bullying and Occupational Violence</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 3.0 Issued 01/07/2022
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Environmental Protection Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Environmental Protection Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 12/10/2023
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Food Recall Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Food Recall Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 01/04/2023
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Fraud Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Fraud Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 31/05/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="HSE Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">HSE Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version  Issued
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="IT, Internet and Social Media Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">IT, Internet and Social Media Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 06/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Leave Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Leave Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 3.0 Issued 01/04/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Load Management Policy Statement" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Load Management Policy Statement</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 20/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Mobile Phone and Headphone Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Mobile Phone and Headphone Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 05/07/2023
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Modern Slavery Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Modern Slavery Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 20/02/2023
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Parental Leave Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Parental Leave Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 11/07/2023
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Quality Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Quality Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 15/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Recruitment Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Recruitment Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 28/03/2020
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Remote Access Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Remote Access Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 01/03/2020
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Right To Disconnect Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Right To Disconnect Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 24/10/2024
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Security & Surveillance Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Security & Surveillance Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.1 Issued 16/04/2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Speed Management Policy & Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Speed Management Policy & Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 5.1 Issued 20/04/2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Subcontractor Engagement & Management Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Subcontractor Engagement & Management Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 30/10/2019
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Training and Development Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Training and Development Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 28/03/2020
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Travel Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Travel Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 31/01/2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Visitor Policy and Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Visitor Policy and Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 28/02/2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Whistleblower Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Whistleblower Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 31/05/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Workplace Mobile Phone Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Workplace Mobile Phone Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 31/05/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-      <a class="doc-card" href="#" data-type="pdf" data-name="Workplace Surveillance Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Workplace Surveillance Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 01/04/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-    </div>
-  </section>  
-  <!-- CATEGORY: HR & Leave -->
-  <section class="category-section" id="cat-hr">
-    <div class="category-header">
-      <div class="category-icon" style="background:#f0fff4; color:#276749;">&#128101;</div>
-      <div class="category-title">Procedures</div>
-      <span class="category-count" id="count-hr"></span>
-    </div>
-    <div class="doc-grid" id="grid-hr">
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Approved Suppliers" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Approved Suppliers</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version details pending
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Drug and Alcohol Testing Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Drug and Alcohol Testing Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 01/03/2019
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Driver Fault Reporting &amp; Booking Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Driver Fault Reporting &amp; Booking Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version details pending
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Freight Temperature Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Freight Temperature Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.1 Issued 04/09/2024
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Incident Management Policy and Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Incident Management Policy and Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 31/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Incident Management Policy and Procedure - Workshop" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Incident Management Policy and Procedure - Workshop</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 31/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Load Management Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Load Management Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 2.0 Issued 20/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="OHS Policy Development Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">OHS Policy Development Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 01/11/2019
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Speed Management Policy and Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Speed Management Policy and Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 5.0 Issued 14/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Spill Containment Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Spill Containment Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 28/01/2025
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Stand Down Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Stand Down Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 31/10/2024
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="#" data-type="pdf" data-name="Supplier Approval and Registration Procedure" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Supplier Approval and Registration Procedure</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Version 1.0 Issued 20/04/2020
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- CATEGORY: Safety & WHS -->
-  <section class="category-section" id="cat-safety">
-    <div class="category-header">
-      <div class="category-icon" style="background:#fffbeb; color:#d97706;">&#9888;&#65039;</div>
-      <div class="category-title">Safety &amp; WHS - Blank</div>
-      <span class="category-count" id="count-safety"></span>
-    </div>
-    <div class="doc-grid" id="grid-safety">
-
-      <a class="doc-card" href="doc-portal-docs/incident-report.pdf" data-type="pdf" data-name="Incident Report Form" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Incident Report Form</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Updated Jan 2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="doc-portal-docs/whs-policy.pdf" data-type="pdf" data-name="WHS Policy" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">WHS Policy</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Updated Mar 2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="doc-portal-docs/hazard-register.xlsx" data-type="xlsx" data-name="Hazard Register" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128202;</div>
-        <div class="doc-body">
-          <div class="doc-name">Hazard Register</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">XLSX</span>
-            Updated Apr 2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- CATEGORY: Operations -->
-  <section class="category-section" id="cat-ops">
-    <div class="category-header">
-      <div class="category-icon" style="background:#f0f4ff; color:#553c9a;">&#128667;</div>
-      <div class="category-title">Operations - Blank</div>
-      <span class="category-count" id="count-ops"></span>
-    </div>
-    <div class="doc-grid" id="grid-ops">
-
-      <a class="doc-card" href="doc-portal-docs/maintenance-report.pdf" data-type="pdf" data-name="Maintenance Report Form" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128196;</div>
-        <div class="doc-body">
-          <div class="doc-name">Maintenance Report Form</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">PDF</span>
-            Updated Jan 2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-      <a class="doc-card" href="doc-portal-docs/run-sheet-template.xlsx" data-type="xlsx" data-name="Run Sheet Template" target="_blank" rel="noopener">
-        <div class="doc-icon">&#128202;</div>
-        <div class="doc-body">
-          <div class="doc-name">Run Sheet Template</div>
-          <div class="doc-meta">
-            <span class="doc-type-badge">XLSX</span>
-            Updated Feb 2026
-          </div>
-        </div>
-        <span class="doc-arrow">&#8594;</span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- CATEGORY: Forms & Templates
-       Add more categories by copying a full
-       <section class="category-section"> block -->
-
-  <!-- No results message (shown when search has no matches) -->
-  <div class="no-results" id="noResults">
-    <p>&#128269; No documents found matching "<span id="searchTerm"></span>"</p>
-  </div>
-
+<!-- QUICK ACCESS -->
+<div class="quick-access-wrap">
+<div class="card">
+<div class="card-header">
+<div class="card-icon">⚡</div>
+<div>
+<div class="card-title">Quick Access</div>
+<div class="card-subtitle">Frequently used forms</div>
+</div>
+</div>
+<div class="quick-grid">
+<a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/leave-application-form" rel="noopener" target="_blank">
+<div class="quick-btn-icon">📅</div>
+<div><div class="quick-btn-label">Leave Form</div><div class="quick-btn-desc">Submit leave requests</div></div>
+<span class="quick-btn-arrow">→</span>
+</a>
+<a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/incident-report" rel="noopener" target="_blank">
+<div class="quick-btn-icon">⚠️</div>
+<div><div class="quick-btn-label">Incident Report</div><div class="quick-btn-desc">Log a workplace incident</div></div>
+<span class="quick-btn-arrow">→</span>
+</a>
+<a class="quick-btn" href="#" rel="noopener" target="_blank">
+<div class="quick-btn-icon">🔧</div>
+<div><div class="quick-btn-label">Maintenance Report</div><div class="quick-btn-desc">Log a maintenance request</div></div>
+<span class="quick-btn-arrow">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Policies
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-policies">
+<div class="category-header">
+<div class="category-icon" style="background:#e8f4fd; color:#2589d4;">📋</div>
+<div class="category-title">Policies</div>
+<span class="category-count" id="count-policies"></span>
+</div>
+<div class="doc-grid" id="grid-policies">
+<a class="doc-card" data-name="Bag Check Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Bag Check Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/07/2018</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Breakdown Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Breakdown Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 22/12/2023</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Chain of Responsibility Training and Communication Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Chain of Responsibility Training and Communication Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 14/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Consultation and Communication Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Consultation and Communication Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 22/01/2026</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="CoR (Chain of Responsibility) Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">CoR (Chain of Responsibility) Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 03/03/2026</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="CoR Requirements for Supply Chain Partners Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">CoR Requirements for Supply Chain Partners Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 06/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Counselling and Disciplinary Policy Statement" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Counselling and Disciplinary Policy Statement</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/07/2022</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Defected Vehicle Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Defected Vehicle Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/10/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Disciplinary Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Disciplinary Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 04/08/2023</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Document Control and Records Management Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Document Control and Records Management Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 3.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/10/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Driver Fatigue Management Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Driver Fatigue Management Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 14/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Drug and Alcohol Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Drug and Alcohol Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 4.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 03/07/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Environmental Protection Policy Statement" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Environmental Protection Policy Statement</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 12/10/2023</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Equal Employment Opportunity (EEO), Discrimination, Harassment, Bullying and Occupational Violence" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Equal Employment Opportunity (EEO), Discrimination, Harassment, Bullying and Occupational Violence</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 3.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/07/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Food Recall Policy Statement" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Food Recall Policy Statement</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/04/2023</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Fraud Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Fraud Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/05/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="IT, Internet and Social Media Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">IT, Internet and Social Media Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/06/2021</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Leave Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Leave Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 3.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/04/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Load Management Policy Statement" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Load Management Policy Statement</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 20/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Mobile Phone and Headphone Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Mobile Phone and Headphone Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 05/07/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Modern Slavery Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Modern Slavery Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 20/02/2023</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Parental Leave Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Parental Leave Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 11/07/2023</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Quality Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Quality Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 15/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Recruitment Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Recruitment Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 29/03/2018</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Remote Access Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Remote Access Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/03/2022</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Right to Disconnect Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Right to Disconnect Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 24/10/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Security and Surveillance Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Security and Surveillance Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Speed Management Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Speed Management Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/07/2020</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Subcontractor Engagement and Management Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Subcontractor Engagement and Management Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 30/10/2019</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Training and Development Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Training and Development Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 29/03/2018</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Transport HSE Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Transport HSE Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Travel Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Travel Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/01/2026</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Whistleblower Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Whistleblower Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/05/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Workplace Mobile Phone Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Workplace Mobile Phone Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/05/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Workplace Surveillance Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Workplace Surveillance Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/04/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Procedures
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-procedures">
+<div class="category-header">
+<div class="category-icon" style="background:#f0fff4; color:#276749;">⚙️</div>
+<div class="category-title">Procedures</div>
+<span class="category-count" id="count-procedures"></span>
+</div>
+<div class="doc-grid" id="grid-procedures">
+<a class="doc-card" data-name="Drug and Alcohol Testing Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Drug and Alcohol Testing Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/03/2019</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Freight Temperature Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Freight Temperature Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.1</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 04/09/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Incident Management Policy and Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Incident Management Policy and Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Incident Management Procedure - Workshop" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Incident Management Procedure - Workshop</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Load Management Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Load Management Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="OHS Policy Development Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">OHS Policy Development Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 01/11/2019</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Speed Management Policy and Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Speed Management Policy and Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 5.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 14/01/2027</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Spill Containment Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Spill Containment Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 28/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Stand Down Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Stand Down Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/10/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Supplier Approval and Registration Procedure" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Supplier Approval and Registration Procedure</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 20/04/2020</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Manuals & Guides
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-manuals">
+<div class="category-header">
+<div class="category-icon" style="background:#f5f0ff; color:#6b46c1;">📚</div>
+<div class="category-title">Manuals &amp; Guides</div>
+<span class="category-count" id="count-manuals"></span>
+</div>
+<div class="doc-grid" id="grid-manuals">
+<a class="doc-card" data-name="Driver Level Upgrade Flowchart" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Driver Level Upgrade Flowchart</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 16/04/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Drivers Information Manual" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Drivers Information Manual</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 7.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/10/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Employee Code of Conduct" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Employee Code of Conduct</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 14/01/2026</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Escalation Contacts" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Escalation Contacts</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 30/11/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Incident Management - Quick Guide" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Incident Management - Quick Guide</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.1</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/01/2026</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Incident Severity Levels" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Incident Severity Levels</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Mass Management Manual" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Mass Management Manual</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 12.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Occupational Health and Safety Manual" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Occupational Health and Safety Manual</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 28/06/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Working From Home Checklist" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Working From Home Checklist</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 05/08/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Forms
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-forms">
+<div class="category-header">
+<div class="category-icon" style="background:#fff5f0; color:#c05621;">📝</div>
+<div class="category-title">Forms</div>
+<span class="category-count" id="count-forms"></span>
+</div>
+<div class="doc-grid" id="grid-forms">
+<a class="doc-card" data-name="Monthly Yard Inspection Checklist" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Monthly Yard Inspection Checklist</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Refer a Mate - Driver Incentive Program" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Refer a Mate - Driver Incentive Program</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Weekly Hygiene &amp; Maintenance Checklist" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Weekly Hygiene &amp; Maintenance Checklist</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Driver Training Resources
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-driver">
+<div class="category-header">
+<div class="category-icon" style="background:#e8f4fd; color:#1a4a7a;">🚛</div>
+<div class="category-title">Driver Training Resources</div>
+<span class="category-count" id="count-driver"></span>
+</div>
+<div class="doc-grid" id="grid-driver">
+<a class="doc-card" data-name="Contractor Induction Drivers" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Contractor Induction Drivers</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 30/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Driver Run Sheet Example" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Driver Run Sheet Example</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Fatigue Management Training Record - Driver" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Fatigue Management Training Record - Driver</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 30/11/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Mass Management Training Record - Driver" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Mass Management Training Record - Driver</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Plans
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-plans">
+<div class="category-header">
+<div class="category-icon" style="background:#fffbeb; color:#d97706;">📋</div>
+<div class="category-title">Plans</div>
+<span class="category-count" id="count-plans"></span>
+</div>
+<div class="doc-grid" id="grid-plans">
+<a class="doc-card" data-name="Business Continuity Plan" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Business Continuity Plan</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/07/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Emergency Plan" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Emergency Plan</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 12/11/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Psychosocial Hazards Management Plan" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Psychosocial Hazards Management Plan</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/12/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Traffic Management Plan - Cavan" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Traffic Management Plan - Cavan</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/05/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Traffic Management Plan - Delacombe" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Traffic Management Plan - Delacombe</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/05/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Truganina Site Traffic Flow" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Truganina Site Traffic Flow</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: HACCP
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-haccp">
+<div class="category-header">
+<div class="category-icon" style="background:#f0fff4; color:#276749;">🍱</div>
+<div class="category-title">HACCP</div>
+<span class="category-count" id="count-haccp"></span>
+</div>
+<div class="doc-grid" id="grid-haccp">
+<a class="doc-card" data-name="Flow Chart Hazard Analysis HAT Table Ambient Product" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Flow Chart Hazard Analysis HAT Table Ambient Product</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 06/05/2021</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Flow Chart Hazard Analysis HAT Table Chilled and Frozen Product" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Flow Chart Hazard Analysis HAT Table Chilled and Frozen Product</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 06/05/2021</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Food Safety Policy" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Food Safety Policy</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="FSP Flow Chart" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">FSP Flow Chart</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 14/11/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="HACCP Based Quality Assurance Manual" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">HACCP Based Quality Assurance Manual</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 14/11/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="HACCP Certificate" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">HACCP Certificate</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 16/05/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Risk Assessments
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-risk">
+<div class="category-header">
+<div class="category-icon" style="background:#fff0f0; color:#e53e3e;">⚠️</div>
+<div class="category-title">Risk Assessments</div>
+<span class="category-count" id="count-risk"></span>
+</div>
+<div class="doc-grid" id="grid-risk">
+<a class="doc-card" data-name="Coupling/Uncoupling Activities" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Coupling/Uncoupling Activities</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/08/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Dimension Risk Assessment" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Dimension Risk Assessment</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 20/02/2021</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Load Restraint Risk Assessment" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Load Restraint Risk Assessment</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 20/02/2021</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Risk Assessment - Dimension (CoR)" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Risk Assessment - Dimension (CoR)</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 3.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 14/08/2018</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Risk Assessment - Load Restraint (CoR)" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Risk Assessment - Load Restraint (CoR)</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 10/01/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Risk Assessment - Mass/Dimension" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Risk Assessment - Mass/Dimension</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 3.1</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 14/08/2018</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Risk Assessment - Site Security" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Risk Assessment - Site Security</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 3.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 21/03/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Risk Assessment Template" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Risk Assessment Template</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Transport Safety Risk Assessment (Fatigue)" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Transport Safety Risk Assessment (Fatigue)</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 3.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 25/03/2020</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Transport Safety Risk Assessment (Speed)" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Transport Safety Risk Assessment (Speed)</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 3.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 25/03/2020</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="WOW Seal Control Guideline" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">WOW Seal Control Guideline</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 20/03/2026</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Safety Alerts
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-alerts">
+<div class="category-header">
+<div class="category-icon" style="background:#fffbeb; color:#d97706;">🚨</div>
+<div class="category-title">Safety Alerts</div>
+<span class="category-count" id="count-alerts"></span>
+</div>
+<div class="doc-grid" id="grid-alerts">
+<a class="doc-card" data-name="Vehicle Safety Devices" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Vehicle Safety Devices</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 17/03/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Standard Operating Procedures
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-sops">
+<div class="category-header">
+<div class="category-icon" style="background:#f0f4ff; color:#553c9a;">📋</div>
+<div class="category-title">Standard Operating Procedures</div>
+<span class="category-count" id="count-sops"></span>
+</div>
+<div class="doc-grid" id="grid-sops">
+<a class="doc-card" data-name="Truck Loading and Unloading SOP" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Truck Loading and Unloading SOP</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 22/01/2026</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Site Rules
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-siterules">
+<div class="category-header">
+<div class="category-icon" style="background:#e8f4fd; color:#2589d4;">📍</div>
+<div class="category-title">Site Rules</div>
+<span class="category-count" id="count-siterules"></span>
+</div>
+<div class="doc-grid" id="grid-siterules">
+<a class="doc-card" data-name="Ballarat Site Rules" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Ballarat Site Rules</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 1.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a><a class="doc-card" data-name="Truganina Site Rules" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Truganina Site Rules</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 5.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/10/2024</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- ═══════════════════════════════════════════════
+       CATEGORY: Safe Work Procedures
+  ════════════════════════════════════════════════ -->
+<section class="category-section" id="cat-swp">
+<div class="category-header">
+<div class="category-icon" style="background:#f0fff4; color:#276749;">✅</div>
+<div class="category-title">Safe Work Procedures</div>
+<span class="category-count" id="count-swp"></span>
+</div>
+<div class="doc-grid" id="grid-swp">
+<a class="doc-card" data-name="Lock Out/Tag Out" data-type="pdf" href="#" rel="noopener" target="_blank">
+<div class="doc-icon">📄</div>
+<div class="doc-body">
+<div class="doc-name">Lock Out/Tag Out</div>
+<div class="doc-meta"><div class="doc-meta-top"><span class="doc-type-badge">PDF</span><span class="doc-meta-pill">Version 2.0</span></div><div class="doc-meta-bottom"><span class="doc-meta-pill">Issued 31/08/2025</span></div></div>
+</div>
+<span class="doc-arrow">→</span>
+</a></div>
+</section>
+<!-- No results message -->
+<div class="no-results" id="noResults">
+<p>🔍 No documents found matching "<span id="searchTerm"></span>"</p>
+</div>
 </main>
-
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <span>&copy; 2026 Sargeant Transport Services. All rights reserved.</span>
-  </div>
+<div class="footer-inner">
+<span>© 2026 Sargeant Transport Services. All rights reserved.</span>
+</div>
 </footer>
-
 <script>
-  function positionDocBadges() {
-    document.querySelectorAll('.doc-card').forEach(card => {
-      const icon = card.querySelector('.doc-icon');
-      const badge = card.querySelector('.doc-type-badge');
-      if (!icon || !badge) return;
-
-      let stack = card.querySelector('.doc-icon-stack');
-      if (!stack) {
-        stack = document.createElement('div');
-        stack.className = 'doc-icon-stack';
-        card.insertBefore(stack, card.firstChild);
-      }
-
-      stack.appendChild(icon);
-      stack.appendChild(badge);
-    });
-  }
-
-  function formatDocMeta() {
-    document.querySelectorAll('.doc-meta').forEach(meta => {
-      const text = meta.textContent.replace(/\s+/g, ' ').trim();
-      if (!text) return;
-
-      const parts = [];
-      const versionMatch = text.match(/Version\s+.*?(?=\s+Issued\s+|$)/i);
-      const issuedMatch = text.match(/Issued\s+.+$/i);
-      const updatedMatch = text.match(/Updated\s+.+$/i);
-
-      if (versionMatch) parts.push(versionMatch[0].trim());
-      if (issuedMatch) parts.push(issuedMatch[0].trim());
-      if (!versionMatch && updatedMatch) parts.push(updatedMatch[0].trim());
-      if (!parts.length) parts.push(text);
-
-      meta.innerHTML = parts
-        .map(part => `<span class="doc-meta-pill">${part}</span>`)
-        .join('');
-    });
-  }
-
-  function setupCategoryDropdowns() {
-    document.querySelectorAll('.category-section').forEach(section => {
-      const header = section.querySelector('.category-header');
-      if (!header || header.dataset.dropdownBound === 'true') return;
-
-      section.classList.add('collapsed');
-      header.dataset.dropdownBound = 'true';
-      header.setAttribute('role', 'button');
-      header.setAttribute('tabindex', '0');
-      header.setAttribute('aria-expanded', !section.classList.contains('collapsed'));
-
-      header.addEventListener('click', () => {
-        section.classList.toggle('collapsed');
-        header.setAttribute('aria-expanded', !section.classList.contains('collapsed'));
-      });
-
-      header.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          header.click();
-        }
-      });
-    });
-  }
-
-  // COUNT BADGES
+  // Auto-count documents per category
   function updateCounts() {
-    const categories = ['policies', 'hr', 'safety', 'ops'];
-    categories.forEach(cat => {
-      const grid = document.getElementById('grid-' + cat);
-      const badge = document.getElementById('count-' + cat);
+    document.querySelectorAll('.category-section').forEach(section => {
+      const grid = section.querySelector('.doc-grid');
+      const badge = section.querySelector('.category-count');
       if (!grid || !badge) return;
       const count = grid.querySelectorAll('.doc-card').length;
       badge.textContent = count + ' document' + (count !== 1 ? 's' : '');
     });
   }
 
-  // SEARCH
+  // Collapsible categories
+  function setupCategoryDropdowns() {
+    document.querySelectorAll('.category-section').forEach(section => {
+      const header = section.querySelector('.category-header');
+      if (!header || header.dataset.dropdownBound === 'true') return;
+      section.classList.add('collapsed');
+      header.dataset.dropdownBound = 'true';
+      header.setAttribute('role', 'button');
+      header.setAttribute('tabindex', '0');
+      header.setAttribute('aria-expanded', 'false');
+      header.addEventListener('click', () => {
+        section.classList.toggle('collapsed');
+        header.setAttribute('aria-expanded', !section.classList.contains('collapsed'));
+      });
+      header.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); header.click(); }
+      });
+    });
+  }
+
+  // Search/filter
   function filterDocs() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
-    const allCards = document.querySelectorAll('.doc-card');
     let totalVisible = 0;
 
-    allCards.forEach(card => {
+    document.querySelectorAll('.doc-card').forEach(card => {
       const name = (card.dataset.name || card.querySelector('.doc-name').textContent).toLowerCase();
-      const type = card.dataset.type || '';
-      const matches = name.includes(query) || type.includes(query);
+      const matches = name.includes(query);
       card.style.display = matches ? '' : 'none';
       if (matches) totalVisible++;
     });
 
-    // Hide/show category sections based on visible cards
     document.querySelectorAll('.category-section').forEach(section => {
       const header = section.querySelector('.category-header');
       const grid = section.querySelector('.doc-grid');
       const visibleCards = grid ? [...grid.querySelectorAll('.doc-card')].filter(c => c.style.display !== 'none') : [];
       section.style.display = (query === '' || visibleCards.length > 0) ? '' : 'none';
-      if (query === '') {
-        section.classList.add('collapsed');
-      }
-      if (query && visibleCards.length > 0) {
-        section.classList.remove('collapsed');
-      }
-      if (header) {
-        header.setAttribute('aria-expanded', !section.classList.contains('collapsed'));
-      }
+      if (query === '') section.classList.add('collapsed');
+      if (query && visibleCards.length > 0) section.classList.remove('collapsed');
+      if (header) header.setAttribute('aria-expanded', !section.classList.contains('collapsed'));
     });
 
-    // Show no-results if nothing found
     const noResults = document.getElementById('noResults');
     const searchTerm = document.getElementById('searchTerm');
     if (query && totalVisible === 0) {
@@ -1539,13 +1516,8 @@
     }
   }
 
-  positionDocBadges();
-  formatDocMeta();
-  setupCategoryDropdowns();
   updateCounts();
+  setupCategoryDropdowns();
 </script>
-
 </body>
 </html>
-
-
