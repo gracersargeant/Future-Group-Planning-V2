@@ -23,11 +23,8 @@
       --text-dark: #0d2340;
       --text-body: #3a5270;
       --text-dim: #7a96b0;
-      --ok: #2f855a;
-      --ok-bg: #f0fff4;
       --warn: #d97706;
       --warn-bg: #fffbeb;
-      --soft-red: #fff5f5;
       --white: #ffffff;
       --radius: 12px;
       --shadow-sm: 0 1px 4px rgba(15,42,74,0.07);
@@ -123,7 +120,7 @@
     .hero p {
       font-size: 14px;
       color: rgba(255,255,255,0.64);
-      max-width: 680px;
+      max-width: 700px;
       line-height: 1.6;
     }
 
@@ -190,9 +187,7 @@
     }
 
     .card,
-    .section-card {
-      padding: 22px 24px;
-    }
+    .section-card { padding: 22px 24px; }
 
     .card-header,
     .section-header {
@@ -292,13 +287,8 @@
     }
     .quick-btn:hover .quick-btn-arrow { opacity: 1; transform: translateX(0); }
 
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
-    }
-
-    .upcoming-grid {
+    .upcoming-grid,
+    .accreditation-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
@@ -345,39 +335,49 @@
       line-height: 1.6;
     }
 
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
     .stack {
       display: flex;
       flex-direction: column;
       gap: 24px;
     }
 
-    .presentation-box {
-      border-radius: 12px;
+    .pdf-frame-wrap {
+      border-radius: 10px;
       overflow: hidden;
       border: 1px solid var(--border);
-      background: linear-gradient(135deg, #f5f9fd, #ffffff);
+      background: #f0f0f0;
+      margin-bottom: 14px;
     }
 
-    .presentation-stage {
-      min-height: 320px;
+    .pdf-frame-wrap object {
+      width: 100%;
+      height: 420px;
+      border: none;
+      display: block;
+      background: #fff;
+    }
+
+    .pdf-fallback {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 28px;
+      gap: 10px;
+      min-height: 420px;
+      padding: 24px;
+      background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
       text-align: center;
-      background:
-        radial-gradient(circle at top right, rgba(74,174,232,0.16), transparent 38%),
-        linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
     }
 
-    .presentation-inner {
-      max-width: 430px;
-    }
-
-    .presentation-icon {
+    .pdf-fallback-icon {
       width: 62px;
       height: 62px;
-      margin: 0 auto 16px;
       border-radius: 16px;
       display: flex;
       align-items: center;
@@ -388,25 +388,23 @@
       border: 1px solid #fbd38d;
     }
 
-    .presentation-title {
+    .pdf-fallback-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 16px;
       font-weight: 700;
       color: var(--text-dark);
-      margin-bottom: 8px;
     }
 
-    .presentation-copy {
+    .pdf-fallback-sub {
       font-size: 12px;
-      line-height: 1.7;
       color: var(--text-body);
-      margin-bottom: 18px;
+      line-height: 1.7;
+      max-width: 430px;
     }
 
-    .presentation-actions {
+    .action-row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 10px;
     }
 
@@ -428,6 +426,13 @@
     .action-btn:hover {
       border-color: var(--accent);
       background: var(--accent-pale);
+    }
+
+    .presentation-note {
+      font-size: 11.5px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-top: 12px;
     }
 
     .info-list {
@@ -484,12 +489,6 @@
     }
 
     .info-link:hover { text-decoration: underline; }
-
-    .accreditation-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
 
     .accreditation-card {
       padding: 16px;
@@ -624,9 +623,7 @@
     @media (max-width: 1080px) {
       .dashboard-grid,
       .upcoming-grid,
-      .accreditation-grid {
-        grid-template-columns: 1fr;
-      }
+      .accreditation-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -638,7 +635,8 @@
       .hero-nav-btn { padding: 13px 14px; font-size: 12px; }
       .quick-grid { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 1fr; }
-      .presentation-actions { flex-direction: column; }
+      .action-row { flex-direction: column; }
+      .pdf-frame-wrap object { height: 360px; }
     }
   </style>
 </head>
@@ -740,22 +738,23 @@
           <div class="section-header">
             <div>
               <div class="section-title">Safety Indicators Presentation</div>
-              <div class="section-subtitle">Reserved for the PowerPoint deck you want to surface on this page.</div>
+              <div class="section-subtitle">Upload a PDF for in-browser viewing and keep the original PowerPoint alongside it for download or editing.</div>
             </div>
           </div>
-          <div class="presentation-box">
-            <div class="presentation-stage">
-              <div class="presentation-inner">
-                <div class="presentation-icon">&#128200;</div>
-                <div class="presentation-title">Safety Indicators Slide Deck</div>
-                <div class="presentation-copy">This block is set up as the home for your PowerPoint. Once you decide how you want to upload it, we can wire this panel to open the deck, embed a viewer, or swap to a slide-by-slide PDF preview if that ends up working better in-browser.</div>
-                <div class="presentation-actions">
-                  <a class="action-btn" href="#">Add PowerPoint Link</a>
-                  <a class="action-btn" href="#">Open Full Presentation</a>
-                </div>
+          <div class="pdf-frame-wrap">
+            <object data="shared-documents/safety-indicators.pdf" type="application/pdf" aria-label="Safety indicators presentation PDF">
+              <div class="pdf-fallback">
+                <div class="pdf-fallback-icon">&#128200;</div>
+                <div class="pdf-fallback-title">Safety indicators presentation not added yet</div>
+                <div class="pdf-fallback-sub">Add <strong>safety-indicators.pdf</strong> to the <strong>shared-documents</strong> folder for the browser preview, and optionally add <strong>safety-indicators.pptx</strong> so the original deck can still be opened or downloaded.</div>
               </div>
-            </div>
+            </object>
           </div>
+          <div class="action-row">
+            <a class="action-btn" href="shared-documents/safety-indicators.pdf" target="_blank" rel="noopener">Open PDF Viewer</a>
+            <a class="action-btn" href="shared-documents/safety-indicators.pptx" target="_blank" rel="noopener">Open PowerPoint File</a>
+          </div>
+          <div class="presentation-note">Best practice here is to export the PowerPoint to PDF for smooth slide-by-slide browser viewing, while keeping the `.pptx` file in the same folder for editing and download.</div>
         </section>
 
         <section class="section-card">
