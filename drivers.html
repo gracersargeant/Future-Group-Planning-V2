@@ -64,18 +64,6 @@
     .content-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:24px;align-items:start}
     .content-column{display:flex;flex-direction:column;gap:24px}
 
-    .announcement-list{display:flex;flex-direction:column;gap:9px}
-    .announcement-item{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;background:var(--bg-card2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;transition:all .18s}
-    .announcement-item:hover{background:var(--accent-pale);border-color:rgba(37,137,212,.3);border-left-color:var(--accent)}
-    .announcement-item.urgent{border-left-color:var(--warn);background:var(--warn-bg);border-color:rgba(217,119,6,.18)}
-    .announcement-item.urgent:hover{background:#fef3c7}
-    .ann-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:5px;flex-shrink:0}
-    .announcement-item.urgent .ann-dot{background:var(--warn)}
-    .ann-title{font-size:12.5px;font-weight:600;color:var(--text-dark);margin-bottom:3px}
-    .ann-meta{font-size:10.5px;color:var(--text-dim);line-height:1.4}
-    .ann-badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700;margin-left:5px;background:var(--accent-pale2);color:var(--accent);border:1px solid rgba(37,137,212,.2)}
-    .ann-badge.urgent{background:#fef3c7;color:var(--warn);border-color:rgba(217,119,6,.25)}
-    .ann-empty{padding:16px;border:1px dashed var(--border);border-radius:10px;background:var(--bg-card2);font-size:12px;color:var(--text-dim)}
     .pdf-frame-wrap{border-radius:8px;overflow:hidden;border:1px solid var(--border);background:#f0f0f0}
     .pdf-frame-wrap object{width:100%;height:320px;border:none;display:block;background:#fff}
     .pdf-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:320px;padding:24px;background:var(--bg-card2);text-align:center}
@@ -115,7 +103,7 @@
 <div class="hero">
   <div class="hero-inner">
     <h1>&#128667; Drivers</h1>
-    <p>Driver forms, announcements, and recognition all in one place for the team on the road.</p>
+    <p>Driver forms, toolbox resources, and recognition all in one place for the team on the road.</p>
   </div>
 </div>
 
@@ -170,44 +158,7 @@
     <div class="content-column">
       <div class="card">
         <div class="card-header">
-          <div class="card-icon">&#128226;</div>
-          <div>
-            <div class="card-title">Announcements</div>
-            <div class="card-subtitle">Latest updates</div>
-          </div>
-        </div>
-        <div class="announcement-list">
-          <!--
-            TO ADD AN ANNOUNCEMENT: copy one block below.
-            Add class="urgent" for high-priority items.
-          -->
-          <div class="announcement-item urgent">
-            <div class="ann-dot"></div>
-            <div>
-              <div class="ann-title">Intranet Trial <span class="ann-badge urgent">Urgent</span></div>
-              <div class="ann-meta">Intranet trial currently running &#8212; please help us test the new page!</div>
-            </div>
-          </div>
-          <div class="announcement-item urgent">
-            <div class="ann-dot"></div>
-            <div>
-              <div class="ann-title">BFM Course Due <span class="ann-badge urgent">Urgent</span></div>
-              <div class="ann-meta">All schedulers assigned a BFM course &#8212; complete by 10/04/2026</div>
-            </div>
-          </div>
-          <div class="announcement-item">
-            <div class="ann-dot"></div>
-            <div>
-              <div class="ann-title">Q1 Newsletter <span class="ann-badge">New</span></div>
-              <div class="ann-meta">Q1 Newsletter due out this week &#8212; keep an eye on your emails and the intranet</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-      <div class="card-header">
-          <div class="card-icon" style="background:linear-gradient(135deg,#432874,#6d28d9)">🔨</div>
+          <div class="card-icon" style="background:linear-gradient(135deg,#432874,#6d28d9)">&#128736;</div>
           <div>
             <div class="card-title">Toolbox</div>
             <div class="card-subtitle">Upload a toolbox PDF for drivers</div>
@@ -223,6 +174,33 @@
           </object>
         </div>
         <a class="pdf-link-btn" href="shared-documents/toolbox.pdf" target="_blank" rel="noopener">View Toolbox PDF</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">&#128172;</div>
+          <div>
+            <div class="card-title">Driver Support</div>
+            <div class="card-subtitle">Quick links for feedback, training, and opportunities</div>
+          </div>
+        </div>
+        <div class="quick-grid" style="grid-template-columns:repeat(3,minmax(0,1fr));">
+          <a class="quick-btn" href="#" target="_blank" rel="noopener">
+            <div class="quick-btn-icon">&#128172;</div>
+            <div><div class="quick-btn-label">Feedback</div><div class="quick-btn-desc">Share ideas or raise issues</div></div>
+            <span class="quick-btn-arrow">&#8594;</span>
+          </a>
+          <a class="quick-btn" href="#" target="_blank" rel="noopener">
+            <div class="quick-btn-icon">&#127891;</div>
+            <div><div class="quick-btn-label">Training Request</div><div class="quick-btn-desc">Request training support</div></div>
+            <span class="quick-btn-arrow">&#8594;</span>
+          </a>
+          <a class="quick-btn" href="#" target="_blank" rel="noopener">
+            <div class="quick-btn-icon">&#128188;</div>
+            <div><div class="quick-btn-label">Job Availability</div><div class="quick-btn-desc">View open opportunities</div></div>
+            <span class="quick-btn-arrow">&#8594;</span>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -244,7 +222,7 @@
             </div>
           </div>
           <div class="extra-mile-message" id="extraMileMessage">
-            <div class="extra-mile-title"> Lachlan Cairns - Ballarat - Passion</div>
+            <div class="extra-mile-title">Lachlan Cairns - Ballarat - Passion</div>
             Lachlan has been doing an outstanding job maintaining the cleanliness of equipment. This attention to detail not only reflects pride in his work but also contributes to safety and efficiency across the operation.
             Great effort Lachlan!!
           </div>
