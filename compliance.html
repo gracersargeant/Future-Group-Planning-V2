@@ -27,6 +27,7 @@
       --ok-bg: #f0fff4;
       --warn: #d97706;
       --warn-bg: #fffbeb;
+      --soft-red: #fff5f5;
       --white: #ffffff;
       --radius: 12px;
       --shadow-sm: 0 1px 4px rgba(15,42,74,0.07);
@@ -108,19 +109,6 @@
       pointer-events: none;
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      left: 48px;
-      bottom: -55px;
-      width: 220px;
-      height: 120px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0));
-      filter: blur(6px);
-      pointer-events: none;
-    }
-
     .hero-inner { position: relative; z-index: 1; }
 
     .hero h1 {
@@ -135,7 +123,7 @@
     .hero p {
       font-size: 14px;
       color: rgba(255,255,255,0.64);
-      max-width: 620px;
+      max-width: 680px;
       line-height: 1.6;
     }
 
@@ -190,23 +178,23 @@
       gap: 24px;
     }
 
-    .panel,
-    .stat-card,
-    .focus-card,
+    .card,
     .section-card,
-    .placeholder-card {
+    .upcoming-card,
+    .info-card,
+    .accreditation-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .section-card,
-    .panel {
+    .card,
+    .section-card {
       padding: 22px 24px;
     }
 
-    .panel-header,
+    .card-header,
     .section-header {
       display: flex;
       align-items: center;
@@ -217,7 +205,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .panel-title,
+    .card-title,
     .section-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 15px;
@@ -225,7 +213,7 @@
       color: var(--text-dark);
     }
 
-    .panel-subtitle,
+    .card-subtitle,
     .section-subtitle {
       font-size: 11px;
       color: var(--text-dim);
@@ -245,19 +233,85 @@
       white-space: nowrap;
     }
 
-    .summary-grid {
+    .quick-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
     }
 
-    .stat-card {
-      padding: 18px 18px 16px;
+    .quick-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--bg-card2);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
       position: relative;
       overflow: hidden;
     }
 
-    .stat-card::before {
+    .quick-btn::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .quick-btn:hover {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quick-btn:hover::before { opacity: 1; }
+    .quick-btn-icon { font-size: 20px; flex-shrink: 0; }
+    .quick-btn-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .quick-btn-desc { font-size: 10.5px; color: var(--text-dim); }
+    .quick-btn-arrow {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      transform: translateX(-4px);
+      flex-shrink: 0;
+    }
+    .quick-btn:hover .quick-btn-arrow { opacity: 1; transform: translateX(0); }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .upcoming-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .upcoming-card {
+      padding: 18px;
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .upcoming-card::before {
       content: '';
       position: absolute;
       left: 0;
@@ -267,87 +321,127 @@
       background: linear-gradient(90deg, var(--accent), var(--accent2));
     }
 
-    .stat-label {
+    .upcoming-label {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       color: var(--text-dim);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
-    .stat-value {
+    .upcoming-date {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 31px;
+      font-size: 24px;
       font-weight: 800;
       color: var(--text-dark);
-      line-height: 1;
       margin-bottom: 8px;
+      line-height: 1.1;
     }
 
-    .stat-note {
+    .upcoming-copy {
       font-size: 12px;
-      line-height: 1.5;
       color: var(--text-body);
+      line-height: 1.6;
     }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+    .stack {
+      display: flex;
+      flex-direction: column;
       gap: 24px;
     }
 
-    .focus-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+    .presentation-box {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #f5f9fd, #ffffff);
     }
 
-    .focus-card {
-      padding: 18px;
-      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card2) 100%);
-    }
-
-    .focus-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+    .presentation-stage {
+      min-height: 320px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      margin-bottom: 14px;
-      background: var(--accent-pale);
-      color: var(--accent);
+      padding: 28px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top right, rgba(74,174,232,0.16), transparent 38%),
+        linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
     }
 
-    .focus-title {
+    .presentation-inner {
+      max-width: 430px;
+    }
+
+    .presentation-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 16px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      background: #fff5f0;
+      color: #c05621;
+      border: 1px solid #fbd38d;
+    }
+
+    .presentation-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--text-dark);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .focus-copy {
+    .presentation-copy {
       font-size: 12px;
-      line-height: 1.6;
+      line-height: 1.7;
       color: var(--text-body);
+      margin-bottom: 18px;
     }
 
-    .placeholder-list {
+    .presentation-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 11.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+    }
+
+    .info-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .placeholder-card {
-      padding: 16px 16px 15px;
+    .info-card {
+      padding: 16px;
       background: var(--bg-card2);
-      border-style: dashed;
     }
 
-    .placeholder-head {
+    .info-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -355,40 +449,83 @@
       margin-bottom: 8px;
     }
 
-    .placeholder-title {
+    .info-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 13px;
       font-weight: 700;
       color: var(--text-dark);
     }
 
-    .placeholder-badge {
+    .info-tag {
       padding: 4px 8px;
       border-radius: 999px;
-      background: var(--white);
       border: 1px solid var(--border);
+      background: var(--white);
       font-size: 10px;
       font-weight: 700;
-      color: var(--text-dim);
-      text-transform: uppercase;
       letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--text-dim);
       white-space: nowrap;
     }
 
-    .placeholder-copy {
+    .info-copy {
       font-size: 12px;
       line-height: 1.6;
       color: var(--text-body);
+      margin-bottom: 10px;
     }
 
-    .layout-grid {
+    .info-link {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .info-link:hover { text-decoration: underline; }
+
+    .accreditation-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
+      gap: 14px;
     }
 
-    .layout-grid .section-card:first-child {
-      grid-column: span 2;
+    .accreditation-card {
+      padding: 16px;
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+    }
+
+    .certificate-preview {
+      height: 140px;
+      border-radius: 10px;
+      border: 1px dashed var(--border);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(240,247,253,0.96)),
+        repeating-linear-gradient(180deg, transparent 0, transparent 20px, rgba(37,137,212,0.05) 20px, rgba(37,137,212,0.05) 21px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      margin-bottom: 14px;
+      color: var(--text-dim);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .accreditation-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+
+    .accreditation-copy {
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: var(--text-body);
     }
 
     .timeline {
@@ -399,8 +536,8 @@
 
     .timeline-item {
       display: grid;
-      grid-template-columns: 112px 1fr;
-      gap: 14px;
+      grid-template-columns: 130px 1fr;
+      gap: 16px;
       align-items: start;
       padding: 14px 0;
       border-bottom: 1px solid var(--border);
@@ -428,60 +565,6 @@
       font-size: 12px;
       line-height: 1.6;
       color: var(--text-body);
-    }
-
-    .matrix {
-      display: grid;
-      gap: 12px;
-    }
-
-    .matrix-row {
-      display: grid;
-      grid-template-columns: 1fr 120px;
-      gap: 12px;
-      align-items: center;
-      padding: 13px 14px;
-      border-radius: 10px;
-      background: var(--bg-card2);
-      border: 1px solid var(--border);
-    }
-
-    .matrix-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 4px;
-    }
-
-    .matrix-copy {
-      font-size: 11px;
-      color: var(--text-dim);
-      line-height: 1.5;
-    }
-
-    .matrix-state {
-      justify-self: end;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      border: 1px solid var(--border);
-      background: var(--white);
-      color: var(--text-dim);
-    }
-
-    .matrix-state.ok {
-      background: var(--ok-bg);
-      border-color: #c6f6d5;
-      color: var(--ok);
-    }
-
-    .matrix-state.warn {
-      background: var(--warn-bg);
-      border-color: #fbd38d;
-      color: var(--warn);
     }
 
     .callout {
@@ -539,9 +622,11 @@
     }
 
     @media (max-width: 1080px) {
-      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .two-col, .layout-grid { grid-template-columns: 1fr; }
-      .layout-grid .section-card:first-child { grid-column: span 1; }
+      .dashboard-grid,
+      .upcoming-grid,
+      .accreditation-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
@@ -551,9 +636,9 @@
       main { padding: 20px 20px 40px; }
       footer { padding: 20px; }
       .hero-nav-btn { padding: 13px 14px; font-size: 12px; }
-      .summary-grid, .focus-grid { grid-template-columns: 1fr; }
-      .timeline-item, .matrix-row { grid-template-columns: 1fr; }
-      .matrix-state { justify-self: start; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .presentation-actions { flex-direction: column; }
     }
   </style>
 </head>
@@ -568,7 +653,7 @@
   <div class="hero">
     <div class="hero-inner">
       <h1>&#128203; Compliance</h1>
-      <p>A central framework for audits, obligations, certifications, training and action tracking. This page is set up as a shell so content can be dropped in later without redesigning the layout.</p>
+      <p>A compliance board framework for upcoming activities, safety indicators, legislation updates, accreditations and audit planning. The layout is ready now, and we can keep dropping real content into each panel as you decide what belongs here.</p>
     </div>
   </div>
 
@@ -587,213 +672,199 @@
   </div>
 
   <main>
-    <section class="panel">
-      <div class="panel-header">
+    <section class="card">
+      <div class="card-header">
         <div>
-          <div class="panel-title">Compliance Snapshot</div>
-          <div class="panel-subtitle">High-level placeholders for whatever summary data you decide to track.</div>
+          <div class="card-title">Quick Access</div>
+          <div class="card-subtitle">Frequently used forms and shortcuts.</div>
         </div>
-        <span class="status-pill">Framework Only</span>
       </div>
-      <div class="summary-grid">
-        <article class="stat-card">
-          <div class="stat-label">Upcoming Audits</div>
-          <div class="stat-value">--</div>
-          <div class="stat-note">Use this tile for scheduled internal, customer or external audit counts.</div>
-        </article>
-        <article class="stat-card">
-          <div class="stat-label">Open Actions</div>
-          <div class="stat-value">--</div>
-          <div class="stat-note">Good spot for corrective actions, overdue tasks or outstanding findings.</div>
-        </article>
-        <article class="stat-card">
-          <div class="stat-label">Expiring Items</div>
-          <div class="stat-value">--</div>
-          <div class="stat-note">Could be licences, certifications, inductions, calibrations or supplier reviews.</div>
-        </article>
-        <article class="stat-card">
-          <div class="stat-label">Training Status</div>
-          <div class="stat-value">--</div>
-          <div class="stat-note">Use for completion rate, overdue modules or workforce readiness snapshots.</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="two-col">
-      <div class="section-card">
-        <div class="section-header">
+      <div class="quick-grid">
+        <a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/leave-application-form" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#128197;</div>
           <div>
-            <div class="section-title">Core Compliance Areas</div>
-            <div class="section-subtitle">Starter tiles for the main categories you may want to expand later.</div>
+            <div class="quick-btn-label">Leave Form</div>
+            <div class="quick-btn-desc">Submit leave requests</div>
           </div>
-        </div>
-        <div class="focus-grid">
-          <article class="focus-card">
-            <div class="focus-icon">&#128196;</div>
-            <div class="focus-title">Audits & Reviews</div>
-            <div class="focus-copy">Placeholder area for audit schedules, findings, close-out notes and review cycles.</div>
-          </article>
-          <article class="focus-card">
-            <div class="focus-icon">&#9989;</div>
-            <div class="focus-title">Certifications</div>
-            <div class="focus-copy">Use this section for accreditation status, expiry dates and key evidence links.</div>
-          </article>
-          <article class="focus-card">
-            <div class="focus-icon">&#127891;</div>
-            <div class="focus-title">Training & Competency</div>
-            <div class="focus-copy">A home for inductions, mandatory learning, assessments and compliance refreshers.</div>
-          </article>
-          <article class="focus-card">
-            <div class="focus-icon">&#128221;</div>
-            <div class="focus-title">Registers & Records</div>
-            <div class="focus-copy">Ideal for obligations registers, document registers, site checks or control logs.</div>
-          </article>
-        </div>
-      </div>
-
-      <div class="section-card">
-        <div class="section-header">
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
+        <a class="quick-btn" href="https://sargeanttransportptyltd.snapforms.com.au/form/incident-report" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#9888;&#65039;</div>
           <div>
-            <div class="section-title">Page Planning Notes</div>
-            <div class="section-subtitle">Built-in prompts so you can decide content later.</div>
+            <div class="quick-btn-label">Incident Report</div>
+            <div class="quick-btn-desc">Log a workplace incident</div>
           </div>
-        </div>
-        <div class="placeholder-list">
-          <div class="placeholder-card">
-            <div class="placeholder-head">
-              <div class="placeholder-title">What needs to be visible at a glance?</div>
-              <span class="placeholder-badge">Summary</span>
-            </div>
-            <div class="placeholder-copy">Think overdue actions, next audits, expiring certifications or top risks.</div>
-          </div>
-          <div class="placeholder-card">
-            <div class="placeholder-head">
-              <div class="placeholder-title">What needs owner accountability?</div>
-              <span class="placeholder-badge">Ownership</span>
-            </div>
-            <div class="placeholder-copy">This can become assigned actions, responsible managers or due date tracking.</div>
-          </div>
-          <div class="placeholder-card">
-            <div class="placeholder-head">
-              <div class="placeholder-title">What should link out vs live on this page?</div>
-              <span class="placeholder-badge">Structure</span>
-            </div>
-            <div class="placeholder-copy">Useful for deciding whether this page is a dashboard, register hub or both.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="layout-grid">
-      <div class="section-card">
-        <div class="section-header">
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
+        <a class="quick-btn" href="#" target="_blank" rel="noopener">
+          <div class="quick-btn-icon">&#128295;</div>
           <div>
-            <div class="section-title">Audit & Review Timeline</div>
-            <div class="section-subtitle">Timeline placeholders you can later replace with real milestones.</div>
+            <div class="quick-btn-label">Maintenance Report</div>
+            <div class="quick-btn-desc">Log a maintenance request</div>
           </div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">Month / Date</div>
-            <div>
-              <div class="timeline-title">Internal Audit Placeholder</div>
-              <div class="timeline-copy">Use for audit type, scope, site, auditor and readiness notes.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">Month / Date</div>
-            <div>
-              <div class="timeline-title">Customer or External Review Placeholder</div>
-              <div class="timeline-copy">Good fit for customer reviews, accreditation checks or contract-driven compliance events.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">Month / Date</div>
-            <div>
-              <div class="timeline-title">Management Review Placeholder</div>
-              <div class="timeline-copy">This could later hold meeting cadence, agenda prompts or review outcomes.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-card">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Status Matrix</div>
-            <div class="section-subtitle">Simple framework for status-driven compliance items.</div>
-          </div>
-        </div>
-        <div class="matrix">
-          <div class="matrix-row">
-            <div>
-              <div class="matrix-title">Certification / Program Placeholder</div>
-              <div class="matrix-copy">Could be HACCP, NHVAS, customer compliance or any managed system.</div>
-            </div>
-            <span class="matrix-state ok">On Track</span>
-          </div>
-          <div class="matrix-row">
-            <div>
-              <div class="matrix-title">Training / Induction Placeholder</div>
-              <div class="matrix-copy">Use for workforce completion, expiry windows or competency refreshes.</div>
-            </div>
-            <span class="matrix-state warn">Needs Input</span>
-          </div>
-          <div class="matrix-row">
-            <div>
-              <div class="matrix-title">Register / Action Log Placeholder</div>
-              <div class="matrix-copy">Could later connect to corrective actions, observations or site compliance tasks.</div>
-            </div>
-            <span class="matrix-state">Draft</span>
-          </div>
-        </div>
+          <span class="quick-btn-arrow">&#8594;</span>
+        </a>
       </div>
     </section>
 
     <section class="section-card">
       <div class="section-header">
         <div>
-          <div class="section-title">Future Modules</div>
-          <div class="section-subtitle">Reserved space for the parts you may want to add after management direction.</div>
+          <div class="section-title">Upcoming</div>
+          <div class="section-subtitle">Priority dates and placeholders you can update as soon as they are confirmed.</div>
         </div>
+        <span class="status-pill">Live Board Area</span>
       </div>
-      <div class="focus-grid">
-        <article class="placeholder-card">
-          <div class="placeholder-head">
-            <div class="placeholder-title">Action Register</div>
-            <span class="placeholder-badge">Optional</span>
-          </div>
-          <div class="placeholder-copy">A place for non-conformances, CAPAs, owners, priorities and close-out dates.</div>
+      <div class="upcoming-grid">
+        <article class="upcoming-card">
+          <div class="upcoming-label">Toolbox</div>
+          <div class="upcoming-date">08 May 2026</div>
+          <div class="upcoming-copy">Next toolbox meeting placeholder. Swap this for the confirmed date and topic when ready.</div>
         </article>
-        <article class="placeholder-card">
-          <div class="placeholder-head">
-            <div class="placeholder-title">Document Review Tracker</div>
-            <span class="placeholder-badge">Optional</span>
-          </div>
-          <div class="placeholder-copy">Useful if you want compliance and document control to connect on one page.</div>
+        <article class="upcoming-card">
+          <div class="upcoming-label">Licence Updates Due</div>
+          <div class="upcoming-date">31 May 2026</div>
+          <div class="upcoming-copy">Use this space for licence renewals, checks or any compliance-related update deadline.</div>
         </article>
-        <article class="placeholder-card">
-          <div class="placeholder-head">
-            <div class="placeholder-title">Supplier / Contractor Compliance</div>
-            <span class="placeholder-badge">Optional</span>
-          </div>
-          <div class="placeholder-copy">Could cover onboarding checks, approvals, insurances and review intervals.</div>
+        <article class="upcoming-card">
+          <div class="upcoming-label">Event</div>
+          <div class="upcoming-date">TBC</div>
+          <div class="upcoming-copy">Reserved placeholder for a future compliance event, workshop, campaign or meeting.</div>
         </article>
-        <article class="placeholder-card">
-          <div class="placeholder-head">
-            <div class="placeholder-title">Site Compliance Dashboard</div>
-            <span class="placeholder-badge">Optional</span>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="stack">
+        <section class="section-card">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Safety Indicators Presentation</div>
+              <div class="section-subtitle">Reserved for the PowerPoint deck you want to surface on this page.</div>
+            </div>
           </div>
-          <div class="placeholder-copy">Handy if you want individual site readiness, inspections or housekeeping tracked here.</div>
-        </article>
+          <div class="presentation-box">
+            <div class="presentation-stage">
+              <div class="presentation-inner">
+                <div class="presentation-icon">&#128200;</div>
+                <div class="presentation-title">Safety Indicators Slide Deck</div>
+                <div class="presentation-copy">This block is set up as the home for your PowerPoint. Once you decide how you want to upload it, we can wire this panel to open the deck, embed a viewer, or swap to a slide-by-slide PDF preview if that ends up working better in-browser.</div>
+                <div class="presentation-actions">
+                  <a class="action-btn" href="#">Add PowerPoint Link</a>
+                  <a class="action-btn" href="#">Open Full Presentation</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Audit &amp; Review Timeline</div>
+              <div class="section-subtitle">Starter dates added now so the timeline already feels like a working board.</div>
+            </div>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">08 May 2026</div>
+              <div>
+                <div class="timeline-title">Toolbox Compliance Review</div>
+                <div class="timeline-copy">Use this entry for toolbox discussion points, focus topics and any compliance reminders that need to be raised with staff.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">31 May 2026</div>
+              <div>
+                <div class="timeline-title">Licence Update Checkpoint</div>
+                <div class="timeline-copy">A placeholder milestone for licence checks, follow-ups and update completion across the team.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">19 June 2026</div>
+              <div>
+                <div class="timeline-title">Internal Audit Window</div>
+                <div class="timeline-copy">A good spot for the next internal audit, readiness activities and any document review tasks tied to it.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">10 July 2026</div>
+              <div>
+                <div class="timeline-title">Management Review Check-In</div>
+                <div class="timeline-copy">Placeholder date for a formal review of audit outcomes, actions, indicators and compliance priorities.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="stack">
+        <section class="section-card">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Latest Legislation Updates</div>
+              <div class="section-subtitle">A simple card format for external links, reminders and brief commentary.</div>
+            </div>
+          </div>
+          <div class="info-list">
+            <article class="info-card">
+              <div class="info-head">
+                <div class="info-title">NHVR Updates</div>
+                <span class="info-tag">External Link</span>
+              </div>
+              <div class="info-copy">Use this card as the main legislation gateway. It is a clean place to direct staff or managers to the latest Heavy Vehicle National Law updates and notices.</div>
+              <a class="info-link" href="https://www.nhvr.gov.au/" target="_blank" rel="noopener">Open NHVR website</a>
+            </article>
+            <article class="info-card">
+              <div class="info-head">
+                <div class="info-title">Fuel Levy Watch</div>
+                <span class="info-tag">Placeholder</span>
+              </div>
+              <div class="info-copy">Reserved for fuel levy notes, pricing impacts or customer communication points. For now this works well as a rolling compliance and commercial update box.</div>
+            </article>
+            <article class="info-card">
+              <div class="info-head">
+                <div class="info-title">Internal Note Area</div>
+                <span class="info-tag">Editable</span>
+              </div>
+              <div class="info-copy">Keep this open for new legislative changes, policy alerts, regulator notices or anything management wants highlighted quickly.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-card">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Current Accreditations</div>
+              <div class="section-subtitle">Set up to support either certificate snippets, logos, expiry notes or simple status cards.</div>
+            </div>
+          </div>
+          <div class="accreditation-grid">
+            <article class="accreditation-card">
+              <div class="certificate-preview">Certificate snippet, badge or cover image can sit here later.</div>
+              <div class="accreditation-title">Accreditation Placeholder 1</div>
+              <div class="accreditation-copy">Good for the accreditation name, brief status note and expiry or review date.</div>
+            </article>
+            <article class="accreditation-card">
+              <div class="certificate-preview">This can also become a simple status panel if you decide not to show certificate images.</div>
+              <div class="accreditation-title">Accreditation Placeholder 2</div>
+              <div class="accreditation-copy">Use for summary wording, owner responsibility and whether the item is current or under review.</div>
+            </article>
+            <article class="accreditation-card">
+              <div class="certificate-preview">Reserved space for one more accreditation, certification or customer compliance program.</div>
+              <div class="accreditation-title">Accreditation Placeholder 3</div>
+              <div class="accreditation-copy">Easy to convert later into a certificate preview, hyperlink card or expiry tracker.</div>
+            </article>
+          </div>
+        </section>
       </div>
     </section>
 
     <div class="callout">
       <div class="callout-icon">&#128161;</div>
       <div>
-        <div class="callout-title">Built as a shell on purpose</div>
-        <div class="callout-copy">Nothing on this page commits you to a reporting model yet. It gives you a clean structure now, while leaving room to decide later whether compliance should behave more like a dashboard, a register hub, a document launcher or a management review page.</div>
+        <div class="callout-title">This board is ready to evolve</div>
+        <div class="callout-copy">The structure now matches the direction you described without locking you into final content. We can keep this as a dashboard-style board, or turn individual panels into live embeds, certificate viewers, document links or deadline trackers once you decide what management wants shown.</div>
       </div>
     </div>
   </main>
