@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compliance | Sargeant Transport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0f2a4a;
+      --navy-dark: #0a1e35;
+      --blue-mid: #1a4a7a;
+      --blue-bright: #1e6fb5;
+      --accent: #2589d4;
+      --accent2: #4aaee8;
+      --accent-pale: #e8f4fd;
+      --accent-pale2: #d0eaf8;
+      --bg: #eef3f8;
+      --bg-card: #ffffff;
+      --bg-card2: #f5f9fd;
+      --border: #ccdded;
+      --text-dark: #0d2340;
+      --text-body: #3a5270;
+      --text-dim: #7a96b0;
+      --ok: #2f855a;
+      --ok-bg: #f0fff4;
+      --warn: #d97706;
+      --warn-bg: #fffbeb;
+      --white: #ffffff;
+      --radius: 12px;
+      --shadow-sm: 0 1px 4px rgba(15,42,74,0.07);
+      --shadow: 0 2px 12px rgba(15,42,74,0.09);
+      --shadow-md: 0 6px 24px rgba(15,42,74,0.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--navy-dark);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(10,30,53,0.4);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+    }
+
+    .logo-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .company-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .company-name span { color: var(--accent2); }
+
+    .hero {
+      background: linear-gradient(115deg, var(--navy-dark) 0%, var(--navy) 38%, var(--blue-mid) 75%, var(--blue-bright) 100%);
+      padding: 44px 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -70px;
+      width: 390px;
+      height: 390px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,174,232,0.16) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 48px;
+      bottom: -55px;
+      width: 220px;
+      height: 120px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0));
+      filter: blur(6px);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 31px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.64);
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    .home-tab-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      overflow-x: auto;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .home-tab-bar::-webkit-scrollbar { height: 3px; }
+    .home-tab-bar::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .hero-nav {
+      display: flex;
+      min-width: max-content;
+    }
+
+    .hero-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-dim);
+      border: none;
+      border-bottom: 3px solid transparent;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      transition: .15s;
+    }
+
+    .hero-nav-btn:hover { color: var(--text-dark); }
+    .hero-nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .btn-icon { font-size: 14px; }
+
+    main {
+      flex: 1;
+      padding: 28px 48px 48px;
+      max-width: 1360px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .panel,
+    .stat-card,
+    .focus-card,
+    .section-card,
+    .placeholder-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .section-card,
+    .panel {
+      padding: 22px 24px;
+    }
+
+    .panel-header,
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-title,
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .panel-subtitle,
+    .section-subtitle {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .status-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-card2);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      padding: 18px 18px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+    }
+
+    .stat-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 31px;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-note {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text-body);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .focus-card {
+      padding: 18px;
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+    }
+
+    .focus-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 14px;
+      background: var(--accent-pale);
+      color: var(--accent);
+    }
+
+    .focus-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .focus-copy {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .placeholder-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .placeholder-card {
+      padding: 16px 16px 15px;
+      background: var(--bg-card2);
+      border-style: dashed;
+    }
+
+    .placeholder-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .placeholder-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .placeholder-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+
+    .placeholder-copy {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .layout-grid .section-card:first-child {
+      grid-column: span 2;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .timeline-date {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .timeline-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .timeline-copy {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .matrix {
+      display: grid;
+      gap: 12px;
+    }
+
+    .matrix-row {
+      display: grid;
+      grid-template-columns: 1fr 120px;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 14px;
+      border-radius: 10px;
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+    }
+
+    .matrix-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .matrix-copy {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .matrix-state {
+      justify-self: end;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--text-dim);
+    }
+
+    .matrix-state.ok {
+      background: var(--ok-bg);
+      border-color: #c6f6d5;
+      color: var(--ok);
+    }
+
+    .matrix-state.warn {
+      background: var(--warn-bg);
+      border-color: #fbd38d;
+      color: var(--warn);
+    }
+
+    .callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent-pale), var(--bg-card));
+      border: 1px solid var(--accent-pale2);
+    }
+
+    .callout-icon {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      background: var(--white);
+      color: var(--accent);
+      border: 1px solid var(--accent-pale2);
+    }
+
+    .callout-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+
+    .callout-copy {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+
+    footer {
+      background: var(--navy-dark);
+      border-top: 3px solid var(--blue-bright);
+      padding: 24px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+    }
+
+    @media (max-width: 1080px) {
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .two-col, .layout-grid { grid-template-columns: 1fr; }
+      .layout-grid .section-card:first-child { grid-column: span 1; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 0 20px; }
+      .hero { padding: 32px 20px 28px; }
+      .home-tab-bar { padding: 0 16px; }
+      main { padding: 20px 20px 40px; }
+      footer { padding: 20px; }
+      .hero-nav-btn { padding: 13px 14px; font-size: 12px; }
+      .summary-grid, .focus-grid { grid-template-columns: 1fr; }
+      .timeline-item, .matrix-row { grid-template-columns: 1fr; }
+      .matrix-state { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo-area" href="index.html">
+      <div class="logo-placeholder">ST</div>
+      <div class="company-name">Sargeant <span>Transport Services</span></div>
+    </a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>&#128203; Compliance</h1>
+      <p>A central framework for audits, obligations, certifications, training and action tracking. This page is set up as a shell so content can be dropped in later without redesigning the layout.</p>
+    </div>
+  </div>
+
+  <div class="home-tab-bar">
+    <nav class="hero-nav" aria-label="Portal sections">
+      <a class="hero-nav-btn" href="index.html"><span class="btn-icon">&#127968;</span> Home</a>
+      <a class="hero-nav-btn active" href="compliance.html"><span class="btn-icon">&#128203;</span> Compliance</a>
+      <a class="hero-nav-btn" href="operations.html"><span class="btn-icon">&#127760;</span> Operations</a>
+      <a class="hero-nav-btn" href="documents.html"><span class="btn-icon">&#128193;</span> Document Portal</a>
+      <a class="hero-nav-btn" href="drivers.html"><span class="btn-icon">&#128667;</span> Drivers</a>
+      <a class="hero-nav-btn" href="orgchart.html"><span class="btn-icon">&#127970;</span> Organisation Chart</a>
+      <a class="hero-nav-btn" href="sites.html"><span class="btn-icon">&#128205;</span> Sites</a>
+      <a class="hero-nav-btn" href="regional-schedule.html"><span class="btn-icon">&#128197;</span> Regional Schedule</a>
+      <a class="hero-nav-btn" href="contact-matrix.html"><span class="btn-icon">&#128202;</span> Contact Matrix</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <div class="panel-title">Compliance Snapshot</div>
+          <div class="panel-subtitle">High-level placeholders for whatever summary data you decide to track.</div>
+        </div>
+        <span class="status-pill">Framework Only</span>
+      </div>
+      <div class="summary-grid">
+        <article class="stat-card">
+          <div class="stat-label">Upcoming Audits</div>
+          <div class="stat-value">--</div>
+          <div class="stat-note">Use this tile for scheduled internal, customer or external audit counts.</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-label">Open Actions</div>
+          <div class="stat-value">--</div>
+          <div class="stat-note">Good spot for corrective actions, overdue tasks or outstanding findings.</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-label">Expiring Items</div>
+          <div class="stat-value">--</div>
+          <div class="stat-note">Could be licences, certifications, inductions, calibrations or supplier reviews.</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-label">Training Status</div>
+          <div class="stat-value">--</div>
+          <div class="stat-note">Use for completion rate, overdue modules or workforce readiness snapshots.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="two-col">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Core Compliance Areas</div>
+            <div class="section-subtitle">Starter tiles for the main categories you may want to expand later.</div>
+          </div>
+        </div>
+        <div class="focus-grid">
+          <article class="focus-card">
+            <div class="focus-icon">&#128196;</div>
+            <div class="focus-title">Audits & Reviews</div>
+            <div class="focus-copy">Placeholder area for audit schedules, findings, close-out notes and review cycles.</div>
+          </article>
+          <article class="focus-card">
+            <div class="focus-icon">&#9989;</div>
+            <div class="focus-title">Certifications</div>
+            <div class="focus-copy">Use this section for accreditation status, expiry dates and key evidence links.</div>
+          </article>
+          <article class="focus-card">
+            <div class="focus-icon">&#127891;</div>
+            <div class="focus-title">Training & Competency</div>
+            <div class="focus-copy">A home for inductions, mandatory learning, assessments and compliance refreshers.</div>
+          </article>
+          <article class="focus-card">
+            <div class="focus-icon">&#128221;</div>
+            <div class="focus-title">Registers & Records</div>
+            <div class="focus-copy">Ideal for obligations registers, document registers, site checks or control logs.</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Page Planning Notes</div>
+            <div class="section-subtitle">Built-in prompts so you can decide content later.</div>
+          </div>
+        </div>
+        <div class="placeholder-list">
+          <div class="placeholder-card">
+            <div class="placeholder-head">
+              <div class="placeholder-title">What needs to be visible at a glance?</div>
+              <span class="placeholder-badge">Summary</span>
+            </div>
+            <div class="placeholder-copy">Think overdue actions, next audits, expiring certifications or top risks.</div>
+          </div>
+          <div class="placeholder-card">
+            <div class="placeholder-head">
+              <div class="placeholder-title">What needs owner accountability?</div>
+              <span class="placeholder-badge">Ownership</span>
+            </div>
+            <div class="placeholder-copy">This can become assigned actions, responsible managers or due date tracking.</div>
+          </div>
+          <div class="placeholder-card">
+            <div class="placeholder-head">
+              <div class="placeholder-title">What should link out vs live on this page?</div>
+              <span class="placeholder-badge">Structure</span>
+            </div>
+            <div class="placeholder-copy">Useful for deciding whether this page is a dashboard, register hub or both.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout-grid">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Audit & Review Timeline</div>
+            <div class="section-subtitle">Timeline placeholders you can later replace with real milestones.</div>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Month / Date</div>
+            <div>
+              <div class="timeline-title">Internal Audit Placeholder</div>
+              <div class="timeline-copy">Use for audit type, scope, site, auditor and readiness notes.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Month / Date</div>
+            <div>
+              <div class="timeline-title">Customer or External Review Placeholder</div>
+              <div class="timeline-copy">Good fit for customer reviews, accreditation checks or contract-driven compliance events.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Month / Date</div>
+            <div>
+              <div class="timeline-title">Management Review Placeholder</div>
+              <div class="timeline-copy">This could later hold meeting cadence, agenda prompts or review outcomes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Status Matrix</div>
+            <div class="section-subtitle">Simple framework for status-driven compliance items.</div>
+          </div>
+        </div>
+        <div class="matrix">
+          <div class="matrix-row">
+            <div>
+              <div class="matrix-title">Certification / Program Placeholder</div>
+              <div class="matrix-copy">Could be HACCP, NHVAS, customer compliance or any managed system.</div>
+            </div>
+            <span class="matrix-state ok">On Track</span>
+          </div>
+          <div class="matrix-row">
+            <div>
+              <div class="matrix-title">Training / Induction Placeholder</div>
+              <div class="matrix-copy">Use for workforce completion, expiry windows or competency refreshes.</div>
+            </div>
+            <span class="matrix-state warn">Needs Input</span>
+          </div>
+          <div class="matrix-row">
+            <div>
+              <div class="matrix-title">Register / Action Log Placeholder</div>
+              <div class="matrix-copy">Could later connect to corrective actions, observations or site compliance tasks.</div>
+            </div>
+            <span class="matrix-state">Draft</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Future Modules</div>
+          <div class="section-subtitle">Reserved space for the parts you may want to add after management direction.</div>
+        </div>
+      </div>
+      <div class="focus-grid">
+        <article class="placeholder-card">
+          <div class="placeholder-head">
+            <div class="placeholder-title">Action Register</div>
+            <span class="placeholder-badge">Optional</span>
+          </div>
+          <div class="placeholder-copy">A place for non-conformances, CAPAs, owners, priorities and close-out dates.</div>
+        </article>
+        <article class="placeholder-card">
+          <div class="placeholder-head">
+            <div class="placeholder-title">Document Review Tracker</div>
+            <span class="placeholder-badge">Optional</span>
+          </div>
+          <div class="placeholder-copy">Useful if you want compliance and document control to connect on one page.</div>
+        </article>
+        <article class="placeholder-card">
+          <div class="placeholder-head">
+            <div class="placeholder-title">Supplier / Contractor Compliance</div>
+            <span class="placeholder-badge">Optional</span>
+          </div>
+          <div class="placeholder-copy">Could cover onboarding checks, approvals, insurances and review intervals.</div>
+        </article>
+        <article class="placeholder-card">
+          <div class="placeholder-head">
+            <div class="placeholder-title">Site Compliance Dashboard</div>
+            <span class="placeholder-badge">Optional</span>
+          </div>
+          <div class="placeholder-copy">Handy if you want individual site readiness, inspections or housekeeping tracked here.</div>
+        </article>
+      </div>
+    </section>
+
+    <div class="callout">
+      <div class="callout-icon">&#128161;</div>
+      <div>
+        <div class="callout-title">Built as a shell on purpose</div>
+        <div class="callout-copy">Nothing on this page commits you to a reporting model yet. It gives you a clean structure now, while leaving room to decide later whether compliance should behave more like a dashboard, a register hub, a document launcher or a management review page.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>&copy; 2026 Sargeant Transport Services. All rights reserved.</span>
+    </div>
+  </footer>
+</body>
+</html>
