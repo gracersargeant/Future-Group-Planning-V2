@@ -479,10 +479,32 @@
       color: var(--text-body);
     }
 
+    .timeline-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .timeline-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: #eef8f5;
+      border: 1px solid #c8e6db;
+      color: #1d6b57;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
     .timeline {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      position: relative;
     }
 
     .timeline-item {
@@ -490,18 +512,36 @@
       grid-template-columns: 130px 1fr;
       gap: 16px;
       align-items: start;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, #fbfdff 0%, #f4f9fd 100%);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
     }
 
-    .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #22a06b 0%, #2589d4 100%);
+    }
 
     .timeline-date {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.4px;
       text-transform: uppercase;
-      color: var(--text-dim);
+      color: #1d6b57;
+      background: #eef8f5;
+      border: 1px solid #c8e6db;
+      border-radius: 999px;
+      padding: 8px 10px;
+      text-align: center;
     }
 
     .timeline-title {
@@ -673,11 +713,15 @@
         <section class="section-card">
           <div class="section-header">
             <div class="header-title-group">
-              <div class="header-icon-box" style="background:linear-gradient(135deg, #163557, var(--blue-mid)); color:#ffffff;">&#128221;</div>
+              <div class="header-icon-box" style="background:linear-gradient(135deg, #1d6b57, #22a06b); color:#ffffff;">&#128221;</div>
               <div>
                 <div class="section-title">Audit &amp; Review Timeline</div>
               </div>
             </div>
+          </div>
+          <div class="timeline-summary">
+            <div class="timeline-chip">&#128197; 4 scheduled items</div>
+            <div class="timeline-chip">&#9203; Next review 08 May 2026</div>
           </div>
           <div class="timeline">
             <div class="timeline-item">
