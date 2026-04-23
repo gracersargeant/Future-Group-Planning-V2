@@ -200,6 +200,23 @@
       border-bottom: 1px solid var(--border);
     }
 
+    .header-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-icon-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
     .card-title,
     .section-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -566,44 +583,6 @@
       color: var(--text-body);
     }
 
-    .callout {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 18px 20px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent-pale), var(--bg-card));
-      border: 1px solid var(--accent-pale2);
-    }
-
-    .callout-icon {
-      width: 38px;
-      height: 38px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      background: var(--white);
-      color: var(--accent);
-      border: 1px solid var(--accent-pale2);
-    }
-
-    .callout-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 5px;
-    }
-
-    .callout-copy {
-      font-size: 12px;
-      line-height: 1.7;
-      color: var(--text-body);
-    }
-
     footer {
       background: var(--navy-dark);
       border-top: 3px solid var(--blue-bright);
@@ -672,9 +651,12 @@
   <main>
     <section class="card">
       <div class="card-header">
-        <div>
-          <div class="card-title">&#9889; Quick Access</div>
-          <div class="card-subtitle">Frequently used forms and shortcuts.</div>
+        <div class="header-title-group">
+          <div class="header-icon-box" style="background:#e8f4fd; color:#2589d4;">&#9889;</div>
+          <div>
+            <div class="card-title">Quick Access</div>
+            <div class="card-subtitle">Frequently used forms and shortcuts.</div>
+          </div>
         </div>
       </div>
       <div class="quick-grid">
@@ -707,9 +689,12 @@
 
     <section class="section-card">
       <div class="section-header">
-        <div>
-          <div class="section-title">&#128197; Upcoming</div>
-          <div class="section-subtitle">Priority dates and placeholders you can update as soon as they are confirmed.</div>
+        <div class="header-title-group">
+          <div class="header-icon-box" style="background:#f0f4ff; color:#553c9a;">&#128197;</div>
+          <div>
+            <div class="section-title">Upcoming</div>
+            <div class="section-subtitle">Priority dates and placeholders you can update as soon as they are confirmed.</div>
+          </div>
         </div>
         <span class="status-pill">Live Board Area</span>
       </div>
@@ -736,9 +721,12 @@
       <div class="stack">
         <section class="section-card">
           <div class="section-header">
-            <div>
-              <div class="section-title">&#128200; Safety Indicators Presentation</div>
-              <div class="section-subtitle">Upload a PDF for in-browser viewing and keep the original PowerPoint alongside it for download or editing.</div>
+            <div class="header-title-group">
+              <div class="header-icon-box" style="background:#fff5f0; color:#c05621;">&#128200;</div>
+              <div>
+                <div class="section-title">Safety Indicators Presentation</div>
+                <div class="section-subtitle">Upload a PDF for in-browser viewing and keep the original PowerPoint alongside it for download or editing.</div>
+              </div>
             </div>
           </div>
           <div class="pdf-frame-wrap">
@@ -759,9 +747,12 @@
 
         <section class="section-card">
           <div class="section-header">
-            <div>
-              <div class="section-title">&#128221; Audit &amp; Review Timeline</div>
-              <div class="section-subtitle">Starter dates added now so the timeline already feels like a working board.</div>
+            <div class="header-title-group">
+              <div class="header-icon-box" style="background:#f0fff4; color:#276749;">&#128221;</div>
+              <div>
+                <div class="section-title">Audit &amp; Review Timeline</div>
+                <div class="section-subtitle">Starter dates added now so the timeline already feels like a working board.</div>
+              </div>
             </div>
           </div>
           <div class="timeline">
@@ -800,9 +791,12 @@
       <div class="stack">
         <section class="section-card">
           <div class="section-header">
-            <div>
-              <div class="section-title">&#128240; Latest Legislation Updates</div>
-              <div class="section-subtitle">A simple card format for external links, reminders and brief commentary.</div>
+            <div class="header-title-group">
+              <div class="header-icon-box" style="background:#fffbeb; color:#d97706;">&#128240;</div>
+              <div>
+                <div class="section-title">Latest Legislation Updates</div>
+                <div class="section-subtitle">A simple card format for external links, reminders and brief commentary.</div>
+              </div>
             </div>
           </div>
           <div class="info-list">
@@ -833,9 +827,12 @@
 
         <section class="section-card">
           <div class="section-header">
-            <div>
-              <div class="section-title">&#127891; Current Accreditations</div>
-              <div class="section-subtitle">Set up to support either certificate snippets, logos, expiry notes or simple status cards.</div>
+            <div class="header-title-group">
+              <div class="header-icon-box" style="background:#e8f4fd; color:#2589d4;">&#127891;</div>
+              <div>
+                <div class="section-title">Current Accreditations</div>
+                <div class="section-subtitle">Set up to support either certificate snippets, logos, expiry notes or simple status cards.</div>
+              </div>
             </div>
           </div>
           <div class="accreditation-grid">
@@ -858,14 +855,6 @@
         </section>
       </div>
     </section>
-
-    <div class="callout">
-      <div class="callout-icon">&#128161;</div>
-      <div>
-        <div class="callout-title">&#128161; This board is ready to evolve</div>
-        <div class="callout-copy">The structure now matches the direction you described without locking you into final content. We can keep this as a dashboard-style board, or turn individual panels into live embeds, certificate viewers, document links or deadline trackers once you decide what management wants shown.</div>
-      </div>
-    </div>
   </main>
 
   <footer>
