@@ -371,14 +371,15 @@
       border: 1px solid var(--border);
       background: #e1ebf3;
       margin-bottom: 14px;
+      min-height: 420px;
     }
 
-    .pdf-frame-wrap object {
+    .pdf-frame {
       width: 100%;
       height: 420px;
       border: none;
       display: block;
-      background: #fff;
+      background: #ffffff;
     }
 
     .pdf-fallback {
@@ -616,7 +617,8 @@
       .quick-grid { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 1fr; }
       .action-row { flex-direction: column; }
-      .pdf-frame-wrap object { height: 360px; }
+      .pdf-frame { height: 360px; }
+      .pdf-frame-wrap { min-height: 360px; }
     }
   </style>
 </head>
@@ -731,19 +733,13 @@
             </div>
           </div>
           <div class="pdf-frame-wrap">
-            <object data="shared-documents/safety-indicators.pdf" type="application/pdf" aria-label="Safety indicators presentation PDF">
-              <div class="pdf-fallback">
-                <div class="pdf-fallback-icon">&#128200;</div>
-                <div class="pdf-fallback-title">Safety indicators presentation not added yet</div>
-                <div class="pdf-fallback-sub">Add <strong>safety-indicators.pdf</strong> to the <strong>shared-documents</strong> folder for the browser preview, and optionally add <strong>safety-indicators.pptx</strong> so the original deck can still be opened or downloaded.</div>
-              </div>
-            </object>
+            <iframe class="pdf-frame" src="shared-documents/safety-indicators.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" title="Safety indicators presentation PDF"></iframe>
           </div>
           <div class="action-row">
             <a class="action-btn" href="shared-documents/safety-indicators.pdf" target="_blank" rel="noopener">Open PDF Viewer</a>
             <a class="action-btn" href="shared-documents/safety-indicators.pptx" target="_blank" rel="noopener">Open PowerPoint File</a>
           </div>
-          <div class="presentation-note">Best practice here is to export the PowerPoint to PDF for smooth slide-by-slide browser viewing, while keeping the `.pptx` file in the same folder for editing and download.</div>
+          <div class="presentation-note">This area now uses an inline PDF viewer. If a browser still blocks embedded PDFs, the PDF and PowerPoint buttons below remain as fallback access points.</div>
         </section>
 
         <section class="section-card">
