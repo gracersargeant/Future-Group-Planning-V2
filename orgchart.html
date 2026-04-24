@@ -578,10 +578,19 @@ render(){
 
 {id:'human-resources',label:'Human Resources',icon:'👥',iconBg:'#e0e7ff',
 render(){
-  const tree=n('michael-corrigan','Michael Corrigan','HR Consultant',C.navy,{top:true},[
-    n('optima','Optima','Workcover Consultant',C.slate),
-  ]);
-  return renderLayout(tree,[],360);
+  const nodes=[
+    {...n('michael-corrigan','Michael Corrigan','HR Consultant',C.navy,{top:true}),_x:264,_y:20},
+    {...n('optima','Optima','Workcover Consultant',C.slate),_x:264,_y:152},
+    {...n('jason-trimble','Jason Trimble','Executive Assistant',C.purple),_x:464,_y:96},
+  ];
+  const edges=[
+    {path:'M340,96 L340,152'},
+    {path:'M464,134 L416,134 L416,58 L416,58',dashed:true},
+    {path:'M416,58 L416,58 L416,58 L416,58',dashed:true},
+    {path:'M416,58 L416,58 L416,58 L416,58',dashed:true},
+    {path:'M416,58 L416,58 L340,58',dashed:true},
+  ];
+  return renderGraph(nodes,edges,680,260);
 }},
 
 {id:'haccp',label:'HACCP Team',icon:'🛡️',iconBg:'#fee2e2',
@@ -638,6 +647,7 @@ DEPTS.forEach((dept,i)=>{
 </script>
 </body>
 </html>
+
 
 
 
