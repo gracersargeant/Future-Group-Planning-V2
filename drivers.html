@@ -60,6 +60,11 @@
     .quick-btn-desc{font-size:10.5px;color:var(--text-dim)}
     .quick-btn-arrow{margin-left:auto;font-size:13px;color:var(--accent);opacity:0;transition:opacity .2s,transform .2s;transform:translateX(-4px);flex-shrink:0}
     .quick-btn:hover .quick-btn-arrow{opacity:1;transform:translateX(0)}
+    .support-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .support-grid .quick-btn{min-height:76px;padding:15px 16px;align-items:flex-start;background:#fbfdff}
+    .support-grid .quick-btn-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;background:var(--accent-pale);border:1px solid rgba(37,137,212,.18);font-size:18px}
+    .support-grid .quick-btn-label{font-size:13px;line-height:1.25}
+    .support-grid .quick-btn-desc{font-size:11px;line-height:1.35;margin-top:4px}
 
     .content-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:24px;align-items:start}
     .content-column{display:flex;flex-direction:column;gap:24px}
@@ -184,7 +189,7 @@
             <div class="card-subtitle">Quick links for feedback, training, and opportunities</div>
           </div>
         </div>
-        <div class="quick-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));">
+        <div class="quick-grid support-grid">
           <a class="quick-btn" href="#" target="_blank" rel="noopener">
             <div class="quick-btn-icon">&#128172;</div>
             <div><div class="quick-btn-label">Feedback</div><div class="quick-btn-desc">Share ideas or raise issues</div></div>
