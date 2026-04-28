@@ -1,0 +1,1366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fatigue Planner | Sargeant Transport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-dark: #0a1e35;
+      --navy-main: #0f2a4a;
+      --blue-mid: #1a4a7a;
+      --blue-bright: #1e6fb5;
+      --brand-accent: #2589d4;
+      --accent2: #4aaee8;
+      --bg: #eef3f8;
+      --bg-card: #ffffff;
+      --border: #ccdded;
+      --text-dark: #0d2340;
+      --text-dim: #7a96b0;
+      --white: #ffffff;
+      --ink: #11263f;
+      --muted: #64748b;
+      --line: #d7e1ec;
+      --panel: #ffffff;
+      --soft: #f5f8fc;
+      --road: #102a48;
+      --accent: #145da0;
+      --accent-2: #4f9adf;
+      --navy: #0b2440;
+      --danger: #b42318;
+      --warn: #255f9e;
+      --ok: #177245;
+      --shadow: 0 14px 40px rgba(31, 45, 58, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: "Inter", Arial, ui-sans-serif, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--navy-dark);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(10, 30, 53, .4);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+    }
+
+    .logo-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent2), var(--brand-accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .company-name {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .company-name span {
+      color: var(--accent2);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-date {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .42);
+    }
+
+    .hero {
+      background: linear-gradient(110deg, var(--navy-dark) 0%, var(--navy-main) 40%, var(--blue-mid) 80%, var(--blue-bright) 100%);
+      padding: 44px 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -80px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74, 174, 232, .13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.6px;
+      margin: 0 0 8px;
+      line-height: 1.15;
+    }
+
+    .hero-title-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .hero-sub {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .58);
+    }
+
+    .home-tab-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      overflow-x: auto;
+      flex-shrink: 0;
+      box-shadow: 0 1px 4px rgba(15, 42, 74, .07);
+    }
+
+    .home-tab-bar::-webkit-scrollbar { height: 3px; }
+    .home-tab-bar::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .hero-nav {
+      display: flex;
+      min-width: max-content;
+    }
+
+    .hero-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-dim);
+      border: none;
+      border-bottom: 3px solid transparent;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: "Inter", sans-serif;
+      text-decoration: none;
+      transition: .15s;
+    }
+
+    .hero-nav-btn:hover {
+      color: var(--text-dark);
+    }
+
+    .hero-nav-btn.active {
+      color: var(--brand-accent);
+      border-bottom-color: var(--brand-accent);
+    }
+
+    .btn-icon { font-size: 14px; }
+
+    main {
+      flex: 1;
+      width: min(1460px, 100%);
+      margin: 0 auto;
+      padding: 18px clamp(12px, 3vw, 28px) 34px;
+      display: grid;
+      grid-template-columns: minmax(340px, 520px) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fbfdff, #f3f7fb);
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--navy);
+    }
+
+    .panel-body {
+      padding: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid #cbd5df;
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: var(--ink);
+      background: white;
+      min-height: 44px;
+      box-shadow: inset 0 1px 0 rgba(20, 33, 43, .02);
+    }
+
+    input:focus, select:focus {
+      outline: 3px solid rgba(31, 111, 191, .2);
+      border-color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      min-height: 40px;
+      border-radius: 6px;
+      padding: 10px 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #104e8b, #2174bf);
+      color: white;
+      box-shadow: 0 8px 20px rgba(31, 111, 191, .2);
+    }
+
+    .btn.secondary {
+      background: linear-gradient(180deg, #f8fbff, #e9f1f8);
+      color: var(--ink);
+      box-shadow: none;
+      border: 1px solid #d4dde5;
+    }
+
+    .btn.accent {
+      background: var(--accent);
+    }
+
+    .route-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .leg {
+      border: 1px solid #d7e2ee;
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
+      padding: 13px;
+      display: grid;
+      gap: 12px;
+      background: linear-gradient(180deg, #ffffff, #f9fbfd);
+      box-shadow: 0 10px 24px rgba(16, 42, 72, .08);
+    }
+
+    .load-item {
+      border-left-color: #6eaee8;
+    }
+
+    .leg-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .leg:not(.load-item) .leg-title {
+      color: #104e8b;
+    }
+
+    .load-item .leg-title {
+      color: #2f6fa8;
+    }
+
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      background: #f0f3f6;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .leg-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .leg-fields .wide {
+      grid-column: 1 / -1;
+    }
+
+    .check-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: 0;
+      background: white;
+      border: 1px solid #cbd5df;
+      border-radius: 6px;
+      padding: 10px 11px;
+    }
+
+    .check-label input {
+      width: 18px;
+      height: 18px;
+      min-height: 18px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .stat {
+      background: linear-gradient(180deg, #ffffff, #f1f6fb);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      min-height: 84px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .stat strong {
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .notice {
+      border: 1px solid #bfd6ef;
+      background: linear-gradient(180deg, #f7fbff, #e9f3ff);
+      color: #123a63;
+      padding: 11px 13px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 9px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 148px minmax(0, 1fr) 86px;
+      gap: 0;
+      align-items: stretch;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 6px 18px rgba(31, 45, 58, .04);
+    }
+
+    .event-time {
+      background: linear-gradient(180deg, #edf5fd, #e1edf8);
+      padding: 12px;
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 11px;
+      border-right: 1px solid var(--line);
+      white-space: nowrap;
+    }
+
+    .event-body {
+      padding: 12px 14px;
+      min-width: 0;
+    }
+
+    .event-body strong {
+      display: block;
+      margin-bottom: 4px;
+      word-break: break-word;
+      font-size: 14px;
+    }
+
+    .event-body span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .event-kind {
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .kind-drive .event-kind, .kind-work .event-kind { background: #102a48; }
+    .kind-rest .event-kind { background: #1e6fb7; }
+    .kind-stop .event-kind { background: #4f9adf; }
+    .kind-major .event-kind { background: #657f9b; }
+
+    .warnings {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .warning {
+      border: 1px solid #c7d8ee;
+      background: #f3f8ff;
+      color: var(--warn);
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .warning.danger {
+      border-color: #f3b4ae;
+      background: #fff1ef;
+      color: var(--danger);
+    }
+
+    .source {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      margin-top: 16px;
+    }
+
+    .source a {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .updated {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      margin: 0 0 12px;
+    }
+
+    .print-title {
+      display: none;
+    }
+
+    footer {
+      background: var(--navy-dark);
+      border-top: 3px solid var(--blue-bright);
+      padding: 24px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .28);
+    }
+
+    @media (max-width: 980px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+    @media (max-width: 620px) {
+      header {
+        padding: 0 20px;
+      }
+
+      .hero {
+        padding: 32px 20px 28px;
+      }
+
+      .home-tab-bar {
+        padding: 0 16px;
+      }
+
+      .hero-nav-btn {
+        padding: 13px 14px;
+        font-size: 12px;
+      }
+
+      .grid, .leg-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .event {
+        grid-template-columns: 128px minmax(0, 1fr);
+      }
+
+      .event-kind {
+        grid-column: 1 / -1;
+        min-height: 30px;
+      }
+
+      footer {
+        padding: 20px;
+      }
+    }
+
+    @media print {
+      @page {
+        margin: 12mm;
+      }
+
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      body {
+        background: white;
+        color: #101820;
+      }
+
+      header,
+      .hero,
+      .home-tab-bar,
+      footer,
+      main > .panel:first-child,
+      #printPlan {
+        display: none !important;
+      }
+
+      .shell {
+        display: block;
+        min-height: 0;
+      }
+
+      main {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .panel {
+        border: 0;
+        border-radius: 0;
+        overflow: visible;
+      }
+
+      .panel-head {
+        display: none;
+      }
+
+      .print-title {
+        display: block;
+        margin: 0 0 8mm;
+        padding-bottom: 4mm;
+        border: 0;
+        border-bottom: 2px solid #101820;
+        background: white;
+      }
+
+      .print-title h1 {
+        margin: 0 0 2mm;
+        font-size: 22pt;
+        line-height: 1.1;
+        color: #101820;
+      }
+
+      .print-title p {
+        margin: 0;
+        color: #445263;
+        font-size: 9pt;
+      }
+
+      .panel-body {
+        padding: 0;
+      }
+
+      .notice {
+        border: 1px solid #b8c7d8;
+        background: white;
+        color: #101820;
+        margin-bottom: 6mm;
+        page-break-inside: avoid;
+      }
+
+      .updated {
+        margin-bottom: 5mm;
+        color: #445263;
+      }
+
+      .summary {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3mm;
+        margin-bottom: 6mm;
+        page-break-inside: avoid;
+      }
+
+      .stat {
+        min-height: 0;
+        padding: 4mm;
+        background: white;
+        border: 1px solid #c7d2de;
+      }
+
+      .stat span {
+        color: #445263;
+        font-size: 8pt;
+      }
+
+      .stat strong {
+        font-size: 15pt;
+      }
+
+      .warnings {
+        margin-bottom: 5mm;
+      }
+
+      .warning {
+        border: 1px solid #b8c7d8;
+        background: white;
+        color: #101820;
+        page-break-inside: avoid;
+      }
+
+      .timeline {
+        gap: 3mm;
+      }
+
+      .event {
+        display: grid;
+        grid-template-columns: 48mm 1fr 22mm;
+        border: 1px solid #c7d2de;
+        border-radius: 0;
+        page-break-inside: avoid;
+      }
+
+      .event-time {
+        background: #f2f5f8;
+        color: #101820;
+        border-right: 1px solid #c7d2de;
+        padding: 3mm;
+        font-size: 8pt;
+      }
+
+      .event-body {
+        padding: 3mm;
+      }
+
+      .event-body strong {
+        font-size: 10pt;
+      }
+
+      .event-body span {
+        color: #3f4c5a;
+        font-size: 8.5pt;
+      }
+
+      .event-kind {
+        background: #e7eef6 !important;
+        color: #101820;
+        font-size: 8pt;
+        border-left: 1px solid #c7d2de;
+      }
+
+      .source {
+        margin-top: 6mm;
+        color: #445263;
+      }
+
+      .source a {
+        color: #101820;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="logo-area" href="index.html">
+        <div class="logo-placeholder">ST</div>
+        <div class="company-name">Sargeant <span>Transport Services</span></div>
+      </a>
+      <div class="header-right">
+        <div class="header-date" id="headerDate"></div>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <h1><span class="hero-title-icon">&#128338;</span> Fatigue Planner</h1>
+        <p class="hero-sub">Build a clear work, rest and break schedule for solo drivers under NHVR Standard Hours or BFM.</p>
+      </div>
+    </div>
+
+    <div class="home-tab-bar">
+      <nav class="hero-nav" aria-label="Portal sections">
+        <a class="hero-nav-btn" href="index.html"><span class="btn-icon">&#127968;</span> Home</a>
+        <a class="hero-nav-btn" href="compliance.html"><span class="btn-icon">&#128203;</span> Compliance</a>
+        <a class="hero-nav-btn" href="operations.html"><span class="btn-icon">&#127760;</span> Operations</a>
+        <a class="hero-nav-btn" href="documents.html"><span class="btn-icon">&#128193;</span> Document Portal</a>
+        <a class="hero-nav-btn" href="drivers.html"><span class="btn-icon">&#128667;</span> Drivers</a>
+        <a class="hero-nav-btn active" href="fatigue-planner.html"><span class="btn-icon">&#128338;</span> Fatigue Planner</a>
+        <a class="hero-nav-btn" href="orgchart.html"><span class="btn-icon">&#127970;</span> Organisation Chart</a>
+        <a class="hero-nav-btn" href="sites.html"><span class="btn-icon">&#128205;</span> Sites</a>
+        <a class="hero-nav-btn" href="regional-schedule.html"><span class="btn-icon">&#128197;</span> Regional Schedule</a>
+        <a class="hero-nav-btn" href="contact-matrix.html"><span class="btn-icon">&#128202;</span> Contact Matrix</a>
+      </nav>
+    </div>
+
+    <main>
+      <section class="panel" aria-label="Planner inputs">
+        <div class="panel-head">
+          <h2>Trip Details</h2>
+        </div>
+        <div class="panel-body">
+          <div class="grid">
+            <label>Trip start
+              <input id="startTime" type="datetime-local">
+            </label>
+            <label>Fatigue rules
+              <select id="ruleSet">
+                <option value="">Choose rule set</option>
+                <option value="standard">Standard Hours - Solo</option>
+                <option value="bfm">BFM - Solo</option>
+              </select>
+            </label>
+            <label>Average speed (km/h)
+              <input id="avgSpeed" type="number" min="20" max="110" step="1" placeholder="0">
+            </label>
+            <label>Pre-start time (minutes)
+              <input id="preStart" type="number" min="0" max="240" step="15" placeholder="0">
+            </label>
+          </div>
+
+          <div class="actions">
+            <button class="btn" id="addLeg" type="button">Add drive leg</button>
+            <button class="btn secondary" id="addLoad" type="button">Add loading time</button>
+            <button class="btn secondary" id="clearRoute" type="button">Reset trip</button>
+          </div>
+
+          <div class="route-list" id="routeList"></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Journey plan">
+        <div class="panel-head">
+          <h2>Driver Schedule</h2>
+          <button class="btn secondary" id="printPlan" type="button">Print schedule</button>
+        </div>
+        <div class="panel-body">
+          <div class="print-title">
+            <h1>Driver Fatigue Schedule</h1>
+            <p>Generated from the trip details entered in the planner.</p>
+          </div>
+          <div class="notice">
+            Planning guide only. Confirm the final schedule against the driver's work diary, accreditation conditions and current NHVR requirements before dispatch.
+          </div>
+          <p class="updated" id="updatedAt">Not calculated yet</p>
+          <div class="summary" id="summary"></div>
+          <div class="warnings" id="warnings"></div>
+          <div class="timeline" id="timeline"></div>
+          <p class="source">
+            References:
+            <a href="https://www.nhvr.gov.au/safety-accreditation-compliance/fatigue-management/work-and-rest-requirements" target="_blank" rel="noreferrer">NHVR work and rest requirements</a>
+            and
+            <a href="https://www.nhvr.gov.au/safety-accreditation-compliance/fatigue-management/counting-time" target="_blank" rel="noreferrer">NHVR counting time</a>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>&copy; 2026 Sargeant Transport Services. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <template id="legTemplate">
+    <article class="leg">
+      <div class="leg-title">
+        <span class="legNumber">Drive leg</span>
+        <button class="icon-btn removeLeg" type="button" aria-label="Remove drive leg">x</button>
+      </div>
+      <div class="leg-fields">
+        <label>Start location
+          <input class="from" type="text">
+        </label>
+        <label>End location
+          <input class="to" type="text">
+        </label>
+        <label>Driving distance (km)
+          <input class="distance" type="number" min="0" step="1" placeholder="0">
+        </label>
+        <label class="wide">Trip notes
+          <input class="notes" type="text">
+        </label>
+      </div>
+    </article>
+  </template>
+
+  <template id="loadTemplate">
+    <article class="leg load-item">
+      <div class="leg-title">
+        <span class="legNumber">Loading time</span>
+        <button class="icon-btn removeLeg" type="button" aria-label="Remove loading time">x</button>
+      </div>
+      <div class="leg-fields">
+        <label class="wide">Site or task name
+          <input class="loadName" type="text">
+        </label>
+        <label>Duration (minutes)
+          <input class="loadMinutes" type="number" min="0" step="15" placeholder="0">
+        </label>
+        <label class="check-label">
+          <input class="handledBy" type="radio" name="handledBy" value="driver">
+          Driver loaded/unloaded
+        </label>
+        <label class="check-label">
+          <input class="handledBy" type="radio" name="handledBy" value="customer">
+          Customer loaded/unloaded
+        </label>
+        <label class="wide">Loading notes
+          <input class="loadNotes" type="text">
+        </label>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    document.getElementById("headerDate").textContent = new Date().toLocaleDateString("en-AU", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+
+    const rules = {
+      standard: {
+        name: "Standard Hours - Solo",
+        dailyMax: 12 * 60,
+        majorRest: 7 * 60,
+        sevenDayMax: 72 * 60,
+        fourteenDayMax: 144 * 60,
+        blocks: [
+          { work: 5 * 60 + 15, rest: 15 },
+          { work: 2 * 60 + 15, rest: 15 },
+          { work: 2 * 60 + 30, rest: 30 },
+          { work: 2 * 60, rest: 7 * 60, major: true }
+        ]
+      },
+      bfm: {
+        name: "BFM - Solo",
+        dailyMax: 14 * 60,
+        majorRest: 7 * 60,
+        sevenDayMax: null,
+        fourteenDayMax: 144 * 60,
+        blocks: [
+          { work: 6 * 60, rest: 15 },
+          { work: 2 * 60 + 30, rest: 15 },
+          { work: 2 * 60 + 30, rest: 30 },
+          { work: 3 * 60, rest: 7 * 60, major: true }
+        ]
+      }
+    };
+
+    const routeList = document.getElementById("routeList");
+    const template = document.getElementById("legTemplate");
+    const loadTemplate = document.getElementById("loadTemplate");
+    const startInput = document.getElementById("startTime");
+    const summary = document.getElementById("summary");
+    const timeline = document.getElementById("timeline");
+    const warnings = document.getElementById("warnings");
+    const updatedAt = document.getElementById("updatedAt");
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function toLocalInputValue(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    }
+
+    function roundWork(minutes) {
+      return Math.ceil(minutes / 15) * 15;
+    }
+
+    function roundRest(minutes) {
+      return Math.floor(minutes / 15) * 15;
+    }
+
+    function addMinutes(date, minutes) {
+      return new Date(date.getTime() + minutes * 60000);
+    }
+
+    function formatDateTime(date) {
+      return new Intl.DateTimeFormat("en-AU", {
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(date);
+    }
+
+    function formatDuration(minutes) {
+      const rounded = Math.round(minutes);
+      const days = Math.floor(rounded / 1440);
+      const hours = Math.floor((rounded % 1440) / 60);
+      const mins = rounded % 60;
+      const parts = [];
+      if (days) parts.push(`${days}d`);
+      if (hours) parts.push(`${hours}h`);
+      if (mins || !parts.length) parts.push(`${mins}m`);
+      return parts.join(" ");
+    }
+
+    function addLeg(data = {}) {
+      const node = template.content.firstElementChild.cloneNode(true);
+      node.querySelector(".from").value = data.from || "";
+      node.querySelector(".to").value = data.to || "";
+      node.querySelector(".distance").value = data.distance ?? "";
+      node.querySelector(".notes").value = data.notes || "";
+      node.querySelector(".removeLeg").addEventListener("click", () => {
+        node.remove();
+        renumberLegs();
+        plan();
+      });
+      routeList.appendChild(node);
+      renumberLegs();
+    }
+
+    function addLoad(data = {}) {
+      const node = loadTemplate.content.firstElementChild.cloneNode(true);
+      const groupName = `handledBy-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      node.querySelector(".loadName").value = data.name || "";
+      node.querySelector(".loadMinutes").value = data.minutes ?? "";
+      node.querySelectorAll(".handledBy").forEach(input => {
+        input.name = groupName;
+        input.checked = input.value === data.handledBy;
+      });
+      node.querySelector(".loadNotes").value = data.notes || "";
+      node.querySelector(".removeLeg").addEventListener("click", () => {
+        node.remove();
+        renumberLegs();
+        plan();
+      });
+      routeList.appendChild(node);
+      renumberLegs();
+    }
+
+    function renumberLegs() {
+      [...routeList.children].forEach((leg, index) => {
+        const label = leg.classList.contains("load-item") ? "Loading time" : "Drive leg";
+        leg.querySelector(".legNumber").textContent = `${label} ${index + 1}`;
+      });
+    }
+
+    function getJourneyItems() {
+      return [...routeList.children].map((node, index) => {
+        if (node.classList.contains("load-item")) {
+          const handledBy = node.querySelector(".handledBy:checked")?.value || "";
+          const driverHandled = handledBy === "driver";
+          return {
+            type: "load",
+            index,
+            name: node.querySelector(".loadName").value.trim() || "Loading time",
+            minutes: driverHandled
+              ? roundWork(Number(node.querySelector(".loadMinutes").value) || 0)
+              : roundRest(Number(node.querySelector(".loadMinutes").value) || 0),
+            handledBy,
+            driverHandled,
+            notes: node.querySelector(".loadNotes").value.trim()
+          };
+        }
+        return {
+          type: "leg",
+          index,
+          from: node.querySelector(".from").value.trim() || `Stop ${index}`,
+          to: node.querySelector(".to").value.trim() || `Stop ${index + 1}`,
+          distance: Number(node.querySelector(".distance").value) || 0,
+          notes: node.querySelector(".notes").value.trim()
+        };
+      }).filter(item => {
+        if (item.type === "load") return item.minutes > 0 && item.handledBy;
+        return item.distance > 0;
+      });
+    }
+
+    function createTasks(items, avgSpeed, preStart) {
+      const tasks = [];
+      if (preStart > 0) {
+        tasks.push({ kind: "work", title: "Pre-start", minutes: roundWork(preStart), detail: "Vehicle checks, paperwork or other work before departure." });
+      }
+      items.forEach(item => {
+        if (item.type === "load") {
+          tasks.push({
+            kind: item.driverHandled ? "work" : "rest",
+            title: item.name,
+            minutes: item.minutes,
+            detail: item.driverHandled
+              ? (item.notes || "Driver handled the loading or unloading.")
+              : (item.notes || "Customer handled the loading or unloading.")
+          });
+          return;
+        }
+        const leg = item;
+        const driveMins = roundWork((leg.distance / Math.max(avgSpeed, 1)) * 60);
+        tasks.push({
+          kind: "drive",
+          title: `${leg.from} to ${leg.to}`,
+          minutes: driveMins,
+          detail: `${leg.distance} km at ${avgSpeed} km/h planned average.`
+        });
+      });
+      return tasks;
+    }
+
+    function schedule(tasks, rule, start) {
+      const events = [];
+      let now = new Date(start);
+      let cycleStart = new Date(start);
+      let blockIndex = 0;
+      let blockRemaining = rule.blocks[0].work;
+      let totalWork = 0;
+      let taskIndex = 0;
+      let taskRemaining = tasks[0]?.minutes || 0;
+
+      while (taskIndex < tasks.length) {
+        const task = tasks[taskIndex];
+        if (task.kind === "rest") {
+          const restStart = now;
+          now = addMinutes(now, task.minutes);
+          events.push({
+            kind: "rest",
+            title: task.title,
+            start: restStart,
+            end: now,
+            minutes: task.minutes,
+            detail: task.detail
+          });
+
+          const block = rule.blocks[blockIndex];
+          const cycleEnd = addMinutes(cycleStart, 24 * 60);
+          const neededRest = block.major ? Math.max(block.rest, Math.max(0, (cycleEnd - restStart) / 60000)) : block.rest;
+          if (task.minutes >= neededRest && blockRemaining < block.work) {
+            if (block.major) {
+              blockIndex = 0;
+              cycleStart = new Date(now);
+            } else {
+              blockIndex += 1;
+            }
+            blockRemaining = rule.blocks[blockIndex].work;
+          }
+
+          taskIndex += 1;
+          taskRemaining = tasks[taskIndex]?.minutes || 0;
+          continue;
+        }
+
+        if (blockRemaining <= 0) {
+          const block = rule.blocks[blockIndex];
+          const cycleEnd = addMinutes(cycleStart, 24 * 60);
+          const resetWait = block.major ? Math.max(0, (cycleEnd - now) / 60000) : 0;
+          const restMins = roundRest(Math.max(block.rest, resetWait));
+          const restStart = now;
+          now = addMinutes(now, restMins);
+          events.push({
+            kind: block.major ? "major" : "rest",
+            title: block.major ? "Major rest break" : "Short rest break",
+            start: restStart,
+            end: now,
+            minutes: restMins,
+            detail: block.major ? "Planned to reset the next work period where required." : "Planned break before the next work block."
+          });
+          if (block.major) {
+            blockIndex = 0;
+            cycleStart = new Date(now);
+          } else {
+            blockIndex += 1;
+          }
+          blockRemaining = rule.blocks[blockIndex].work;
+          continue;
+        }
+
+        const workNow = Math.min(taskRemaining, blockRemaining);
+        const startEvent = now;
+        now = addMinutes(now, workNow);
+        totalWork += workNow;
+        blockRemaining -= workNow;
+        taskRemaining -= workNow;
+        events.push({
+          kind: task.kind,
+          title: task.title,
+          start: startEvent,
+          end: now,
+          minutes: workNow,
+          detail: task.detail
+        });
+
+        if (taskRemaining <= 0) {
+          taskIndex += 1;
+          taskRemaining = tasks[taskIndex]?.minutes || 0;
+        }
+      }
+
+      return { events, totalWork, finish: now };
+    }
+
+    function analyse(events, rule) {
+      const workEvents = events.filter(event => ["drive", "work", "stop"].includes(event.kind));
+      const restEvents = events.filter(event => ["rest", "major"].includes(event.kind));
+      const notes = [];
+      const majorRests = restEvents.filter(event => event.kind === "major").length;
+      const totalRest = restEvents.reduce((sum, event) => sum + event.minutes, 0);
+      const totalWork = workEvents.reduce((sum, event) => sum + event.minutes, 0);
+      const sevenDays = 7 * 24 * 60;
+      const fourteenDays = 14 * 24 * 60;
+
+      function workInWindow(windowMins) {
+        if (!workEvents.length) return 0;
+        const windowStart = workEvents[0].start;
+        const windowEnd = addMinutes(windowStart, windowMins);
+        return workEvents.reduce((sum, event) => {
+          const start = Math.max(event.start.getTime(), windowStart.getTime());
+          const end = Math.min(event.end.getTime(), windowEnd.getTime());
+          return sum + Math.max(0, (end - start) / 60000);
+        }, 0);
+      }
+
+      if (rule.sevenDayMax && workInWindow(sevenDays) > rule.sevenDayMax) {
+        notes.push({ level: "danger", text: `${rule.name} allows ${formatDuration(rule.sevenDayMax)} work in 7 days. This plan reaches ${formatDuration(workInWindow(sevenDays))} in the first 7-day window.` });
+      }
+      if (rule.fourteenDayMax && workInWindow(fourteenDays) > rule.fourteenDayMax) {
+        notes.push({ level: "danger", text: `${rule.name} allows ${formatDuration(rule.fourteenDayMax)} work in 14 days. This plan reaches ${formatDuration(workInWindow(fourteenDays))} in the first 14-day window.` });
+      }
+      if (rule.name.startsWith("Standard") && totalWork > rule.sevenDayMax) {
+        notes.push({ level: "warn", text: "For multi-day trips, check 24-hour rest and night-rest requirements against the driver's actual diary." });
+      }
+      if (rule.name.startsWith("BFM")) {
+        notes.push({ level: "warn", text: "For BFM trips, confirm long/night work, accreditation conditions and 14-day night-rest requirements." });
+      }
+
+      return { notes, totalRest, majorRests };
+    }
+
+    function renderSummary(plan, rule, analysis) {
+      const first = plan.events[0]?.start;
+      const last = plan.finish;
+      const elapsed = first ? (last - first) / 60000 : 0;
+      summary.innerHTML = [
+        ["Rule set", rule.name],
+        ["Total work", formatDuration(plan.totalWork)],
+        ["Total elapsed", formatDuration(elapsed)],
+        ["Major rests", String(analysis.majorRests)]
+      ].map(([label, value]) => `<div class="stat"><span>${label}</span><strong>${value}</strong></div>`).join("");
+    }
+
+    function renderWarnings(items) {
+      warnings.innerHTML = items.map(item => `<div class="warning ${item.level === "danger" ? "danger" : ""}">${item.text}</div>`).join("");
+    }
+
+    function renderTimeline(events) {
+      if (!events.length) {
+        timeline.innerHTML = `<div class="warning">Add a drive leg or loading time to build the schedule.</div>`;
+        return;
+      }
+      timeline.innerHTML = events.map(event => `
+        <article class="event kind-${event.kind}">
+          <div class="event-time">
+            <div>${formatDateTime(event.start)}</div>
+            <div>${formatDateTime(event.end)}</div>
+          </div>
+          <div class="event-body">
+            <strong>${event.title}</strong>
+            <span>${event.detail} Duration: ${formatDuration(event.minutes)}.</span>
+          </div>
+          <div class="event-kind">${event.kind === "major" ? "Rest" : event.kind}</div>
+        </article>
+      `).join("");
+    }
+
+    function plan() {
+      const ruleKey = document.getElementById("ruleSet").value;
+      const start = startInput.value ? new Date(startInput.value) : null;
+      const rule = rules[ruleKey];
+      const avgSpeed = Number(document.getElementById("avgSpeed").value) || 0;
+      const preStart = roundWork(Number(document.getElementById("preStart").value) || 0);
+      const items = getJourneyItems();
+      if (!start || !rule || avgSpeed <= 0) {
+        summary.innerHTML = [
+          ["Rule set", rule ? rule.name : "-"],
+          ["Total work", "-"],
+          ["Total elapsed", "-"],
+          ["Major rests", "-"]
+        ].map(([label, value]) => `<div class="stat"><span>${label}</span><strong>${value}</strong></div>`).join("");
+        warnings.innerHTML = "";
+        timeline.innerHTML = `<div class="warning">Enter the trip start, fatigue rules and average speed to build the schedule.</div>`;
+        updatedAt.textContent = "Not calculated yet";
+        return;
+      }
+      const tasks = createTasks(items, avgSpeed, preStart);
+      const result = schedule(tasks, rule, start);
+      const analysis = analyse(result.events, rule);
+      renderSummary(result, rule, analysis);
+      renderWarnings(analysis.notes);
+      renderTimeline(result.events);
+      updatedAt.textContent = `Last calculated ${new Intl.DateTimeFormat("en-AU", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      }).format(new Date())}`;
+    }
+
+    document.getElementById("addLeg").addEventListener("click", () => {
+      const count = routeList.children.length;
+      addLeg({ from: count ? "" : "Depot", to: "", distance: "" });
+      plan();
+    });
+    document.getElementById("addLoad").addEventListener("click", () => {
+      addLoad({ name: "", minutes: "", handledBy: "", notes: "" });
+      plan();
+    });
+    document.getElementById("clearRoute").addEventListener("click", () => {
+      routeList.innerHTML = "";
+      plan();
+    });
+    document.getElementById("printPlan").addEventListener("click", () => window.print());
+    document.getElementById("ruleSet").addEventListener("change", plan);
+    document.getElementById("avgSpeed").addEventListener("input", plan);
+    document.getElementById("avgSpeed").addEventListener("change", plan);
+    document.getElementById("preStart").addEventListener("input", plan);
+    document.getElementById("preStart").addEventListener("change", plan);
+    routeList.addEventListener("input", event => {
+      if (event.target.matches("input")) plan();
+    });
+    routeList.addEventListener("change", event => {
+      if (event.target.matches("input")) plan();
+    });
+    startInput.addEventListener("change", plan);
+
+    plan();
+  </script>
+</body>
+</html>
